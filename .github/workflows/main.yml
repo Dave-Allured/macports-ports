@@ -3,7 +3,7 @@ name: "lint & build changed ports"
 on:
   pull_request:
     branches:
-      - master
+      - test
     paths-ignore:
       - '.github/**'
   push:
