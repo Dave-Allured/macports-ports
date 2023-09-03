@@ -63,16 +63,12 @@ depends_lib                 path:lib/pkgconfig/cairo.pc:cairo \
                             port:hdfeos5    \
                             port:netcdf     \
                             port:wgrib2     \
-                            port:curl       \
                             port:libpng     \
-                            port:libxml2    \
                             port:gsl        \
                             port:flex       \
-                            port:jasper     \
                             port:xorg-libXaw
 depends_build               port:triangle
-depends_run                 bin:ESMF_RegridWeightGen:esmf \
-                            port:rangs-gshhs-ncarg
+
 conflicts_build             ncarg
 
 universal_variant           no
@@ -103,13 +99,6 @@ if {[variant_isset accelerate]} {
                             patch-external-yMakefile.diff
 } else {
     patchfiles-append       patch-config-Project.diff
-}
-
-if {${os.platform} eq "darwin" && ${os.major} < 12} {
-    pre-fetch {
-        ui_error "${name} is not supported on Lion or older."
-        error "unsupported platform"
-    }
 }
 
 configure.cflags-append     -Wno-error=implicit-function-declaration
