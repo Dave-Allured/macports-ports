@@ -11,7 +11,7 @@ compilers.allow_arguments_mismatch \
 
 name                        ncarg
 version                     6.6.2
-revision                    22
+revision                    23
 epoch                       1
 set version_no_dot [join [split ${version} "."] ""]
 categories                  science
@@ -63,16 +63,15 @@ depends_lib                 path:lib/pkgconfig/cairo.pc:cairo \
                             port:hdfeos5    \
                             port:netcdf     \
                             port:wgrib2     \
-                            port:curl       \
                             port:libpng     \
-                            port:libxml2    \
                             port:gsl        \
                             port:flex       \
-                            port:jasper     \
                             port:xorg-libXaw
 depends_build               port:triangle
-depends_run                 bin:ESMF_RegridWeightGen:esmf \
-                            port:rangs-gshhs-ncarg
+
+#depends_run                 bin:ESMF_RegridWeightGen:esmf
+depends_run                 port:rangs-gshhs-ncarg
+
 conflicts_build             ncarg
 
 universal_variant           no
@@ -105,12 +104,12 @@ if {[variant_isset accelerate]} {
     patchfiles-append       patch-config-Project.diff
 }
 
-if {${os.platform} eq "darwin" && ${os.major} < 12} {
-    pre-fetch {
-        ui_error "${name} is not supported on Lion or older."
-        error "unsupported platform"
-    }
-}
+#if {${os.platform} eq "darwin" && ${os.major} < 12} {
+#    pre-fetch {
+#        ui_error "${name} is not supported on Lion or older."
+#        error "unsupported platform"
+#    }
+#}
 
 configure.cflags-append     -Wno-error=implicit-function-declaration
 if {${configure.sdkroot} ne ""} {
@@ -261,6 +260,11 @@ if {[variant_isset g95]} {
 
 variant accelerate description {use Accelerate.framework} {
     depends_lib-append      port:vecLibFort
+}
+
+notes-append {
+NCARG: ESMF regridding is no longer included by default. \
+To use ESMF regridding, please "port install esmf".
 }
 
 livecheck.type              regex
