@@ -20,7 +20,8 @@ PortGroup                   github 1.0
 mpi.enforce_variant         netcdf
 
 github.setup                Unidata netcdf-fortran 4.6.1 v
-revision                    0
+revision                    1
+##################          ###  TEST VERSION ONLY -- FOR COMPARISON STUDY ONLY  ###
 maintainers                 {takeshi @tenomoto} openmaintainer
 categories                  science
 license                     Permissive
