@@ -19,8 +19,9 @@ long_description    ${description} It can serve as a stand-alone program for \
                     electronic structure calculation (HF, DFT,\Geminals, PT)
 homepage            https://qcdevs.org
 
-checksums           rmd160  68cf1658bf7de122923fc3949fb861a6896ab8be \
-                    sha256  e6410d00a012ab6bbeb18bd04d111e26cdcfc86171c092f50d0ad430e372c907
+checksums           rmd160  6d7555c7c133c8297372a07d99b4684c3881c170 \
+                    sha256  f9e9186f99ffbf0ff827690587653241e8f6ae48d4aa86400b070d8e89be0f1a \
+                    size    4858075
 
 python.default_version      311
 
