@@ -36,7 +36,7 @@ master_sites        http://www.vtk.org/files/release/${branch}
 distname            VTK-${version}
 
 checksums           rmd160  50c1a39c75e95262bf66b8424ae891b6ac39f25b \
-                    sha256  06fc8d49c4e56f498c40fcb38a563ed8d4ec31358d0101e8988f0bb4d539dd12
+                    sha256  06fc8d49c4e56f498c40fcb38a563ed8d4ec31358d0101e8988f0bb4d539dd12 \
                     size    53810904
 
 mpi.setup
@@ -100,7 +100,7 @@ variant qt5 description {Add Qt5 support.} {
 }
 
 # Supported pythons
-set python_versions {27 36 37 38 39 310 311}
+set python_versions {36 37 38 39 310 311}
 
 foreach pyver ${python_versions} {
     # Conflicting python versions
