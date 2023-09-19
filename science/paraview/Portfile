@@ -41,9 +41,14 @@ checksums           rmd160  55dea90e50f8fa7f2f8fec833a05390a613a06de \
                     sha256  5cc2209f7fa37cd3155d199ff6c3590620c12ca4da732ef7698dec37fa8dbb34 \
                     size    79847556
 
-patchfiles          patch-ogg_dependency.diff \
-                    patch-system_ok.diff \
-                    patch-case-sensitivity.diff
+# 2023 Sep 19:  Experimentally remove all remaining old patch files.
+# They seem to be related to old Cmake files which have probably
+# been reworked.
+#
+#patchfiles          patch-vtk_target_export.diff \
+#                    patch-ogg_dependency.diff \
+#                    patch-system_ok.diff \
+#                    patch-case-sensitivity.diff
 
 depends_lib-append  path:share/pkgconfig/eigen3.pc:eigen3 \
                     port:glew \
@@ -88,6 +93,7 @@ if {[variant_isset debug]} {
 } else {
     cmake.build_type    Release
 }
+
 
 configure.pre_args-delete \
     -DCMAKE_INSTALL_PREFIX="${cmake.install_prefix}"
