@@ -90,7 +90,6 @@ if {[variant_isset debug]} {
     cmake.build_type    Release
 }
 
-
 configure.pre_args-delete \
     -DCMAKE_INSTALL_PREFIX="${cmake.install_prefix}"
 
@@ -173,7 +172,7 @@ destroot {
 #Warning: A file belonging to the `paraview' port is missing or unreadable. Consider reinstalling it.
 
 # Supported pythons
-set python_versions {27 35 36 37}
+set python_versions {35 36 37}
 
 foreach pyver ${python_versions} {
     # Conflicting python versions
