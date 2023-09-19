@@ -8,11 +8,8 @@ PortGroup           mpi 1.0
 PortGroup           xcodeversion 1.0
 
 name                paraview
-version             5.6.2
-revision            17
-
-# TODO: Remove, if/when this port is fixed
-known_fail          yes
+version             5.11.1
+revision            0
 
 categories          science graphics
 platforms           darwin
@@ -20,7 +17,10 @@ license             BSD
 
 set branch          [join [lrange [split ${version} .] 0 1] .]
 
-maintainers         {gmail.com:jjstickel @jjstickel} {dstrubbe @dstrubbe} openmaintainer
+maintainers         {gmail.com:jjstickel @jjstickel} \
+                    {dstrubbe @dstrubbe} \
+                    Dave-Allured \
+                    openmaintainer
 
 description         3D data analysis and visualization application
 
@@ -37,15 +37,11 @@ master_sites        ${homepage}/files/v${branch}/
 distname            ParaView-v${version}
 use_xz              yes
 
-checksums           sha256  1f3710b77c58a46891808dbe23dc59a1259d9c6b7bb123aaaeaa6ddf2be882ea \
-                    rmd160  7608b8dc8f2c1daf8772564b9fbac6634a0b76f2 \
-                    size    38739692
+checksums           rmd160  55dea90e50f8fa7f2f8fec833a05390a613a06de \
+                    sha256  5cc2209f7fa37cd3155d199ff6c3590620c12ca4da732ef7698dec37fa8dbb34 \
+                    size    79847556
 
-# Fix the icon size of the render area. This should be already included
-# version > 5.6.0. So when you bump the version, you should be able to remove
-# this patch file.
-patchfiles          patch-icon-size.diff \
-                    patch-vtk_target_export.diff \
+patchfiles          patch-vtk_target_export.diff \
                     patch-ogg_dependency.diff \
                     patch-system_ok.diff \
                     patch-case-sensitivity.diff
@@ -76,7 +72,6 @@ depends_lib-append  path:share/pkgconfig/eigen3.pc:eigen3 \
                     port:PEGTL \
                     port:qttesting \
                     port:readline
-
 
 compiler.cxx_standard   2011
 
