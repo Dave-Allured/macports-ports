@@ -41,8 +41,7 @@ checksums           rmd160  55dea90e50f8fa7f2f8fec833a05390a613a06de \
                     sha256  5cc2209f7fa37cd3155d199ff6c3590620c12ca4da732ef7698dec37fa8dbb34 \
                     size    79847556
 
-patchfiles          patch-vtk_target_export.diff \
-                    patch-ogg_dependency.diff \
+patchfiles          patch-ogg_dependency.diff \
                     patch-system_ok.diff \
                     patch-case-sensitivity.diff
 
@@ -76,7 +75,7 @@ depends_lib-append  path:share/pkgconfig/eigen3.pc:eigen3 \
 compiler.cxx_standard   2011
 
 qt5.depends_component  sqlite-plugin qttools qtxmlpatterns
-qt5.min_version        5.6
+qt5.min_version        5.12
 
 cmake.install_rpath
 
