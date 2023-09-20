@@ -11,6 +11,15 @@ name                paraview
 version             5.11.1
 revision            0
 
+# Reminders (2023 Sept):
+#
+#   Re-enable default_variants-append +ffmpeg
+#   Remove all 5 old patch files.
+#   Remove indirect dependencies.
+#   Test python versions 3.8 through 3.11.
+#   Remove obsolete python versions.
+#   Confirm valid install paths.
+
 categories          science graphics
 platforms           darwin
 license             BSD
@@ -42,7 +51,7 @@ checksums           rmd160  55dea90e50f8fa7f2f8fec833a05390a613a06de \
                     size    79847556
 
 # 2023 Sep 19:  Experimentally remove all remaining old patch files.
-# They seem to be related to old Cmake files which have probably
+# They seem to be related to old Cmake files which have all probably
 # been reworked.
 #
 #patchfiles          patch-vtk_target_export.diff \
@@ -94,18 +103,22 @@ if {[variant_isset debug]} {
     cmake.build_type    Release
 }
 
+# EXPERIMENTALLY DISABLE all of this install stuff.  2023 Sept.
+# Hoping for a normal install in Macports ${prefix}.
+#
+#configure.pre_args-delete \
+#    -DCMAKE_INSTALL_PREFIX="${cmake.install_prefix}"
+#
+#configure.post_args-append \
+#    -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=OFF
+#
+## ${destroot} needs to be part of MACOSX_APP_INSTALL_PREFIX; see further
+## comments below, JJS 12/21/15
+#
+#    -DMACOSX_APP_INSTALL_PREFIX=${destroot}${applications_dir} \
 
-configure.pre_args-delete \
-    -DCMAKE_INSTALL_PREFIX="${cmake.install_prefix}"
-
-configure.post_args-append \
-    -DCMAKE_BUILD_WITH_INSTALL_RPATH:BOOL=OFF
-
-# ${destroot} needs to be part of MACOSX_APP_INSTALL_PREFIX; see further
-# comments below, JJS 12/21/15
 configure.args-append \
     -DBUILD_TESTING:BOOL=OFF \
-    -DMACOSX_APP_INSTALL_PREFIX=${destroot}${applications_dir} \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DPARAVIEW_QT_VERSION=5 \
     -DPARAVIEW_USE_MPI:BOOL=OFF \
@@ -168,9 +181,12 @@ if {![mpi_variant_isset]} {
 # I do not understand why, but the default "destroot" makes a mess of things;
 # even setting full path of MACOSX_APP_INSTALL_PREFIX above and an empty
 # DESTDIR does not work; JJS 12/21/15
-destroot {
-    system "cd ${build.dir} && make install"
-}
+
+## DISABLED 2023 Sept
+##
+##destroot {
+##    system "cd ${build.dir} && make install"
+##}
 
 # Error using default destroot is:
 #Warning: Error determining file type of `/opt/local/var/macports/build/_Users_dstrubbe_Software_MacPorts_macports-trunk_dports_science_paraview/paraview/work/destroot/opt/local/var/macports/build/_Users_dstrubbe_Software_MacPorts_macports-trunk_dports_science_paraview/paraview/work/build/CMakeFiles/__macos_install/bin/paraview.app/Contents/www/lib/widgets/vtkweb-widgets.js': lstat(/opt/local/var/macports/build/_Users_dstrubbe_Software_MacPorts_macports-trunk_dports_science_paraview/paraview/work/destroot/opt/local/var/macports/build/_Users_dstrubbe_Software_MacPorts_macports-trunk_dports_science_paraview/paraview/work/build/CMakeFiles/__macos_install/bin/paraview.app/Contents/www/lib/widgets/vtkweb-widgets.js):no such file or directory
@@ -229,7 +245,7 @@ variant xdmf description {Add support for XDMF files I/O} {
     configure.args-append -DPARAVIEW_ENABLE_XDMF3:BOOL=ON
 }
 
-default_variants-append +ffmpeg
+#default_variants-append +ffmpeg
 
 livecheck.type      regex
 livecheck.url       https://gitlab.kitware.com/paraview/paraview/tags
