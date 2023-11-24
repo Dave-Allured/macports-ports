@@ -8,21 +8,26 @@ PortGroup legacysupport 1.0
 legacysupport.newest_darwin_requires_legacy 10
 
 name                wgrib2
-version             3.1.1
-revision            4
-maintainers         {takeshi @tenomoto}
+version             3.1.3
+revision            0
+maintainers         {takeshi @tenomoto} \
+                    {@Dave-Allured noaa.gov:dave.allured} \
+                    openmaintainer
+
 license             public-domain
 categories          science
 description         program to read atmospheric data files in GRIB2
-homepage            http://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/
+homepage            https://www.cpc.ncep.noaa.gov/products/wesley/wgrib2/
 master_sites        ftp://ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/ \
-                    http://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/
+                    https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/
 distname            ${name}.tgz.v${version}
 extract.suffix
 set version_g2clib  1.4.0
-checksums           rmd160  86f2374fc52164c6432a9ef44db25485fa46a80f \
-                    sha256  9236f6afddad76d868c2cfdf5c4227f5bdda5e85ae40c18bafb37218e49bc04a \
-                    size    30034766
+
+checksums           rmd160  8b7cd3633b41ce15dba99085be301b5827998457 \
+                    sha256  b7d9f2ddc1b9a04f21c70ba3410b641d2189075f6f91520e250fcf79330f6c11 \
+                    size    28678638
+
 long_description   \
     wgrib2 is a swiss army knife for grib2 files. \
     GRIB-2 has arrived and has begun replacing the the older standard GRIB-1. \
@@ -36,7 +41,6 @@ depends_extract     bin:gnutar:gnutar
 depends_lib         port:jasper2 \
                     port:libpng \
                     port:netcdf \
-                    port:hdf5   \
                     port:proj8  \
                     port:libaec
 
