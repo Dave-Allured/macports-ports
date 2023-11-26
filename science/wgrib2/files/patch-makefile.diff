@@ -1,35 +1,38 @@
---- makefile.orig	2022-04-13 23:50:45.000000000 +0900
-+++ makefile	2022-09-11 13:24:55.000000000 +0900
-@@ -140,8 +140,8 @@
+--- makefile.orig	2023-10-24 08:54:47.000000000 -0600
++++ makefile	2023-11-26 00:10:27.000000000 -0700
+@@ -164,16 +164,16 @@
  
- 
- # Warning do not set both USE_NETCDF3 and USE_NETCDF4 to one
+ # if USE_NETCDF3=1, then USE_NETCDF4 must 0
+ #
+-# USE_NETCDF3=0
 -USE_NETCDF3=1
--USE_NETCDF4=0
 +USE_NETCDF3=0
-+USE_NETCDF4=1
++# USE_NETCDF3=1
+ #
+-USE_NETCDF4=0
++# USE_NETCDF4=0
+ # USE_NETCDF4=compile
+ # USE_NETCDF4=system
+-#USE_NETCDF4=${NETCDF_INCLUDES}:${NETCDF_LIBRARIES}
++USE_NETCDF4=${NETCDF_INCLUDES}:${NETCDF_LIBRARIES}
+ # USE_HDF5 is only active if USE_NETCDF4 != 0
+-#USE_HDF5=0
+-USE_HDF5=compile
++USE_HDF5=0
++#USE_HDF5=compile
+ #USE_HDF5=system
+ #USE_HDF5=${HDF5_INCLUDES}:${HDF5_LIBRARIES}
  USE_REGEX=1
- USE_TIGGE=1
- USE_MYSQL=0
-@@ -149,7 +149,7 @@
- USE_SPECTRAL=1
- USE_UDF=0
- USE_OPENMP=1
--USE_PROJ4=0
-+USE_PROJ4=1
- USE_WMO_VALIDATION=0
- USE_NAMES=NCEP
- MAKE_FTN_API=1
-@@ -157,7 +157,7 @@
+@@ -191,7 +191,7 @@
  DISABLE_STAT=0
- MAKE_SHARED_LIB=0
+ MAKE_SHARED_LIB=1
  
 -USE_G2CLIB=0
 +USE_G2CLIB=1
  USE_PNG=1
- USE_JASPER=1
- USE_OPENJPEG=0
-@@ -172,7 +172,7 @@
+ USE_JASPER=0
+ USE_OPENJPEG=1
+@@ -213,7 +213,7 @@
  lib:=${cwd}/lib
  tmp:=${cwd}/tmp
  export TMPDIR=${tmp}
@@ -38,7 +41,7 @@
  a:=$(shell mkdir -p ${lib})
  a:=$(shell mkdir -p ${tmp})
  wCPPFLAGS:=${CPPFLAGS} -I${cwd}/include
-@@ -654,7 +654,7 @@
+@@ -745,7 +745,7 @@
     jsrc=jasper-1.900.1-14ubuntu3.2.debian.tgz
     jlib=${lib}/libjasper.a
     wLDFLAGS+=-ljasper
@@ -47,7 +50,7 @@
     a:=$(shell echo '$Hdefine USE_JASPER' >> ${CONFIG_H})
  endif
  
-@@ -777,7 +777,7 @@
+@@ -899,7 +899,7 @@
  ifeq ($(USE_PNG),1)
     pngsrc=${cwd}/libpng-1.2.59.tar.gz
     pnglib=${lib}/libpng12.a
@@ -56,7 +59,7 @@
     a:=$(shell echo '$Hdefine USE_PNG' >> ${CONFIG_H})
  else
     a:=$(shell echo '//$Hdefine USE_PNG' >> ${CONFIG_H})
-@@ -826,10 +826,10 @@
+@@ -939,10 +939,10 @@
  w=wgrib2
  prog=$w/wgrib2
  
@@ -69,9 +72,9 @@
  	cd "$w" && export LDFLAGS="${wLDFLAGS}" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE}
  
  fast:        $w/*.c $w/*.h ${jlib} ${aeclib} ${netcdf3lib} ${pnglib} ${hdf5lib} ${g2clib} ${netcdf4lib} ${iplib} ${spectrallib} ${gctpclib} ${proj4lib} ${ojlib}
-@@ -904,8 +904,10 @@
- ${zlib}:	${zdir}
+@@ -1021,8 +1021,10 @@
  	cd ${zdir} && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} install
+ 	# WNE 3/2023 cd ${zdir} && export CFLAGS="" && ./configure --prefix=${cwd} --static && ${MAKE} install
  
 -${g2clib}:	${jlib} ${pnglib} ${zlib}
 -	cd "${g2cdir}" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE} && cp libgrib2c.a ${lib}
@@ -82,7 +85,7 @@
  
  ${gctpcdir}/source/makefile.gctpc:
  	cp ${gctpcsrc} tmpgctpc.tar.gz
-@@ -965,7 +967,7 @@
+@@ -1080,7 +1082,7 @@
  	cd "${hdf5dir}" && export CFLAGS="${hdf5CFLAGS}" && export LDFLAGS="${LDFLAGS}" && ./configure --disable-shared --with-zlib=${cwd} --disable-sharedlib-rpath --prefix=${cwd} --with-default-api-version=v110 && ${MAKE} -j 1 all check install
  
  ${iplib}:
