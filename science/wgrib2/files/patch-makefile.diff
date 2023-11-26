@@ -1,5 +1,5 @@
 --- makefile.orig	2023-10-24 08:54:47.000000000 -0600
-+++ makefile	2023-11-26 03:58:46.000000000 -0700
++++ makefile	2023-11-26 09:59:31.000000000 -0700
 @@ -164,16 +164,18 @@
  
  # if USE_NETCDF3=1, then USE_NETCDF4 must 0
@@ -43,22 +43,25 @@
     a:=$(shell echo '$Hdefine USE_JASPER' >> ${CONFIG_H})
  endif
  
-@@ -817,10 +819,12 @@
+@@ -817,10 +819,16 @@
        wCPPFLAGS+=-I$(word 1,$a)
        wLDFLAGS+=-L$(word 2,$a)
        a:=$(shell echo "$Hdefine USE_HDF5 \"ext_lib=${USE_HDF5}\"" >> ${CONFIG_H})
-+   endif
-+   ifeq ($(USE_HDF5),0)
-+      wLDFLAGS+=-lnetcdf
++   else ifeq ($(USE_HDF5),0)
++      a:=$(shell echo "$Hdefine USE_HDF5 \"0\"" >> ${CONFIG_H})
     else
--      $(error ERROR, bad USE_HDF5 in makefile")
-+      wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
+       $(error ERROR, bad USE_HDF5 in makefile")
     endif
 -   wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
++   ifeq ($(USE_HDF5),0)
++      wLDFLAGS+=-lnetcdf
++   else
++      wLDFLAGS+=-lnetcdf -lhdf5_hl -lhdf5 -ldl
++   endif
  endif
  
  ifeq ($(USE_MYSQL),1)
-@@ -899,7 +903,7 @@
+@@ -899,7 +907,7 @@
  ifeq ($(USE_PNG),1)
     pngsrc=${cwd}/libpng-1.2.59.tar.gz
     pnglib=${lib}/libpng12.a
@@ -67,7 +70,7 @@
     a:=$(shell echo '$Hdefine USE_PNG' >> ${CONFIG_H})
  else
     a:=$(shell echo '//$Hdefine USE_PNG' >> ${CONFIG_H})
-@@ -939,10 +943,10 @@
+@@ -939,10 +947,10 @@
  w=wgrib2
  prog=$w/wgrib2
  
@@ -80,7 +83,7 @@
  	cd "$w" && export LDFLAGS="${wLDFLAGS}" && export CPPFLAGS="${wCPPFLAGS}" && ${MAKE}
  
  fast:        $w/*.c $w/*.h ${jlib} ${aeclib} ${netcdf3lib} ${pnglib} ${hdf5lib} ${g2clib} ${netcdf4lib} ${iplib} ${spectrallib} ${gctpclib} ${proj4lib} ${ojlib}
-@@ -1021,8 +1025,10 @@
+@@ -1021,8 +1029,10 @@
  	cd ${zdir} && export CFLAGS="${wCPPFLAGS}" && ./configure --prefix=${cwd} --static && ${MAKE} install
  	# WNE 3/2023 cd ${zdir} && export CFLAGS="" && ./configure --prefix=${cwd} --static && ${MAKE} install
  
@@ -93,7 +96,7 @@
  
  ${gctpcdir}/source/makefile.gctpc:
  	cp ${gctpcsrc} tmpgctpc.tar.gz
-@@ -1080,7 +1086,7 @@
+@@ -1080,7 +1090,7 @@
  	cd "${hdf5dir}" && export CFLAGS="${hdf5CFLAGS}" && export LDFLAGS="${LDFLAGS}" && ./configure --disable-shared --with-zlib=${cwd} --disable-sharedlib-rpath --prefix=${cwd} --with-default-api-version=v110 && ${MAKE} -j 1 all check install
  
  ${iplib}:
