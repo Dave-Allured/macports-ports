@@ -2,7 +2,7 @@
 
 PortSystem          1.0
 PortGroup compilers 1.0
-PortGroup legacysupport 1.0
+PortGroup legacysupport 1.1
 
 # strnlen
 legacysupport.newest_darwin_requires_legacy 10
@@ -42,7 +42,7 @@ depends_build       port:cmake
 depends_lib         port:jasper2 \
                     port:libpng \
                     port:netcdf \
-                    port:proj8  \
+                    port:proj4  \
                     port:libaec
 
 worksrcdir          grib2
