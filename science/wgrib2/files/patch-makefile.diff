@@ -1,5 +1,5 @@
 --- makefile.orig	2023-10-24 08:54:47.000000000 -0600
-+++ makefile	2023-11-26 02:45:31.000000000 -0700
++++ makefile	2023-11-26 03:15:54.000000000 -0700
 @@ -164,16 +164,18 @@
  
  # if USE_NETCDF3=1, then USE_NETCDF4 must 0
@@ -25,15 +25,6 @@
  #USE_HDF5=system
  #USE_HDF5=${HDF5_INCLUDES}:${HDF5_LIBRARIES}
  USE_REGEX=1
-@@ -191,7 +193,7 @@
- DISABLE_STAT=0
- MAKE_SHARED_LIB=1
- 
--USE_G2CLIB=0
-+USE_G2CLIB=1
- USE_PNG=1
- USE_JASPER=0
- USE_OPENJPEG=1
 @@ -213,7 +215,7 @@
  lib:=${cwd}/lib
  tmp:=${cwd}/tmp
