@@ -35,9 +35,9 @@ long_description   \
 
 compilers.choose    cc fc f77 f90
 compilers.setup     require_fortran -clang33 -clang34
-compilers.allow_arguments_mismatch  yes
 
 depends_extract     bin:gnutar:gnutar
+depends_build       port:cmake
 depends_lib         port:jasper2 \
                     port:libpng \
                     port:netcdf \
@@ -50,9 +50,6 @@ extract.post_args   "| gnutar -xf -"
 patchfiles          patch-makefile.diff  \
                     patch-makefile.gctpc.diff \
                     patch-ip2lib_d-Makefile.diff \
-                    patch-g2clib-makefile.diff \
-                    patch-g2clib-1.4.0-dec_jpeg2000.c.diff \
-                    patch-g2clib-1.4.0-enc_jpeg2000.c.diff \
                     patch-sp_v2.0.2_d-Makefile.diff \
                     patch-wgrib2-unpk.c.diff
 
