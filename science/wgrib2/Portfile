@@ -54,8 +54,7 @@ patchfiles          patch-makefile.diff  \
                     patch-g2clib-1.4.0-dec_jpeg2000.c.diff \
                     patch-g2clib-1.4.0-enc_jpeg2000.c.diff \
                     patch-sp_v2.0.2_d-Makefile.diff \
-                    patch-wgrib2-unpk.c.diff \
-                    patch-wgrib2-makefile.diff
+                    patch-wgrib2-unpk.c.diff
 
 use_configure       no
 use_parallel_build  no
