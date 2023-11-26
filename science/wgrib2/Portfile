@@ -35,6 +35,7 @@ long_description   \
 
 compilers.choose    cc fc f77 f90
 compilers.setup     require_fortran -clang33 -clang34
+compilers.allow_arguments_mismatch  yes
 
 depends_extract     bin:gnutar:gnutar
 depends_build       port:cmake
