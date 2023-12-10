@@ -21,9 +21,9 @@ long_description    A portable, object-based Fortran interface to the GNU scient
 homepage            https://doku.lrz.de/fgsl-a-fortran-interface-to-the-gnu-scientific-library-10746505.html \
                     https://github.com/reinh-bader/fgsl/
 
-checksums           rmd160  580a519dc98ab1a774e5b50b347de1bfe0222171 \
-                    sha256  7b1b33d7165b756279c26ecd4b27edb19ee0c11165e13bf518cd7f91019d1b39 \
-                    size    2880105
+checksums           rmd160  fec0e747a13906fdf0a9abdc43a4204769ef4a5d \
+                    sha256  5013b4e000e556daac8b3c83192adfe8f36ffdc91d1d4baf0b1cb3100260e664 \
+                    size    2945012
 
 depends_build       port:pkgconfig
 depends_lib         port:gsl
