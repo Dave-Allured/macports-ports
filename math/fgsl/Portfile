@@ -4,7 +4,8 @@ PortSystem          1.0
 PortGroup           compilers 1.0
 PortGroup           github 1.0
 
-github.setup        reinh-bader fgsl 1.5.0 v
+github.setup        reinh-bader fgsl 1.5.0
+github.tarball_from releases
 revision            0
 categories          math science
 maintainers         {takeshi @tenomoto} \
