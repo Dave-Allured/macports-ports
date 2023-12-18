@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/confluentinc/cli 3.42.0 v
+go.setup            github.com/confluentinc/cli 3.44.0 v
 go.offline_build    no
 name                confluent-cli
 github.tarball_from archive
@@ -21,9 +21,9 @@ license             Permissive
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  c3580c20b722f526ff3daa49c2d5774c55be0883 \
-                    sha256  d546490b811f3fbba0a0799263698ebdc413cb7087c4015a11034f25cc9e0975 \
-                    size    15257372
+checksums           rmd160  020bdebf7c3000418361b37d2818f643cff41b15 \
+                    sha256  ea89f8bb56f6420634e50a259649b4b97992bacfc01c200af4a3ccc150c936be \
+                    size    15262900
 
 patchfiles-append   patch-Makefile.diff
 
