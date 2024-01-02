@@ -1,1 +1,38 @@
-
+--- configure.orig	2023-05-19 14:19:16.000000000 -0600
++++ configure	2024-01-02 01:52:35.000000000 -0700
+@@ -2368,7 +2368,7 @@
+     ac_configure_args_raw=`      printf "%s\n" "$ac_configure_args_raw" | sed "$ac_safe_unquote"`;;
+ esac
+ 
+-cat >config.log <<_ACEOF
++cat <<_ACEOF
+ This file contains any messages produced by compilers while
+ running configure, to aid debugging if configure makes a mistake.
+ 
+@@ -2378,7 +2378,7 @@
+   $ $0$ac_configure_args_raw
+ 
+ _ACEOF
+-exec 5>>config.log
++exec 5
+ {
+ cat <<_ASUNAME
+ ## --------- ##
+@@ -26090,7 +26090,7 @@
+ 
+ _ACEOF
+ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
+-exec 5>>config.log
++exec 5
+ {
+   echo
+   sed 'h;s/./-/g;s/^.../## /;s/...$/ ##/;p;x;p;x' <<_ASBOX
+@@ -28074,7 +28074,7 @@
+     ac_config_status_args="$ac_config_status_args --quiet"
+   exec 5>/dev/null
+   $SHELL $CONFIG_STATUS $ac_config_status_args || ac_cs_success=false
+-  exec 5>>config.log
++  exec 5
+   # Use ||, not &&, to avoid exiting from the if with $? = 1, which
+   # would make configure fail if this is the last instruction.
+   $ac_cs_success || as_fn_exit 1
