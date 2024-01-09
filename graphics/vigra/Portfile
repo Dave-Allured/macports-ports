@@ -8,9 +8,9 @@ PortGroup           cmake 1.1
 PortGroup           github 1.0
 PortGroup           boost 1.0
 
-github.setup        ukoethe vigra 1-11-1 Version-
+github.setup        ukoethe vigra 1-11-2 Version-
 version             [strsed ${github.version} {g/-/./}]
-revision            20
+revision            0
 categories          graphics
 platforms           darwin
 license             MIT
@@ -143,8 +143,3 @@ if { ${active_py} eq "" } {
     set active_py_nodot [string map {. {}} ${active_py}]
     default_variants +python${active_py_nodot}
 }
-
-livecheck.version   ${version}
-livecheck.type      regex
-livecheck.url       ${homepage}
-livecheck.regex     {>version ([0-9.]+)<}
