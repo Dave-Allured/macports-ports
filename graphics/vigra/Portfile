@@ -49,9 +49,6 @@ configure.args-append \
 # see https://trac.macports.org/ticket/54548
 patchfiles-append   patch-template.diff
 
-# allow cmake to find MacPorts boost_python library
-patchfiles-append   patch-boost_python.diff
-
 # see https://trac.macports.org/ticket/59970
 patchfiles-append   patch-sifImport.diff
 
