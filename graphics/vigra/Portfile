@@ -46,15 +46,8 @@ configure.args-append \
                     -DOPENEXR_ILMTHREAD_LIBRARY=${prefix}/libexec/openexr2/lib/libIlmThread.dylib \
                     -DOPENEXR_IMATH_LIBRARY=${prefix}/libexec/openexr2/lib/libImath.dylib
 
-# modify tests for existence of c++11 std::unique_ptr
-# see https://github.com/ukoethe/vigra/pull/421
-patchfiles-append   patch-uniq_ptr.diff
-
 # see https://trac.macports.org/ticket/54548
 patchfiles-append   patch-template.diff
-
-# see https://github.com/ukoethe/vigra/pull/451/commits/a6fa62663c6a6b752ed0707e95f643e25867a0f9
-patchfiles-append   patch-python.diff
 
 # allow cmake to find MacPorts boost_python library
 patchfiles-append   patch-boost_python.diff
