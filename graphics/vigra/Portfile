@@ -46,12 +46,6 @@ configure.args-append \
                     -DOPENEXR_ILMTHREAD_LIBRARY=${prefix}/libexec/openexr2/lib/libIlmThread.dylib \
                     -DOPENEXR_IMATH_LIBRARY=${prefix}/libexec/openexr2/lib/libImath.dylib
 
-# see https://trac.macports.org/ticket/54548
-patchfiles-append   patch-template.diff
-
-# see https://trac.macports.org/ticket/59970
-patchfiles-append   patch-sifImport.diff
-
 post-patch {
     reinplace "s|@DOCDIR@|${prefix}/share/doc/${name}|g" ${worksrcpath}/config/vigra-config.in
 }
