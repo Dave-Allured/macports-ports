@@ -76,7 +76,7 @@ configure.args-append   -DWITH_OPENEXR=ON \
 # For use only with vigra 1.11.1.
 #     Not for vigra 1.11.2, because of uncertain compatibility
 #     with https://github.com/ukoethe/vigra/pull/499.
-configure.args-append   -DH5_USE_18_API
+configure.args-append   -DH5_USE_18_API=1
 
 # recursive template instantiation exceeded maximum depth of 128
 configure.cxxflags-append -ftemplate-depth-1024
