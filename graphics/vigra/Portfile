@@ -72,6 +72,12 @@ configure.args-append   -DWITH_OPENEXR=ON \
                         -DBUILD_SHARED_LIBS=ON \
                         -DWITH_VIGRANUMPY=NO
 
+# Test HDF5 API compatibility macros.
+# For use only with vigra 1.11.1.
+#     Not for vigra 1.11.2, because of uncertain compatibility
+#     with https://github.com/ukoethe/vigra/pull/499.
+configure.args-append   -DH5_USE_110_API=1
+
 # recursive template instantiation exceeded maximum depth of 128
 configure.cxxflags-append -ftemplate-depth-1024
 
