@@ -2,7 +2,7 @@
 
 PortSystem          1.0
 
-version             5.7.7
+version             5.8.3
 revision            0
 
 if {${os.major} >= 17} {
@@ -44,9 +44,9 @@ if ${source_build} {
 
     use_parallel_build  no
 
-    checksums           rmd160  248589f4b6604f877c703c1a03af8112ad9e5dd0 \
-                        sha256  9c497939492df4a39bd90f41c6299e453de726e8211866c018a2483b572501ce \
-                        size    259352
+    checksums           rmd160  fdb2731c60ddc8a018ddb00eff99861aae4e9d2b \
+                        sha256  dddecb683a8f1c68f96ea27f1b1cc60dfe068a061897bb31b2180c23eee1abf2 \
+                        size    262007
 
     github.tarball_from archive
 } else {
@@ -54,9 +54,9 @@ if ${source_build} {
 
     distname            symfony-cli_darwin_all
 
-    checksums           rmd160  9908f1f37d00a1b4c7b2e5a83743a69bcab3af1c \
-                        sha256  8362a9c9b849e707a8be3b3f8b4502670893bcf8a5db406b991b1186c3f1199c \
-                        size    11150537
+    checksums           rmd160  34c969603547842b55b7f14cabe725df5ac7bf03 \
+                        sha256  80d5a7c66b7abc57abd6b7d556532b949ea79c9193fe8e8d46c7b2d1b78d4f4d \
+                        size    11147319
 
     github.tarball_from releases
 
