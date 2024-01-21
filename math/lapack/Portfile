@@ -77,3 +77,7 @@ if {${subport} eq ${name}} {
 notes        "C headers are installed in ${prefix}/include/${name}."
 notes-append "LAPACK man pages are currently broken."
 notes-append "See on-line docs at https://www.netlib.org/lapack/ ."
+
+# Build system for man pages was changed upstream.
+# To recover man page subport code for previous version,
+# please see portfile history for 2024 January 20.
