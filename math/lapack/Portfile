@@ -84,10 +84,9 @@ subport ${name}-manpages {
 
     depends_build       bin:doxygen:doxygen
 
-    use_configure       no
+# Build system for man pages changed between 3.11 and 3.12.
 
-# Change between 3.11 and 3.12.
-
+#    use_configure       no
 #    build.cmd           doxygen
 #    build.target        DOCS/Doxyfile_man
     build.target        man
