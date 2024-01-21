@@ -85,8 +85,12 @@ subport ${name}-manpages {
     depends_build       bin:doxygen:doxygen
 
     use_configure       no
-    build.cmd           doxygen
-    build.target        DOCS/Doxyfile_man
+
+# Change between 3.11 and 3.12.
+
+#    build.cmd           doxygen
+#    build.target        DOCS/Doxyfile_man
+    build.target        man
 
     destroot            {
         foreach f [glob ${worksrcpath}/DOCS/man/man3/*] {
