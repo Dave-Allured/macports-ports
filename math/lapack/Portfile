@@ -84,12 +84,9 @@ subport ${name}-manpages {
 
     depends_build       bin:doxygen:doxygen
 
-# Build system for man pages changed between 3.11 and 3.12.
-
-#    use_configure       no
-#    build.cmd           doxygen
-#    build.target        DOCS/Doxyfile_man
-    build.target        man
+    use_configure       no
+    build.cmd           doxygen
+    build.target        DOCS/Doxyfile
 
     destroot            {
         foreach f [glob ${worksrcpath}/DOCS/man/man3/*] {
