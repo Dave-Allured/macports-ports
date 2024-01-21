@@ -74,7 +74,6 @@ if {${subport} eq ${name}} {
     }
 }
 
-notes "C headers are installed in ${prefix}/include/${name}."
-
-notes.append "LAPACK man pages are currently broken."
-notes.append "See on-line docs at https://www.netlib.org/lapack/ ."
+notes        "C headers are installed in ${prefix}/include/${name}."
+notes-append "LAPACK man pages are currently broken."
+notes-append "See on-line docs at https://www.netlib.org/lapack/ ."
