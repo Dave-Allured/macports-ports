@@ -76,21 +76,5 @@ if {${subport} eq ${name}} {
 
 notes "C headers are installed in ${prefix}/include/${name}."
 
-subport ${name}-manpages {
-    supported_archs     noarch
-    platforms           any
-    description         LAPACK manpages
-    long_description    {*}${description}
-
-    depends_build       bin:doxygen:doxygen
-
-    use_configure       no
-    build.cmd           doxygen
-    build.target        DOCS/Doxyfile
-
-    destroot            {
-        foreach f [glob ${worksrcpath}/DOCS/man/man3/*] {
-            xinstall -m 444 ${f} ${destroot}${prefix}/share/man/man3
-        }
-    }
-}
+notes.append "LAPACK man pages are currently broken."
+notes.append "See on-line docs at https://www.netlib.org/lapack/ ."
