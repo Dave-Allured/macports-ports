@@ -20,9 +20,9 @@ maintainers         {takeshi @tenomoto} \
                     {@Dave-Allured noaa.gov:dave.allured} \
                     openmaintainer
 
-checksums           rmd160  1ee85d3ea0a902e6f05dacfdebaddb157ab8e86e \
-                    sha256  10315e94d6428ecf77b5a741b5065ca8643aaf9687c9a734c0e1bb7f0d4b6090 \
-                    size    7724854
+checksums           rmd160  c61d29537cc77bd952b0f655fb53c4709b3d2fc5 \
+                    sha256  ba4ffbf6551b4a2cb9c82cd87f74e7c4c91cb02f9e9062bf3a94d470cda587df \
+                    size    7935256
 
 description         Linear Algebra PACKage
 long_description \
