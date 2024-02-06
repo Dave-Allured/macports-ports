@@ -8,11 +8,11 @@ name                openjdk8
 # https://github.com/openjdk/jdk8u/tags
 # Tags: https://github.com/openjdk/jdk8u/tags
 set major 8
-set update 372
+set update 402
 # Set to the build of the 'jdk8u${update}-b${build}' tag that corresponds to the latest tag with '-ga'
-set build 07
+set build 06
 version             ${major}u${update}
-revision            2
+revision            0
 categories          java devel
 supported_archs     ppc x86_64 arm64
 license             GPL-2+
