@@ -9,6 +9,7 @@ revision            0
 platforms           darwin
 maintainers         {takeshi @tenomoto} \
                     {me.com:remko.scharroo @remkos} \
+                    {@Dave-Allured noaa.gov:dave.allured} \
                     openmaintainer
 license             GPL-3
 categories          science
