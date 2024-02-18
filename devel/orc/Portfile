@@ -5,24 +5,29 @@ PortGroup           meson 1.0
 PortGroup           muniversal 1.1
 
 name                orc
-version             0.4.34
+version             0.4.37
 revision            0
+
+checksums           rmd160  8337c80bcb98adbd7d44de07f877154d7f803dcc \
+                    sha256  85638c0d447d989cd0d7e03406adbfbc380e67db2a622a4727a0ce3d440b2974 \
+                    size    228520
+
 description         Orc - The Oil Runtime Compiler
 long_description    Orc is a library and set of tools for compiling \
                     and executing very simple programs that operate on arrays of data.
 
 maintainers         nomaintainer
 categories          devel
-platforms           darwin
 license             BSD
 homepage            https://gstreamer.freedesktop.org/modules/orc.html
 master_sites        https://gstreamer.freedesktop.org/src/orc/
 
-checksums           rmd160  c80c68303cedcdff1a902bf1ebe7c30c717ee9d5 \
-                    sha256  8f47abb3f097171e44eb807adcdabd860fba2effd37d8d3c4fbd5f341cadd41f \
-                    size    202628
-
 use_xz              yes
+
+# atomics.c: error: ‘for’ loop initial declaration used outside C99 mode
+configure.cflags-append \
+                    -std=gnu99
+compiler.c_standard 1999
 
 test.run            yes
 

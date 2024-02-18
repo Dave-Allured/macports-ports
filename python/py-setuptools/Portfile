@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-setuptools
-version             68.2.2
+version             69.1.0
 categories-append   devel
 # License status is murky. The current maintainer decided to relicense as
 # MIT, but he doesn't appear to have obtained the permission of previous
@@ -24,9 +24,9 @@ platforms           {darwin any}
 
 homepage            https://pypi.org/project/setuptools/
 
-checksums           md5 d967ca2ba7f46db887daee2d5c9bd6a2 \
-                    rmd160 bf736a936c4ae85b9dd546f39fd0c627c8c17675 \
-                    sha256 4ac1475276d2f1c48684874089fefcd83bd7162ddaafb81fac866ba0db282a87
+checksums           md5 6f6eb780ce12c90d81ce243747ed7ab0 \
+                    rmd160 6f36c88e210d2b53cbeeaba01dfa6e7486ff9e09 \
+                    sha256 850894c4195f09c4ed30dba56213bf7c3f21d86ed6bdaafb5df5972593bfc401
 
 python.versions     26 27 32 33 34 35 36 37 38 39 310 311 312
 python.link_binaries no

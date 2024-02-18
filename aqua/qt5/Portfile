@@ -675,7 +675,7 @@ array set modules {
         {"Qt WebEngine"}
         "very large and relatively new"
         "variant overrides: "
-        "revision 1"
+        "revision 2"
         "License: "
     }
     qtwebglplugin {
@@ -954,6 +954,14 @@ array set sql_plugins {
             "${prefix}/include/mariadb-10.1/mysql"
             "${prefix}/lib/mariadb-10.1/mysql"
             "-lmysqlclient_r"
+            ""
+        }
+        {
+            "mysql82"
+            "port:mysql82"
+            "${prefix}/include/mysql82/mysql"
+            "${prefix}/lib/mysql82/mysql"
+            "-lmysqlclient"
             ""
         }
         {
@@ -1608,6 +1616,10 @@ foreach {module module_info} [array get modules] {
 
                 # do not allow ${prefix}/include/boost to conflict with bundled boost (in bundled mapbox-gl-native)
                 conflicts_build boost
+
+                # https://trac.macports.org/ticket/68508
+                # do not allow ${prefix}/include/rapidjson to conflict with bundled rapidjson (in bundled mapbox-gl-native)
+                conflicts_build rapidjson rapidjson-devel
 
                 # https://trac.macports.org/ticket/67417
                 # include/mbgl/util/unique_any.hpp: error: no member named 'move' in namespace 'std'

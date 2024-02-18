@@ -4,7 +4,7 @@ PortSystem              1.0
 PortGroup               python 1.0
 
 name                    osxphotos
-version                 0.67.0
+version                 0.67.3
 revision                0
 
 categories              graphics python
@@ -26,9 +26,9 @@ long_description        {*}${description}
 
 homepage                https://github.com/RhetTbull/osxphotos
 
-checksums               rmd160  024a3cc6bf136269ca36a09bfcd1ee268f0b8036 \
-                        sha256  a963d18321b2027ba682b8717510b919e01245005b8746d8ad423f57a57b6a84 \
-                        size    2083318
+checksums               rmd160  dddaa5ed50fc2d4ae8f52cf9b213a50f347a774a \
+                        sha256  9784a6da9232bc26c6780845625b7685e4732370efa1e7952fc6233a1688838a \
+                        size    2085894
 
 python.default_version  311
 
