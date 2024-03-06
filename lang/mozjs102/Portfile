@@ -9,7 +9,7 @@ legacysupport.newest_darwin_requires_legacy 15
 
 name                mozjs102
 version             102.1.0
-revision            0
+revision            1
 set version_major   102
 
 categories          lang
