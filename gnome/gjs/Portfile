@@ -9,10 +9,10 @@ gitlab.instance     https://gitlab.gnome.org
 gitlab.setup        GNOME gjs 1.78.4
 revision            0
 
-checksums           rmd160  1e8bfccbb681dc1660ba3d1b0cb5c903fa226f38 \
-                    sha256  f7d8c9d653ea6fd78afe4a50720e046aa2bfc078fda635dd13067dd199c625d4 \
-                    size    646232
-
+checksums           rmd160  dad53f8fad8ea45ec1077f31c1d4449bbbae68fe \
+                    sha256  dc635cb481047dbdee3395f3ff3ac121e8449d5fce71682ad0a21df503237a3b \
+                    size    691601
+ 
 conflicts           gjs-devel
 set my_name         gjs
 
