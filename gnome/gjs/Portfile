@@ -6,13 +6,13 @@ PortGroup           gobject_introspection 1.0
 PortGroup           gitlab 1.0
 
 gitlab.instance     https://gitlab.gnome.org
-gitlab.setup        GNOME gjs 1.79.3
+gitlab.setup        GNOME gjs 1.78.4
 revision            0
 
-checksums           rmd160  052d377a90f13d984ad08abadb9484f849dfa4b7 \
-                    sha256  c651b0dc65e3975c0dca1cd7001129b2fc678434ef2874252a31ff4a4c83c2bc \
-                    size    697991
-
+checksums           rmd160  dad53f8fad8ea45ec1077f31c1d4449bbbae68fe \
+                    sha256  dc635cb481047dbdee3395f3ff3ac121e8449d5fce71682ad0a21df503237a3b \
+                    size    691601
+ 
 conflicts           gjs-devel
 set my_name         gjs
 
