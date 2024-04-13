@@ -1,54 +1,64 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
-PortSystem                  1.0
-PortGroup                   active_variants 1.1
-PortGroup                   conflicts_build 1.0
-PortGroup                   compilers 1.0
+PortSystem      1.0
+PortGroup       active_variants 1.1
+PortGroup       conflicts_build 1.0
+PortGroup       compilers 1.0
+PortGroup       github 1.0
 
-compilers.setup             require_fortran
+compilers.setup require_fortran
 compilers.allow_arguments_mismatch \
-                            yes
+                yes
 
-name                        ncarg-devel
-version                     6.6.2.snap
-revision                    0
-epoch                       1
+name            ncarg-devel
+version         20240227
+revision        0
+epoch           1
+github.setup    NCAR ncl edd46f5426286146313b31bd6826e3d3c360c0dc
+
+checksums       rmd160  426ef85d5c1b8db69aa04822c576bcf1cd8d7643 \
+                sha256  6c561e8dbad4da72e0638747c35d2775bd4b9e5c01acd33e75a6528f688a095e \
+                size    60671082
+
 set version_no_dot [join [split ${version} "."] ""]
-categories                  science
-platforms                   darwin
-maintainers                 {@Dave-Allured noaa.gov:dave.allured} \
-                            openmaintainer
-license                     {UCAR-Unidata public-domain BSD LGPL-3 GPL-3}
 
-description                 language for scientific data processing and visualization
+categories      science
+platforms       darwin
+maintainers     {@Dave-Allured noaa.gov:dave.allured} \
+                openmaintainer
+
+license         {UCAR-Unidata public-domain BSD LGPL-3 GPL-3}
+
+description     language for scientific data processing and visualization
 long_description \
-    The NCAR Command Language (NCL), a product of           \
-    the Computational & Information Systems Laboratory      \
-    at the National Center for Atmospheric Research (NCAR)  \
-    and sponsored by the National Science Foundation,       \
-    is a free interpreted language designed specifically    \
-    for scientific data processing and visualization.
+                The NCAR Command Language (NCL), a product of           \
+                the Computational & Information Systems Laboratory      \
+                at the National Center for Atmospheric Research (NCAR)  \
+                and sponsored by the National Science Foundation,       \
+                is a free interpreted language designed specifically    \
+                for scientific data processing and visualization.
 
-homepage            https://www.ncl.ucar.edu/
+homepage        https://www.ncl.ucar.edu/
 
-distname            ncl-${version}
+#distname            ncl-${version}
 
 #master_sites        https://www.ncl.ucar.edu/Download/files/:g2clib \
-master_sites         https://github.com/NCAR/ncl/archive/:ncl
+#master_sites         https://github.com/NCAR/ncl/archive/:ncl
 
-set ncl_src             ${version}${extract.suffix}
+#set ncl_src             ${version}${extract.suffix}
 
-set g2clib_version      1.6.0
-set g2clib_src          g2clib-${g2clib_version}-patch${extract.suffix}
-set g2clib_worksrcdir   g2clib-${g2clib_version}-patch
+#set g2clib_version      1.6.0
+#set g2clib_src          g2clib-${g2clib_version}-patch${extract.suffix}
+#set g2clib_worksrcdir   g2clib-${g2clib_version}-patch
 
-distfiles           ${ncl_src}:ncl
+#distfiles           ${ncl_src}:ncl
 #                    ${g2clib_src}:g2clib
 
-checksums   ${ncl_src} \
-                    rmd160  061d4230adfc9e601393a396aff06704ffa68c3c \
-                    sha256  cad4ee47fbb744269146e64298f9efa206bc03e7b86671e9729d8986bb4bc30e \
-                    size    60523044
+#checksums   ${ncl_src} \
+#                    rmd160  061d4230adfc9e601393a396aff06704ffa68c3c \
+#                    sha256  cad4ee47fbb744269146e64298f9efa206bc03e7b86671e9729d8986bb4bc30e \
+#                    size    60523044 \
+
 #            ${g2clib_src} \
 #                    rmd160  112d90fd297f772643d6223041f741d6e4101b49 \
 #                    sha256  ec79fb768ce9e45ca6c2c94fa4dfc99b30600d7f8f44d272cdb36ab542d59468 \
@@ -273,5 +283,3 @@ variant accelerate description {use Accelerate.framework} {
 #livecheck.type              regex
 #livecheck.url               ${homepage}
 #livecheck.regex             {Current Version:.* .*([0-9]+\.[0-9]+\.[0-9]+)}
-
-livecheck.type              none
