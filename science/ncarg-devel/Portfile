@@ -83,8 +83,11 @@ depends_lib                 path:lib/pkgconfig/cairo.pc:cairo \
                             port:jasper     \
                             port:xorg-libXaw
 depends_build               port:triangle
-depends_run                 bin:ESMF_RegridWeightGen:esmf \
-                            port:rangs-gshhs-ncarg
+
+#depends_run                 bin:ESMF_RegridWeightGen:esmf
+
+#                            port:rangs-gshhs-ncarg
+
 conflicts_build             ncarg
 
 universal_variant           no
@@ -92,7 +95,7 @@ compilers.enforce_c         hdf5
 configure.cxx_stdlib        libstdc++
 use_parallel_build          no
 
-set usedap y
+#set usedap y
 
 #patchfiles                  patch-Configure.diff \
 #                            patch-ncarg2d-src-libncarg-Iftran-yMakefile.diff \
