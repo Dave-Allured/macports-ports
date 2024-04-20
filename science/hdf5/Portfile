@@ -29,7 +29,7 @@ long_description    HDF5 is a data model, library, and file format for storing\
 homepage            https://www.hdfgroup.org/solutions/hdf5/
 platforms           darwin
 
-github.tarball_from releases
+github.tarball_from downloads
 
 #--->  Attempting to fetch
 #        hdf5-1.14.4.2.tar.gz
