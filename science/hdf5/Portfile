@@ -29,7 +29,7 @@ long_description    HDF5 is a data model, library, and file format for storing\
 homepage            https://www.hdfgroup.org/solutions/hdf5/
 platforms           darwin
 
-github.tarball_from downloads
+# github.tarball_from downloads
 
 #--->  Attempting to fetch
 #        hdf5-1.14.4.2.tar.gz
@@ -43,8 +43,15 @@ github.tarball_from downloads
 distfiles           ${name}-${distversion}.tar.gz
 
 # Now try master_sites from github portgroup
+# PITA -- Didn't work for either releases or downloads.
 #master_sites \
 #    https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${shortversion}/hdf5-${mainversion}/src
+
+master_sites        ${github.homepage}/releases/download/${git.branch}
+
+## full target:
+## https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.2/hdf5-1.14.4-2.tar.gz
+
 checksums \
     rmd160  da80b0fcf47248e869da9112890edf79905bf95c \
     sha256  618934b9d45e34f328393e1fde73a8a67e973f8e5a6bae8b609d098a84cb0efe \
