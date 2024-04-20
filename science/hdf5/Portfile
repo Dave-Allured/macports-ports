@@ -8,11 +8,10 @@ PortGroup           compiler_blacklist_versions 1.0
 PortGroup           github 1.0
 
 github.setup        HDFGroup hdf5 1.14.4.2
+set distversion     1.14.4-2
 revision            0
 #set mainversion     [lrange [split ${version} -] 0 0]
 #set shortversion    [join [lrange [split ${mainversion} .] 0 1] .]
-#set fileversion     1.14.4-2
-                         # Upstream can not make up its mind about anything
 
 categories          science
 maintainers         {eborisch @eborisch} openmaintainer
@@ -32,10 +31,17 @@ platforms           darwin
 
 github.tarball_from releases
 
+#--->  Attempting to fetch
+#        hdf5-1.14.4.2.tar.gz
+#from    https://github.com/HDFGroup/hdf5/releases/download/1.14.4.2
+
+#manual: https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.2
+#        hdf5-1.14.4-2.tar.gz
+
 # Looks like upstream gave up on BZ2.  Maybe they will restore it later.
 #distfiles           ${name}-${version}.tar.bz2
-#distfiles           ${name}-${fileversion}.tar.gz
-                                      # sigh
+distfiles           ${name}-${distversion}.tar.gz
+
 # Now try master_sites from github portgroup
 #master_sites \
 #    https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-${shortversion}/hdf5-${mainversion}/src
