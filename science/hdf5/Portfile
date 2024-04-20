@@ -36,11 +36,11 @@ github.tarball_from downloads
 #from    https://github.com/HDFGroup/hdf5/releases/download/1.14.4.2
 
 #manual: https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.4.2
-        hdf5-1.14.4-2.tar.gz
+#        hdf5-1.14.4-2.tar.gz
 
 # Looks like upstream gave up on BZ2.  Maybe they will restore it later.
 #distfiles           ${name}-${version}.tar.bz2
-#distfiles           ${name}-${distversion}.tar.gz
+distfiles           ${name}-${distversion}.tar.gz
 
 # Now try master_sites from github portgroup
 #master_sites \
