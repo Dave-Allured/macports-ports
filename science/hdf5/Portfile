@@ -29,7 +29,7 @@ long_description    HDF5 is a data model, library, and file format for storing\
 homepage            https://www.hdfgroup.org/solutions/hdf5/
 platforms           darwin
 
-github.tarball_from downloads
+github.tarball_from releases
 
 #--->  Attempting to fetch
 #        hdf5-1.14.4.2.tar.gz
@@ -40,7 +40,7 @@ github.tarball_from downloads
 
 # Looks like upstream gave up on BZ2.  Maybe they will restore it later.
 #distfiles           ${name}-${version}.tar.bz2
-distfiles           ${name}-${distversion}.tar.gz
+#distfiles           ${name}-${distversion}.tar.gz
 
 # Now try master_sites from github portgroup
 #master_sites \
