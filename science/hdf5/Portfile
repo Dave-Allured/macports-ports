@@ -30,6 +30,8 @@ long_description    HDF5 is a data model, library, and file format for storing\
 homepage            https://www.hdfgroup.org/solutions/hdf5/
 platforms           darwin
 
+github.tarball_from releases
+
 # Looks like upstream gave up on BZ2.  Maybe they will restore it later.
 #distfiles           ${name}-${version}.tar.bz2
 #distfiles           ${name}-${fileversion}.tar.gz
