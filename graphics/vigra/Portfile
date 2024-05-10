@@ -47,6 +47,9 @@ configure.args-append \
                     -DOPENEXR_ILMTHREAD_LIBRARY=${prefix}/libexec/openexr2/lib/libIlmThread.dylib \
                     -DOPENEXR_IMATH_LIBRARY=${prefix}/libexec/openexr2/lib/libImath.dylib
 
+# allow cmake to find MacPorts boost_python library
+patchfiles-append   patch-boost_python.diff
+
 post-patch {
     reinplace "s|@DOCDIR@|${prefix}/share/doc/${name}|g" ${worksrcpath}/config/vigra-config.in
 }
