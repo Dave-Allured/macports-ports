@@ -30,7 +30,7 @@ long_description    The GNU Scientific Library (GSL) is a numerical library \
                     total.
 
 master_sites        ftp://alpha.gnu.org/gnu/gsl
-distname            gsl-${version}.tar.gz
+distname            gsl-${version}
 
 patchfiles-append   dynamic_lookup-11.patch
 
