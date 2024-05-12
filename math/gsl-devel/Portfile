@@ -5,6 +5,9 @@ PortGroup           compilers 1.0
 PortGroup           gnu_info 1.0
 
 name                gsl-devel
+#                     Warning.  Patch only for 2.7.99 2024-5-10 test release.
+#                     Configure fix expected in next test release.
+#                     Upstream might not change the test version number 2.7.99.
 version             2.7.99
 revision            0
 
@@ -32,7 +35,7 @@ long_description    The GNU Scientific Library (GSL) is a numerical library \
 master_sites        ftp://alpha.gnu.org/gnu/gsl
 distname            gsl-${version}
 
-patchfiles-append   dynamic_lookup-11.patch
+patchfiles-append   patch-configure.no_fixup_chains.autoconf-271.diff
 
 configure.args      --infodir=${prefix}/share/info \
                     --mandir=${prefix}/share/man
