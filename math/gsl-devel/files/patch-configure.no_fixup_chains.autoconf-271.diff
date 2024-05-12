@@ -1,0 +1,11 @@
+--- configure.orig	2024-05-10 12:39:30.000000000 -0600
++++ configure	2024-05-12 12:15:53.000000000 -0600
+@@ -8633,7 +8633,7 @@
+         10.[012],*|,*powerpc*-darwin[5-8]*)
+           _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
+         *)
+-          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
++          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup $wl-no_fixup_chains' ;;
+       esac
+     ;;
+   esac
