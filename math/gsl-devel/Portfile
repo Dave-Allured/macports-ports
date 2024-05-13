@@ -41,8 +41,8 @@ patchfiles-append   patch-configure.no_fixup_chains.diff
 configure.args      --infodir=${prefix}/share/info \
                     --mandir=${prefix}/share/man
 
-configure.checks.implicit_function_declaration.whitelist-append \
-                    strchr
+#configure.checks.implicit_function_declaration.whitelist-append \
+#                    strchr
 
 test.run            yes
 test.target         check
