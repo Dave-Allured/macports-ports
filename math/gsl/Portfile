@@ -35,6 +35,8 @@ long_description    The GNU Scientific Library (GSL) is a numerical library \
 master_sites        ftp://alpha.gnu.org/gnu/gsl
 distname            gsl-${version}
 
+patchfiles-append   patch-configure.no_fixup_chains.diff
+
 configure.args      --infodir=${prefix}/share/info \
                     --mandir=${prefix}/share/man
 
