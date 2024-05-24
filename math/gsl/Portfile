@@ -5,12 +5,12 @@ PortGroup           compilers 1.0
 PortGroup           gnu_info 1.0
 
 name                gsl
-version             2.7.102
+version             2.7.103
 revision            0
 
-checksums           rmd160  204990a2d194477c91d7eea10f57458056f7dd41 \
-                    sha256  d86b4522dd8c796c90b6ebf8c36e1bba80901bb9965898f256948a2d4625c7d6 \
-                    size    8997321
+checksums           rmd160  3662aff6f6613c8f12c496f30ede39c0e870f104 \
+                    sha256  9d7844eb91849b07434d1afcdb46aace7b6cfc48cf1e36f6fcb9cee733f21030 \
+                    size    8997636
 
 categories          math science
 maintainers         {dtakahashi @daitakahashi} openmaintainer
@@ -34,8 +34,6 @@ long_description    The GNU Scientific Library (GSL) is a numerical library \
 # Alpha releases only.
 master_sites        ftp://alpha.gnu.org/gnu/gsl
 distname            gsl-${version}
-
-patchfiles-append   patch-configure.no_fixup_chains.diff
 
 configure.args      --infodir=${prefix}/share/info \
                     --mandir=${prefix}/share/man
