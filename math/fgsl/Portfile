@@ -3,11 +3,11 @@
 PortSystem          1.0
 PortGroup           compilers 1.0
 PortGroup           compiler_blacklist_versions 1.0
-PortGroup           github 1.0
 
-github.setup        reinh-bader fgsl 1.6.0
-github.tarball_from archive
+name                fgsl
+version             1.6.0
 revision            0
+
 categories          math science
 maintainers         {takeshi @tenomoto} \
                     {@Dave-Allured noaa.gov:dave.allured} \
@@ -21,6 +21,13 @@ long_description    A portable, object-based Fortran interface to the GNU scient
                     Source: https://github.com/reinh-bader/fgsl
 
 homepage            https://doku.lrz.de/fgsl-a-fortran-interface-to-the-gnu-scientific-library-10746505.html
+
+# Switch to private repo, not github, 2024 May 26.  See home page.
+# Parts of fancy URL may be keyed for each specific release.
+# Don't know.  Don't care.  Make it work.
+
+master_sites        https://doku.lrz.de/files/10746505/611614740/5/1715160190380
+distname            ${name}-${version}
 
 checksums           rmd160  716c041b9f6cbb21369f2d038677b7d03a411b8a \
                     sha256  00b7147755cf0558ec07fff8c26692213580d20f5a9410a8dd13a56a0c336490 \
