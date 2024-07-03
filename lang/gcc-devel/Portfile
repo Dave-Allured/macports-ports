@@ -27,7 +27,7 @@ set libgccname      lib${name}
 
 set libcxxname      ${name}-libcxx
 
-version         14-20240703
+version         14-20240629
 revision        0
 subport         ${libgccname} { revision [ expr ${revision} + 0 ] }
 
