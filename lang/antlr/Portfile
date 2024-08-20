@@ -19,7 +19,7 @@ long_description      ANTLR, ANother Tool for Language Recognition, is a \
                       from grammatical descriptions containing Java, C#, or \
                       C++ actions.
 
-homepage              http://www.antlr2.org/
+homepage              https://www.antlr2.org/
 master_sites          ${homepage}download/ \
                       https://www.mirrorservice.org/sites/distfiles.finkmirrors.net/
 
