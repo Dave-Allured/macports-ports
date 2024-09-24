@@ -35,8 +35,7 @@ if {${perl5.major} != ""} {
                     port:p${perl5.major}-inc-latest \
                     port:p${perl5.major}-module-metadata \
                     port:p${perl5.major}-perl-ostype \
-                    port:p${perl5.major}-podlators \
-                    port:p${perl5.major}-software-license
+                    port:p${perl5.major}-podlators
 
     perl5.use_module_build
 
