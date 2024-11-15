@@ -42,6 +42,14 @@ checksums           rmd160  98a2dbf4db1fb92b974f8476490b913718bfd36f \
 
 mpi.setup
 
+#depends_lib-append \
+#    port:hdf5
+
+configure.args-append \
+                    -DVTK_MODULE_USE_EXTERNAL_HDF5:BOOL=ON
+
+mpi.enforce_variant hdf5
+
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
 # https://gitlab.kitware.com/vtk/vtk/-/issues/19352
