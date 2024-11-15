@@ -46,7 +46,7 @@ mpi.setup
 #    port:hdf5
 
 configure.args-append \
-                    -DVTK_MODULE_USE_EXTERNAL_HDF5:BOOL=ON
+                    -DVTK_MODULE_USE_EXTERNAL_hdf5:BOOL=ON
 
 mpi.enforce_variant hdf5
 
