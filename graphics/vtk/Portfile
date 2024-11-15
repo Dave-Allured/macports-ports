@@ -15,7 +15,7 @@ compiler.blacklist-append {clang < 900}
 
 name                vtk
 version             9.3.1
-revision            1
+revision            2
 categories          graphics devel
 license             BSD
 
@@ -40,28 +40,7 @@ checksums           rmd160  98a2dbf4db1fb92b974f8476490b913718bfd36f \
                     sha256  8354ec084ea0d2dc3d23dbe4243823c4bfc270382d0ce8d658939fd50061cab8 \
                     size    99964158
 
-mpi.setup
-
-depends_lib-append \
-    port:double-conversion \
-    path:share/pkgconfig/eigen3.pc:eigen3 \
-    port:expat \
-    port:freetype \
-    port:gl2ps \
-    port:glew \
-    port:hdf5 \
-    path:include/turbojpeg.h:libjpeg-turbo \
-    port:jsoncpp \
-    port:libharu \
-    port:libogg \
-    port:libtheora \
-    port:lz4 \
-    port:netcdf-cxx \
-    port:pugixml \
-    port:tiff \
-    port:zlib
-
-mpi.enforce_variant hdf5
+.setup
 
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
@@ -93,7 +72,7 @@ if {${os.platform} eq "darwin" && ${os.major} < 11} {
     # Ensure Cocoa does not get picked and fix GL linking:
     patchfiles-append   patch-use-x11.diff
     # Fix 32-bit builds with gcc:
-    if {[string match *gcc* ${configure.compiler}] \
+    if {[string match *gcc* ${configure.coler}] \
         && ${configure.build_arch} in [list arm i386 ppc]} {
         patchfiles-append \
                         patch-DataModel.diff
@@ -118,7 +97,7 @@ if {${os.platform} eq "darwin" && ${os.major} < 11} {
 # loguru.cpp:580:68: error: invalid conversion from 'const char*'
 # to 'char*' [-fpermissive]. Perhaps specific to older SDKs,
 # but gcc is not used by default elsewhere anyway.
-if {[string match *gcc* ${configure.compiler}]} {
+if {[string match *gcc* ${configure.coler}]} {
     configure.cxxflags-append \
                         -fpermissive
 }
@@ -172,8 +151,8 @@ foreach pyver ${python_versions} {
                 -DPython${python_major_ver}_LIBRARY=${frameworks_dir}/Python.framework/Versions/${python_branch}/lib/libpython${python_branch}.dylib \
                 -DVTK_PYTHON_SITE_PACKAGES_SUFFIX=Library/Frameworks/Python.framework/Versions/${python_branch}/lib/python${python_branch}/site-packages \
 
-            if {[mpi_variant_isset]} {
-                depends_lib-append port:py${pyver}-mpi4py
+            if {[_variant_isset]} {
+                depends_lib-append port:py${pyver}-4py
                 configure.args-append \
                     -DVTK_USE_SYSTEM_MPI4PY:BOOL=ON
             }
