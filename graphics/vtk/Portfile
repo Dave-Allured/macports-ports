@@ -42,8 +42,8 @@ checksums           rmd160  98a2dbf4db1fb92b974f8476490b913718bfd36f \
 
 mpi.setup
 
-#depends_lib-append \
-#    port:hdf5
+depends_lib-append \
+                    port:hdf5
 
 configure.args-append \
                     -DVTK_MODULE_USE_EXTERNAL_vtkhdf5:BOOL=ON
