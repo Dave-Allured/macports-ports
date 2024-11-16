@@ -48,7 +48,7 @@ depends_lib-append \
 configure.args-append \
                     -DVTK_MODULE_USE_EXTERNAL_hdf5:BOOL=ON
 
-mpi.enforce_variant hdf5
+#mpi.enforce_variant hdf5
 
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
