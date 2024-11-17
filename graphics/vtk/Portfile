@@ -64,7 +64,7 @@ configure.args-append \
                     VTK_MODULE_USE_EXTERNAL_fast_float=NO \
                     VTK_MODULE_USE_EXTERNAL_hdf5=NO
 
-mpi.enforce_variant hdf5
+#mpi.enforce_variant hdf5
 
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
