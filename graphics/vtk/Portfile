@@ -61,8 +61,8 @@ depends_lib-append \
     port:zlib
 
 configure.args-append \
-                    VTK_MODULE_USE_EXTERNAL_fast_float=NO \
-                    VTK_MODULE_USE_EXTERNAL_hdf5=NO
+                    -DVTK_MODULE_USE_EXTERNAL_fast_float=NO \
+                    -DVTK_MODULE_USE_EXTERNAL_hdf5=NO
 
 #mpi.enforce_variant hdf5
 
