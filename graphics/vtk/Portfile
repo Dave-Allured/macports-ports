@@ -61,6 +61,7 @@ depends_lib-append \
     port:zlib
 
 configure.args-append \
+                    -DVTK_USE_EXTERNAL=ON \
                     -DVTK_MODULE_USE_EXTERNAL_fast_float=NO \
                     -DVTK_MODULE_USE_EXTERNAL_hdf5=NO
 
@@ -81,7 +82,6 @@ configure.args-append \
                     -DVTK_BUILD_EXAMPLES:BOOL=OFF \
                     -DVTK_WRAP_PYTHON:BOOL=OFF \
                     -DVTK_WRAP_JAVA:BOOL=OFF \
-                    -DVTK_USE_EXTERNAL:BOOL=ON \
                     -DVTK_USE_COCOA:BOOL=ON
 
 # Support for Cocoa of 10.6 has been dropped in
