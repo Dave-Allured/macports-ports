@@ -8,7 +8,7 @@ name                openldap
 conflicts           openldap-devel
 set my_name         openldap
 version             2.6.8
-revision            0
+revision            1
 
 checksums           rmd160  84ad02add29add7d1e33716731a9139fa982f09c \
                     sha256  48969323e94e3be3b03c6a132942dcba7ef8d545f2ad35401709019f696c3c4e \
@@ -76,8 +76,9 @@ platform darwin {
     if {${os.major} >= 22} {
         # The openldap build uses soelim from groff, and newer OS versions do
         # not provide groff as part of the base OS install.
+        # Now test mandoc as a possible lightweight replacement for groff.
         depends_build-append \
-                    port:groff
+                    port:mandoc
     }
 }
 
