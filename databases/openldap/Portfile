@@ -55,8 +55,12 @@ patchfiles-append   patch-ltmain.diff
 patchfiles-append   patch-dynamic_lookup-11.diff
 patchfiles-append   patch-fix_implicit.diff
 patchfiles-append   patch-libressl.diff
+
 # Use 'gdate', rather than 'date', for tests
 patchfiles-append   patch-tests-gdate.diff
+
+# Use 'msoelim', rather than 'soelim', to replace 'groff' dependency.
+patchfiles-append   patch-soelim-name.diff
 
 configure.env-append \
                     LANG=C
@@ -76,7 +80,9 @@ platform darwin {
     if {${os.major} >= 22} {
         # The openldap build uses soelim from groff, and newer OS versions do
         # not provide groff as part of the base OS install.
-        # Now test mandoc as a possible lightweight replacement for groff.
+        #
+        # Replace soelim command from heavy port groff with lightweight mandoc.
+        # Patch required for change in 'soelim' command name.
         depends_build-append \
                     port:mandoc
     }
