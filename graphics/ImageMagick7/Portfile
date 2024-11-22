@@ -21,12 +21,12 @@ legacysupport.newest_darwin_requires_legacy 10
 # Imagick will run but may behave surprisingly in Unknown on line 0.
 
 name                ImageMagick7
-github.setup        ImageMagick ImageMagick 7.1.1-38
-revision            2
+github.setup        ImageMagick ImageMagick 7.1.1-41
+revision            0
 
-checksums           rmd160  9b461dc2111125fd05ca0949db5480794b87bef2 \
-                    sha256  109c4ce940db01e6e45ede67800e58ad1beaac9b04f27c618ffc4a1ec317159d \
-                    size    15657803
+checksums           rmd160  f939c2389a800abdfa496d9ad61e749c64d2bac9 \
+                    sha256  601de0e422758f5170b803d4ef02d06ec6a27addde87cf67d1ff3a21cdc9cf5d \
+                    size    15863071
 
 categories          graphics devel
 maintainers         {@Dave-Allured noaa.gov:dave.allured} \
