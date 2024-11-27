@@ -22,9 +22,9 @@ long_description    ${description}. VTK-m supports the fine-grained concurrency 
 
 homepage            https://m.vtk.org/
 
-checksums           rmd160  a39515eff466720097dded80cd4102b980cf5db8 \
-                    sha256  490ead6d6b89d3ce23c08d49a56200489a96f6fe52a0fb2b3ec23c12b0c330cb \
-                    size    75269068
+checksums           rmd160  e6da77d869b04eeba9d97f4f8070bf915f36a3ed \
+                    sha256  6e19fc0c59335df75aeb4844523686b9eacd11dce9c9ec0c29a3aa5a918da65b \
+                    size    75262882
 
 compiler.cxx_standard   2014
 compiler.thread_local_storage yes
