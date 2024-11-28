@@ -6,6 +6,7 @@ PortGroup           github 1.0
 PortGroup           boost 1.0
 
 github.setup        schrodinger pymol-open-source 3.0.0 v
+revision            1
 name                pymol
 conflicts           pymol-devel
 
@@ -61,10 +62,11 @@ boost.depends_type build
 
 compiler.cxx_standard 2017
 
-variant vtkm description {Use VTK-m for isosurface generation} {
+#variant vtkm description {Use VTK-m for isosurface generation} {
     depends_lib-append  port:vtk-m
-    build.args-append   --use-vtkm 1.7
-}
+#   build.args-append   --use-vtkm 1.7
+    build.args-append   --use-vtkm 2.2
+#}
 
 variant openmp description {Enable OpenMP support} {
     build.args-append   --use-openmp yes
