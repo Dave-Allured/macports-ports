@@ -19,9 +19,9 @@ master_sites                "https://git.dev.opencascade.org/gitweb/?p=occt.git;
 extract.suffix              .tgz
 worksrcdir                  occt-V${git_version}
 
-checksums                   rmd160  88033cfe653f3d18feb41c7e0225ec31fd613104 \
-                            sha256  b9c8f0a9d523ac1a606697f95fc39d8acf1140d3728561b8010a604431b4e9cf \
-                            size    48431454
+checksums                   rmd160  ae25a07b5b48a5ad736c29f2e5c0bee8898a1098 \
+                            sha256  33f2bdb67e3f6ae469f3fa816cfba34529a23a9cb736bf98a32b203d8531c523 \
+                            size    48427425
 
 patchfiles-append           patch-CMakeLists.txt.diff \
                             patch-env.sh.in.diff
