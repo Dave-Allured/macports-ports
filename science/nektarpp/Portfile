@@ -34,9 +34,9 @@ set main_distfile       ${distfiles}
 distfiles               ${main_distfile}:main
 
 checksums               nektar-5.7.0.tar.bz2 \
-                        rmd160  941dd2ebede55deb08664f47345e872935e916eb \
-                        sha256  0f27d4eea0e37f86a796dd7a3d1321c0078aa777f27df73603f9e203e5b3cf91 \
-                        size    69199590
+                        rmd160  af96054ac8db6372da1bd25c24eac245ae4fd3fd \
+                        sha256  1b2f310c96ff86dd02f9f32dd523dfd4c408c1c5d776439beade51593de5363c \
+                        size    69398995
 
 # Only the full Nektar++ source should be extracted - CMake will extract any
 # third-party dependencies.
