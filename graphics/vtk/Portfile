@@ -49,7 +49,7 @@ depends_lib-append \
                     port:hdf5
 
 configure.args-append \
-                    -DVTK_MODULE_USE_EXTERNAL_vtkhdf5=ON
+                    -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5:BOOL=ON
 
 mpi.enforce_variant hdf5
 
