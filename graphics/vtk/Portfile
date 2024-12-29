@@ -48,7 +48,7 @@ mpi.setup
 depends_lib-append port:libxml2
 
 configure.args-append \
-                    -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2:BOOL=ON
+                    -DVTK_MODULE_USE_EXTERNAL_libxml2:BOOL=ON
 
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
