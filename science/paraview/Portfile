@@ -7,11 +7,11 @@ PortGroup           qt5 1.0
 PortGroup           mpi 1.0
 
 name                paraview
-version             5.6.2
-revision            19
+version             5.13.1
+revision            0
 
 # TODO: Remove, if/when this port is fixed
-known_fail          yes
+#known_fail          yes
 
 categories          science graphics
 platforms           darwin
@@ -36,15 +36,11 @@ master_sites        ${homepage}/files/v${branch}/
 distname            ParaView-v${version}
 use_xz              yes
 
-checksums           sha256  1f3710b77c58a46891808dbe23dc59a1259d9c6b7bb123aaaeaa6ddf2be882ea \
-                    rmd160  7608b8dc8f2c1daf8772564b9fbac6634a0b76f2 \
-                    size    38739692
+checksums           sha256  93a61465d680d00db4708a8bae3f443bd13c0e13 \
+                    rmd160  a16503ce37b999c2967d84234596e7bf67ac98221851a288bb1399c7e1dc2004 \
+                    size    146354760
 
-# Fix the icon size of the render area. This should be already included
-# version > 5.6.0. So when you bump the version, you should be able to remove
-# this patch file.
-patchfiles          patch-icon-size.diff \
-                    patch-vtk_target_export.diff \
+patchfiles          patch-vtk_target_export.diff \
                     patch-ogg_dependency.diff \
                     patch-system_ok.diff \
                     patch-case-sensitivity.diff
@@ -93,7 +89,6 @@ if {[variant_isset debug]} {
 } else {
     cmake.build_type    Release
 }
-
 
 configure.pre_args-delete \
     -DCMAKE_INSTALL_PREFIX="${cmake.install_prefix}"
@@ -177,7 +172,7 @@ destroot {
 #Warning: A file belonging to the `paraview' port is missing or unreadable. Consider reinstalling it.
 
 # Supported pythons
-set python_versions {27 35 36 37}
+set python_versions {39 310 311 312}
 
 foreach pyver ${python_versions} {
     # Conflicting python versions
