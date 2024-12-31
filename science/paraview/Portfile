@@ -40,10 +40,8 @@ checksums           rmd160  93a61465d680d00db4708a8bae3f443bd13c0e13 \
                     sha256  a16503ce37b999c2967d84234596e7bf67ac98221851a288bb1399c7e1dc2004 \
                     size    146354760
 
-patchfiles          patch-vtk_target_export.diff \
-                    patch-ogg_dependency.diff \
-                    patch-system_ok.diff \
-                    patch-case-sensitivity.diff
+###patchfiles          patch-system_ok.diff \
+###                    patch-case-sensitivity.diff
 
 depends_lib-append  path:share/pkgconfig/eigen3.pc:eigen3 \
                     port:glew \
