@@ -36,8 +36,8 @@ master_sites        ${homepage}/files/v${branch}/
 distname            ParaView-v${version}
 use_xz              yes
 
-checksums           sha256  93a61465d680d00db4708a8bae3f443bd13c0e13 \
-                    rmd160  a16503ce37b999c2967d84234596e7bf67ac98221851a288bb1399c7e1dc2004 \
+checksums           rmd160  93a61465d680d00db4708a8bae3f443bd13c0e13 \
+                    sha256  a16503ce37b999c2967d84234596e7bf67ac98221851a288bb1399c7e1dc2004 \
                     size    146354760
 
 patchfiles          patch-vtk_target_export.diff \
