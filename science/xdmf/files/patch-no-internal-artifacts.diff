@@ -1,0 +1,19 @@
+# https://trac.macports.org/ticket/58807
+# Remove include/ProjectVersion.hpp, presuming this is an unwanted
+# internal artifact.
+# Coincidentally remove three Xdmf*.i files which refer to ProjectVersion.hpp.
+# Presumably these files also do not belong in a MacPorts install.
+
+--- CMakeLists.txt.orig	2020-07-23 09:24:13
++++ CMakeLists.txt	2025-01-18 13:36:51
+@@ -340,9 +340,8 @@
+   endif()
+ 
+   file(GLOB XdmfHeaders
+-    "*.hpp"
++    "X*.hpp"
+     "*.tpp"
+-    "*.i"
+     "${CMAKE_CURRENT_BINARY_DIR}/*.hpp"
+   )
+   install(FILES ${XdmfHeaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
