@@ -6,7 +6,7 @@ PortGroup               boost 1.0
 
 name                    xdmf
 version                 3.0.0
-revision                12
+revision                13
 categories              science devel
 # cannot find license, assume same as ParaView
 license                 BSD
@@ -32,6 +32,7 @@ depends_lib-append      port:tiff \
 # fix tests
 patchfiles-append       patch-isystem.diff \
                         patch-libraries.diff \
+                        patch-no-internal-artifacts.diff \
                         patch-hid_t.diff \
                         patch-fix_tests.diff
 
