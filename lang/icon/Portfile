@@ -3,7 +3,9 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        gtownsend icon 9.5.24b
+github.setup        gtownsend icon c5079159e92f12f949b5b820db876d42d3ddbf43
+version             20241119
+#                   # 9.5.24b
 github.tarball_from archive
 revision            0
 
