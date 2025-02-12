@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        gtownsend icon c5079159e92f12f949b5b820db876d42d3ddbf43
-version             20241119
-#                   # 9.5.24b
+#version             20241119
+version             9.5.24b
 github.tarball_from archive
 revision            0
 
@@ -22,14 +22,13 @@ long_description    Icon is a high-level, general-purpose programming \
                     semantics at a much higher level.
 
 homepage            https://www.cs.arizona.edu/icon/
-platforms           darwin
 
 checksums           rmd160  e8086a300c541fb840509c83fa35b49e9293acc0 \
                     sha256  f419adb0727b456ce54cdc78efee3360460b8e734f51c33cff8319e595ab5358 \
                     size    3088937
 
-#universal_variant   no
-#use_parallel_build  no
+universal_variant   no
+use_parallel_build  no
 
 configure.cmd       make
 configure.pre_args
