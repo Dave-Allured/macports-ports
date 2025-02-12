@@ -23,12 +23,10 @@ long_description    Icon is a high-level, general-purpose programming \
 
 homepage            https://www.cs.arizona.edu/icon/
 platforms           darwin
-#distname            icon-v[strsed ${version} {g/\.//}]src
-#extract.suffix      .tgz
 
-checksums           rmd160  4aa95dc9816aa174b59629eb1e54123582be840e \
-                    sha256  85d695ab34d62f86d5b08f5bde91200026c1fc5a67f33f47c498f96e72543c62 \
-                    size    3086266
+checksums           rmd160  e8086a300c541fb840509c83fa35b49e9293acc0 \
+                    sha256  f419adb0727b456ce54cdc78efee3360460b8e734f51c33cff8319e595ab5358 \
+                    size    3088937
 
 #universal_variant   no
 #use_parallel_build  no
