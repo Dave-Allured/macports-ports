@@ -28,9 +28,9 @@ long_description \
 
 homepage                    http://www.unidata.ucar.edu/software/netcdf/
 
-checksums           rmd160  23fe2abab3f0d8249a93cfb08edaca31b32ff875 \
-                    sha256  c87e603447bb16a22df1a8df451885c32c32bcd5a6b0f73454ea9d1e2dc25c57 \
-                    size    25614625
+checksums           rmd160  0d5048ac645b4373372d538b8b3c92588da8ea3a \
+                    sha256  990f46d49525d6ab5dc4249f8684c6deeaf54de6fec63a187e9fb382cc0ffdff \
+                    size    25619216
 
 compilers.choose            cc cpp
 mpi.setup
