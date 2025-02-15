@@ -12,8 +12,8 @@ PortGroup                   compiler_blacklist_versions 1.0
 legacysupport.newest_darwin_requires_legacy 10
 
 epoch                       3
-github.setup                Unidata netcdf-c 4.9.3
-github.tarball_from         releases
+github.setup                Unidata netcdf-c 4.9.3 v
+github.tarball_from         archive
 revision                    0
 name                        netcdf
 maintainers                 {takeshi @tenomoto} openmaintainer
