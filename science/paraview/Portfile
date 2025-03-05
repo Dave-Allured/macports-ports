@@ -7,11 +7,11 @@ PortGroup           qt5 1.0
 PortGroup           mpi 1.0
 
 name                paraview
-version             5.6.2
-revision            19
+version             5.13.2
+revision            0
 
 # TODO: Remove, if/when this port is fixed
-known_fail          yes
+#known_fail          yes
 
 categories          science graphics
 platforms           darwin
@@ -36,18 +36,12 @@ master_sites        ${homepage}/files/v${branch}/
 distname            ParaView-v${version}
 use_xz              yes
 
-checksums           sha256  1f3710b77c58a46891808dbe23dc59a1259d9c6b7bb123aaaeaa6ddf2be882ea \
-                    rmd160  7608b8dc8f2c1daf8772564b9fbac6634a0b76f2 \
-                    size    38739692
+checksums           rmd160  709a94da7ff66486dc4571cec130d767e0b2e677 \
+                    sha256  4e116250f8e1a9c480f97c5696c9cd72b4d4998b039ca46da8b224f27445f13e \
+                    size    147014296
 
-# Fix the icon size of the render area. This should be already included
-# version > 5.6.0. So when you bump the version, you should be able to remove
-# this patch file.
-patchfiles          patch-icon-size.diff \
-                    patch-vtk_target_export.diff \
-                    patch-ogg_dependency.diff \
-                    patch-system_ok.diff \
-                    patch-case-sensitivity.diff
+###patchfiles          patch-system_ok.diff \
+###                    patch-case-sensitivity.diff
 
 depends_lib-append  path:share/pkgconfig/eigen3.pc:eigen3 \
                     port:glew \
@@ -93,7 +87,6 @@ if {[variant_isset debug]} {
 } else {
     cmake.build_type    Release
 }
-
 
 configure.pre_args-delete \
     -DCMAKE_INSTALL_PREFIX="${cmake.install_prefix}"
@@ -177,7 +170,7 @@ destroot {
 #Warning: A file belonging to the `paraview' port is missing or unreadable. Consider reinstalling it.
 
 # Supported pythons
-set python_versions {27 35 36 37}
+set python_versions {310 311 312 313}
 
 foreach pyver ${python_versions} {
     # Conflicting python versions
