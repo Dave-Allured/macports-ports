@@ -30,7 +30,8 @@ long_description    The ESMF defines an architecture for composing complex, coup
 homepage            https://earthsystemmodeling.org
 github.tarball_from archive
 
-depends_build       bin:ranlib:cctools
+depends_build       bin:ranlib:cctools \
+                    path:bin/cmake:cmake
 
 depends_lib         port:netcdf \
                     port:netcdf-fortran \
