@@ -30,8 +30,7 @@ long_description    The ESMF defines an architecture for composing complex, coup
 homepage            https://earthsystemmodeling.org
 github.tarball_from archive
 
-depends_build       bin:ranlib:cctools \
-                    path:bin/cmake:cmake
+depends_build       bin:ranlib:cctools
 
 depends_lib         port:netcdf \
                     port:netcdf-fortran \
@@ -93,6 +92,16 @@ pre-build {
                     ESMF_YAMLCPP_INCLUDE=${prefix}/include \
                     ESMF_YAMLCPP_LIBPATH=${prefix}/lib \
                     ESMF_INSTALL_LIBDIR=${prefix}/lib
+
+    # ESMF 8.8.0: Multiple issues with PIO.  Temporarily disable.
+    # -- Internal (default) PIO requires new cmake dependency.
+    # -- Internal PIO configure fails: "Check size of size_t - failed"
+    # -- * (Probably a library path issue, not PIO specific.)
+    # -- Internal PIO is out of date, requires patching.
+    # -- * Maybe future fix in 8.9.0.  See upstream issues.
+    # -- More work needed for PIO.
+    build.env-append    ESMF_PIO=off
+
     if {[variant_isset accelerate]} {
         build.env-append    ESMF_LAPACK=system \
                             ESMF_LAPACK_LIBS=-lvecLibFort
