@@ -100,7 +100,7 @@ pre-build {
     # -- Internal PIO is out of date, requires patching.
     # -- * Maybe future fix in 8.9.0.  See upstream issues.
     # -- More work needed for PIO.
-    build.env-append    ESMF_PIO=off
+    build.env-append    ESMF_PIO=OFF
 
     if {[variant_isset accelerate]} {
         build.env-append    ESMF_LAPACK=system \
