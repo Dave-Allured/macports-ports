@@ -149,6 +149,11 @@ pre-destroot {
                     ESMF_INSTALL_LIBDIR=${destroot}${prefix}/lib \
                     ESMF_INSTALL_BINDIR=${destroot}${prefix}/bin \
                     ESMF_INSTALL_DOCDIR=${destroot}${prefix}/share/doc/${name}
+
+    # See note under build.env above, for ESMF_PIO=OFF.
+    # Remove this when the other one is removed.
+    destroot.env-append ESMF_PIO=OFF
+
     if {[variant_isset accelerate]} {
         destroot.env-append ESMF_LAPACK=system \
                             ESMF_LAPACK_LIBS=-lvecLibFort
