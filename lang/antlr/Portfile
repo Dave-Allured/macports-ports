@@ -36,7 +36,7 @@ variant               universal {}
 java.version          1.4+
 
 # LTS JDK port to install if required java not found
-java.fallback         openjdk8
+java.fallback         openjdk8-bootstrap
 
 # JDK only needed at build time, but java PG sets lib dependency.
 # So declare no conflict to allow redistribution of binaries.
