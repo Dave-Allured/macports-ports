@@ -56,7 +56,7 @@ compiler.blacklist-append   *gcc-4.* {clang < 400}
 test.run                    yes
 test.target                 test
 
-default_variants +netcdf4 +dap
+default_variants +netcdf4 +dap +mpi
 if {(!${universal_possible} || ![variant_isset universal]) && (${build_arch} == "x86_64" || ${build_arch} == "ppc64")} {
     default_variants-append +cdf5
 }
