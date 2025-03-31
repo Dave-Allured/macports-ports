@@ -6,10 +6,10 @@ PortGroup                   github     1.0
 PortGroup                   muniversal 1.0
 
 github.setup                Open-Cascade-SAS OCCT 7.9.0 V
+name                        opencascade
 github.tarball_from         releases
 revision                    0
 
-## name                        opencascade
 ## version                     7.9.0
 
 categories                  science
