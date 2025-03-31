@@ -2,11 +2,16 @@
 
 PortSystem                  1.0
 PortGroup                   cmake      1.1
+PortGroup                   github     1.0
 PortGroup                   muniversal 1.0
 
-name                        opencascade
-version                     7.8.0
-revision                    2
+github.setup                Open-Cascade-SAS OCCT 7.9.0 V
+github.tarball_from         releases
+revision                    0
+
+## name                        opencascade
+## version                     7.9.0
+
 categories                  science
 license                     LGPL-2
 maintainers                 {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
@@ -15,20 +20,16 @@ long_description            ${description}
 homepage                    https://www.opencascade.com/content/open-source-core-technology
 
 set git_version             [join [split ${version} .] _]
-master_sites                "https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${git_version};sf=tgz;dummy="
-extract.suffix              .tgz
+## master_sites                "https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${git_version};sf=tgz;dummy="
+## extract.suffix              .tgz
 worksrcdir                  occt-V${git_version}
 
-checksums                   rmd160  88033cfe653f3d18feb41c7e0225ec31fd613104 \
-                            sha256  b9c8f0a9d523ac1a606697f95fc39d8acf1140d3728561b8010a604431b4e9cf \
-                            size    48431454
+checksums                   rmd160  d9263d4c573e98655ab1fc9cd16aa3c63622f093 \
+                            sha256  151b7a522ba8220aed3009e440246abbaf2ffec42672c37e9390096f7f2c098d \
+                            size    48572763
 
 patchfiles-append           patch-CMakeLists.txt.diff \
                             patch-env.sh.in.diff
-
-# Remove at release 7.9.0 or later.  Was fixed upstream.
-# https://trac.macports.org/ticket/71233
-patchfiles-append           patch-StdPrs_BRepFont.cxx.diff
 
 compiler.cxx_standard       2011
 configure.args-append       -DCMAKE_CXX_STANDARD=11 \
@@ -88,7 +89,7 @@ if {${universal_possible} && [variant_isset universal]} {
     }
 }
 
-# keep this port at perfix's cmake's lib
+# keep this port at prefix's cmake's lib
 post-destroot {
     xinstall -d -m 0755 ${destroot}${prefix}/lib/cmake
     foreach cmakedir [glob -type d -nocomplain -tails -directory ${destroot}${cmake.install_prefix}/lib/cmake *] {
@@ -104,4 +105,4 @@ post-destroot {
     }
 }
 
-livecheck.url               https://www.opencascade.com/content/latest-release
+## livecheck.url               https://www.opencascade.com/content/latest-release
