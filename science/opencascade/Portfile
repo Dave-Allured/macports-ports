@@ -5,9 +5,9 @@ PortGroup                   cmake      1.1
 PortGroup                   github     1.0
 PortGroup                   muniversal 1.0
 
-github.setup                Open-Cascade-SAS OCCT 7.9.0 V
 name                        opencascade
-github.tarball_from         releases
+github.setup                Open-Cascade-SAS OCCT 7.9.0 V
+github.tarball_from         archive
 revision                    0
 
 ## version                     7.9.0
