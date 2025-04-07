@@ -7,23 +7,39 @@ name                openjdk8
 # https://guide.macports.org/chunked/reference.portgroup.html#reference.portgroup.java
 # https://github.com/openjdk/jdk8u/tags
 # Tags: https://github.com/openjdk/jdk8u/tags
-set major 8
-set update 372
-# Set to the build of the 'jdk8u${update}-b${build}' tag that corresponds to the latest tag with '-ga'
-set build 07
+# Set to the build of the 'jdk8u${update}-b${build}' tag that
+# corresponds to the latest tag with '-ga'
+# See release announcement below.
+
+set major           8
+set update          442
+set build           06
+
 version             ${major}u${update}
-revision            2
+revision            0
+
 categories          java devel
 supported_archs     ppc x86_64 arm64
 license             GPL-2+
-maintainers         nomaintainer
+maintainers         openmaintainer
 description         OpenJDK 8
 long_description    JDK 8 and JRE 8 builds of OpenJDK, the Open-Source implementation \
                     of the Java Platform, Standard Edition, and related projects.
-homepage            https://openjdk.org/
-master_sites        https://git.openjdk.org/jdk8u/archive/refs/tags/
-distname            jdk${major}u${update}-ga
-worksrcdir          jdk8u-${distname}
+homepage            https://openjdk.org/projects/jdk8u/
+master_sites        https://openjdk-sources.osci.io/openjdk8
+
+# Now use private repo, not github.  See private repo:
+# https://openjdk-sources.osci.io/openjdk8/
+
+# Find official release announcements here, every third month:
+# https://mail.openjdk.org/pipermail/jdk8u-dev/
+# Search on "released".
+
+################### openjdk8u412-b08.tar.xz     Example from 2024 April 16
+
+distname            openjdk${version}-b${build}
+worksrcdir              jdk${version}-b${build}
+use_xz              yes
 
 if {${configure.build_arch} eq "ppc"} {
     # On PowerPC this is a stub, the real JDK
@@ -46,9 +62,9 @@ if {${configure.build_arch} eq "ppc"} {
 } else {
     # x86* and arm64
 
-checksums           rmd160  7ffec6da71e24d2913b717b5f31d6be9c2fa7b7e \
-                    sha256  3235a744b51896beb1e8b738412982ebc06e2affb9d50ae3371203d9a46504da \
-                    size    88002433
+checksums           rmd160  08f17d1266d1a5049afec3cc81a8b493be16e805 \
+                    sha256  2955a3cd15cdd16232ff20bc79785e03c411a0fa5aeeaf9b59e43f5d45b361aa \
+                    size    60090972
 
 patchfiles          0001-8181503-Can-t-compile-hotspot-with-c-11.patch \
                     0002-Support-XCode-3-14.patch \
@@ -171,7 +187,7 @@ variant server \
 variant release \
     conflicts debug \
     description {OpenJDK with no debug information, all optimizations and no asserts} {
-    configure.args-append  --with-debug-level=release 
+    configure.args-append  --with-debug-level=release
 }
 
 variant debug \
