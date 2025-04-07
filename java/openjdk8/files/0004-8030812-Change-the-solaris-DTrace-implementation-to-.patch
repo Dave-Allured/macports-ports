@@ -1,3 +1,27 @@
+2024 Apr 23 -- Fix 2 patch errors in MacPorts patch file, by Dave Allured.
+Patch file:  0004-8030812-Change-the-solaris-DTrace-implementation-to-.patch
+             Patch file date before edit:  2023 May 5
+Fix method:  MANUALLY EDIT THE PATCH FILE.
+Rediff:      NO.
+
+Exerpts from CI build log, failed build on CI macos-12.
+Detected while updating from jdk8u372-b07, to jdk8u412-b08.
+
+PATCH ERROR #1:
+2024-04-21T19:25:27.2262990Z patching file hotspot/src/share/vm/prims/jni.cpp
+2024-04-21T19:25:27.2350600Z Hunk #104 FAILED at 5077.
+  CAUSE:  jni.cpp was changed from 8u372 to 8u412.
+          This patch was literally applied upstream in 8u412, so no longer needed.
+  REMEDY: Remove hunk, identified as: @@ -5190,8 +5074,7 @@
+
+PATCH ERROR #2:
+2024-04-21T19:25:27.2367600Z Hunk #107 FAILED at 5235.
+  CAUSE:  jni.cpp was changed from 8u372 to 8u412.
+          This patch was literally applied upstream in 8u412, so no longer needed.
+  REMEDY: Remove hunk, identified as: @@ -5340,8 +5221,7 @@
+
+===================================================================================
+
 From 048d06fac678d9a9d5b582040d8665e5b5bfefc0 Mon Sep 17 00:00:00 2001
 From: Staffan Larsen <sla@openjdk.org>
 Date: Thu, 16 Jan 2014 20:14:21 +0100
@@ -1506,16 +1530,6 @@ index d60f751af9c..6c9f9b219ce 100644
  #endif /* USDT2 */
    JDK1_1InitArgs *args = (JDK1_1InitArgs *)args_;
    jint ret = JNI_ERR;
-@@ -5190,8 +5074,7 @@
- #ifndef USDT2
-   HS_DTRACE_PROBE3(hotspot_jni, CreateJavaVM__entry, vm, penv, args);
- #else /* USDT2 */
--  HOTSPOT_JNI_CREATEJAVAVM_ENTRY(
--                                 (void **) vm, penv, args);
-+  HOTSPOT_JNI_CREATEJAVAVM_ENTRY((void **) vm, penv, args);
- #endif /* USDT2 */
- 
-   jint result = JNI_ERR;
 @@ -5309,8 +5192,7 @@
    HS_DTRACE_PROBE3(hotspot_jni, GetCreatedJavaVMs__entry, \
      vm_buf, bufLen, numVMs);
@@ -1536,16 +1550,6 @@ index d60f751af9c..6c9f9b219ce 100644
  #endif /* USDT2 */
    return JNI_OK;
  }
-@@ -5340,8 +5221,7 @@
- #ifndef USDT2
-   DTRACE_PROBE1(hotspot_jni, DestroyJavaVM__entry, vm);
- #else /* USDT2 */
--  HOTSPOT_JNI_DESTROYJAVAVM_ENTRY(
--                                  vm);
-+  HOTSPOT_JNI_DESTROYJAVAVM_ENTRY(vm);
- #endif /* USDT2 */
-   jint res = JNI_ERR;
-   DT_RETURN_MARK(DestroyJavaVM, jint, (const jint&)res);
 @@ -5493,15 +5373,13 @@
  #ifndef USDT2
    DTRACE_PROBE3(hotspot_jni, AttachCurrentThread__entry, vm, penv, _args);
