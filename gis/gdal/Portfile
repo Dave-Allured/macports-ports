@@ -356,13 +356,12 @@ if {$subport eq $name} {
                         -DGDAL_DRIVER_KEA_PLUGIN_INSTALLATION_MESSAGE="Install the KEA driver with 'sudo port install gdal-kea'." \
                         -DGDAL_REGISTER_DRIVER_PDF_FOR_LATER_PLUGIN=ON \
                         -DGDAL_DRIVER_PDF_PLUGIN_INSTALLATION_MESSAGE="Install the PDF driver with 'sudo port install gdal-pdf'." \
-                        -DGDAL_USE_POPPLER=ON \
+                        -DGDAL_USE_POPPLER=OFF \
                         -DOGR_REGISTER_DRIVER_LIBKML_FOR_LATER_PLUGIN=ON \
                         -DOGR_DRIVER_LIBKML_PLUGIN_INSTALLATION_MESSAGE="Install the LIBKML driver with 'sudo port install gdal-libkml'." \
                         -DGDAL_USE_LIBKML=OFF
 
     depends_build-append \
-                        path:lib/pkgconfig/poppler.pc:poppler \
                         port:hdf5 \
                         port:kealib \
                         port:libkml
