@@ -16,14 +16,15 @@ mpi.setup
 mpi.enforce_variant netcdf-fortran
 
 github.setup        esmf-org esmf 7dc5cea4a7152457e6bb2ca01da23e119dca6086
-git.branch          origin/fix/32-bit-abi
 name                esmf-devel
+version             20250430
 revision            0
 
-checksums           rmd160  37737fd844f0554abff3390ec147647fb91a6a1f \
-                    sha256  4ed903f67e2208c54a1f84d9d9f28b81c4af25b3f063e3d29847f1a5729cf254 \
-                    size    18050154
-version             20250430
+# Branch = origin/fix/32-bit-abi
+
+checksums           rmd160  2e2efb237741dd314a09bef752e68929de200104 \
+                    sha256  5ec22aae34593ae9d29bb0c95c6fee494af6bc8a716c165b37390c726602b788 \
+                    size    14271228
 
 categories          science devel
 license             NCSA
