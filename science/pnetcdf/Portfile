@@ -33,6 +33,9 @@ if {${os.arch} eq "powerpc"} {
    mpi.setup            require -gcc12 -gfortran
 }
 
+configure.ldflags-delete \
+                        -Wl,-ld_classic
+
 #compilers.choose       fc f77 f90 cc cxx
 
 depends_build-append    port:perl5 \
