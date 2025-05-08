@@ -41,6 +41,13 @@ depends_build-append    port:perl5 \
                         port:libtool \
                         port:m4
 
+configure.args-append   --disable-silent-rules
+
+configure.env-append    MPICC=${prefix}/bin/${mpi.cc} \
+                        MPICXX=${prefix}/bin/${mpi.cxx} \
+                        MPIF77=${prefix}/bin/${mpi.f77} \
+                        MPIF90=${prefix}/bin/${mpi.f90}
+
 default_variants        +gcc12 +mpich
 
 use_parallel_build      yes
