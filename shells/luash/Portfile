@@ -12,7 +12,7 @@ description             shell written in Lua/C++
 long_description        luash is a shell written in Lua/C++ that allow you to run command using Lua syntax
 homepage                http://luaforge.net/projects/luash
 platforms               darwin
-master_sites            http://files.luaforge.net/releases/luash/luash/luash${version}
+master_sites            macports_distfiles
 distname                ${name}
 dist_subdir             ${name}/${version}
 checksums               md5     67bbb8985166579686361fe840e016c0 \
