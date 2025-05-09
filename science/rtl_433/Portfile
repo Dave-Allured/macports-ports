@@ -16,12 +16,12 @@ maintainers         {@ducksauz duksta.org:john} openmaintainer
 description         RTL-SDR 433.92 MHz generic data receiver
 long_description    rtl_433 turns your Realtek RTL2832 based DVB dongle into a 433.92 MHz generic data receiver
 
-checksums           255a8154784c2c46aafa2a500e0ceb560ed9c7b1 \
+checksums           rmd160  255a8154784c2c46aafa2a500e0ceb560ed9c7b1 \
                     sha256  5a409ea10e6d3d7d4aa5ea91d2d6cc92ebb2d730eb229c7b37ade65458223432 \
                     size    1125144
 
 depends_build-append \
-                    port:pkgconfig
+                    port:cmake
 
 depends_lib-append  path:lib/pkgconfig/libusb-1.0.pc:libusb \
                     port:rtl-sdr \
