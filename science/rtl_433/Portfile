@@ -6,8 +6,7 @@ PortGroup           github 1.0
 
 epoch               1
 github.setup        merbanan rtl_433 25.02
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from tarball
+github.tarball_from archive
 revision            0
 
 categories          science comms
