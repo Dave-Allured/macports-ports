@@ -16,7 +16,7 @@ mpi.setup
 mpi.enforce_variant netcdf-fortran
 
 github.setup        esmf-org esmf 8.8.1 v
-revision            0
+revision            1
 checksums           rmd160  90519e3b76d1398d3bba2539d17ef27b0a6d1143 \
                     sha256  b0acb59d4f000bfbdfddc121a24819bd2a50997c7b257b0db2ceb96f3111b173 \
                     size    14253340
@@ -91,6 +91,7 @@ pre-build {
     build.env       ESMF_DIR=${worksrcpath} \
                     ESMF_F90=${configure.f90} \
                     ESMF_F90COMPILEOPTS=${configure.f90flags} \
+                    ESMF_C=${configure.cc} \
                     ESMF_CXX=${configure.cxx} \
                     ESMF_CXXCOMPILEOPTS=${configure.cxxflags} \
                     ESMF_NETCDF=split \
@@ -142,6 +143,7 @@ pre-destroot {
                     ESMF_F90=${configure.f90} \
                     ESMF_F90COMPILEOPTS=${configure.f90flags} \
                     "ESMF_F90LINKOPTS=-L${worksrcpath}/lib ${configure.ldflags}" \
+                    ESMF_C=${configure.cc} \
                     ESMF_CXX=${configure.cxx} \
                     ESMF_CXXCOMPILEOPTS=${configure.cxxflags} \
                     "ESMF_CXXLINKOPTS=-L${worksrcpath}/lib ${configure.ldflags}" \
