@@ -58,7 +58,7 @@ pre-test {
 post-destroot {
     set docdir ${prefix}/share/doc/${name}
     xinstall -d ${destroot}${docdir}
-    xinstall -m 0644 -W ${worksrcpath} AUTHORS COPYING Copyright FEATURES \
+    xinstall -m 0644 -W ${worksrcpath} AUTHORS Copyright FEATURES \
         NEWS README.md TODO ${destroot}${docdir}
 }
 
