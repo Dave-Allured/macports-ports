@@ -7,7 +7,7 @@
 # Swig artifacts may be needed later, for adding Java or Python wrappers.
 
 --- core/CMakeLists.txt.orig	2020-07-23 09:24:13
-+++ core/CMakeLists.txt	2025-05-20 18:37:17
++++ core/CMakeLists.txt	2025-05-21 05:49:50
 @@ -169,13 +169,13 @@
  
  file(GLOB_RECURSE
@@ -19,7 +19,8 @@
  
  set(XdmfCoreHeaders
        ${XdmfCoreHeaders}
-       ${CMAKE_CURRENT_BINARY_DIR}/XdmfCoreConfig.hpp)
+-      ${CMAKE_CURRENT_BINARY_DIR}/XdmfCoreConfig.hpp)
++      ${CMAKE_CURRENT_BINARY_DIR}/XdmfCoreConfig.hpp
 +      ${CMAKE_CURRENT_BINARY_DIR}/XdmfVersion.hpp)
  install(FILES ${XdmfCoreHeaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
  install(FILES ${LokiHeaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/loki)
