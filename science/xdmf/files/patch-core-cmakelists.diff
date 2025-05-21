@@ -1,0 +1,26 @@
+# https://trac.macports.org/ticket/58807
+#
+# 1. Add include/XdmfVersion.hpp, was missing.
+# 2. Remove include/ProjectVersion.hpp.  Source artifact, not valid output.
+# 3. Remove three Xdmf*.i files.  Swig source artifacts, not valid output.
+#
+# Swig artifacts may be needed later, for adding Java or Python wrappers.
+
+--- core/CMakeLists.txt.orig	2020-07-23 09:24:13
++++ core/CMakeLists.txt	2025-05-20 18:37:17
+@@ -169,13 +169,13 @@
+ 
+ file(GLOB_RECURSE
+   XdmfCoreHeaders
+-  "*.hpp" "*.tpp" "*.i"
+-  "../CMake/VersionSuite/*.hpp")
++  "*.hpp" "*.tpp")
+ file(GLOB LokiHeaders loki/*.h)
+ 
+ set(XdmfCoreHeaders
+       ${XdmfCoreHeaders}
+       ${CMAKE_CURRENT_BINARY_DIR}/XdmfCoreConfig.hpp)
++      ${CMAKE_CURRENT_BINARY_DIR}/XdmfVersion.hpp)
+ install(FILES ${XdmfCoreHeaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+ install(FILES ${LokiHeaders} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/loki)
+ install(TARGETS XdmfCore
