@@ -4,7 +4,7 @@ PortSystem              1.0
 PortGroup               cmake 1.1
 PortGroup               compiler_blacklist_versions 1.0
 PortGroup               conflicts_build 1.0
-PortGroup               legacysupport 1.1
+PortGroup               legacysupport 1.2
 
 # https://trac.macports.org/ticket/65314
 #   undefined vtable symbols, related to std::bad_variant_access
@@ -19,7 +19,7 @@ set my_name             doxygen
 
 # please don't update doxygen without first checking the build status of doxygen-devel
 version                 1.13.2
-revision                0
+revision                1
 epoch                   0
 checksums               rmd160  564a8746fe26795c87266490c761d91237d3ef78 \
                         sha256  3a25e3386c26ea5494c784e946327225debfbc5dbfa8b13549010a315aace66d \
