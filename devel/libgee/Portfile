@@ -16,7 +16,7 @@ long_description    Libgee is a collection library providing GObject-based \
                     interfaces and classes for commonly used data structures. \
                     Old home page on Gnome wiki is retired, but \
                     has more info: https://wiki.gnome.org/Projects/Libgee. \
-                    Also see https://valadoc.org and search for package "gee".
+                    Also see https://valadoc.org and search for package 'gee'.
 
 homepage            https://gitlab.gnome.org/GNOME/libgee
 master_sites        gnome:sources/${name}/${branch}
