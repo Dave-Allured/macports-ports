@@ -52,6 +52,10 @@ configure.args-append \
                     -DVTK_MODULE_USE_EXTERNAL_VTK_libproj:BOOL=ON \
                     -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2:BOOL=ON
 
+# PROJ needs extra help for multiple versioned subdirectories.
+configure.args-append \
+                    -DPROJ_DIR=${prefix}/lib/proj9
+
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
 # https://gitlab.kitware.com/vtk/vtk/-/issues/19352
@@ -68,6 +72,10 @@ configure.args-append \
                     -DVTK_WRAP_PYTHON:BOOL=OFF \
                     -DVTK_WRAP_JAVA:BOOL=OFF \
                     -DVTK_USE_COCOA:BOOL=ON
+
+# Do not allow any remote downloads of code or test data.
+configure.args-append \
+                    -DVTK_FORBID_DOWNLOADS:BOOL=ON
 
 # Support for Cocoa of 10.6 has been dropped in
 # https://github.com/Kitware/VTK/commit/f2e249c0a6a93f12808822cc5e5dddda35a09a35
