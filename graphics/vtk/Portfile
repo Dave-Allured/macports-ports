@@ -47,12 +47,16 @@ mpi.setup
 
 set proj_version    proj9
 
-depends_lib-append  port:${proj_version} \
-                    port:libxml2
+depends_lib-append  port:hdf5 \
+                    port:libxml2 \
+                    port:${proj_version}
 
 configure.args-append \
+                    -DVTK_MODULE_USE_EXTERNAL_VTK_hdf5:BOOL=ON \
                     -DVTK_MODULE_USE_EXTERNAL_VTK_libproj:BOOL=ON \
                     -DVTK_MODULE_USE_EXTERNAL_VTK_libxml2:BOOL=ON
+
+mpi.enforce_variant hdf5
 
 # PROJ needs extra help for multiple versioned subdirectories.
 configure.args-append \
