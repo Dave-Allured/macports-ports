@@ -56,7 +56,7 @@ configure.args-append \
 
 # PROJ needs extra help for multiple versioned subdirectories.
 configure.args-append \
-                    -DPROJ_ROOT=${prefix}/lib/${proj_version}
+                    -DLibPROJ_ROOT=${prefix}/lib/${proj_version}
 
 # Re restoring support for legacy macOS, see:
 # https://gitlab.kitware.com/vtk/vtk/-/merge_requests/11171
