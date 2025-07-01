@@ -8,11 +8,11 @@ PortGroup               legacysupport 1.1
 legacysupport.newest_darwin_requires_legacy 10
 
 # 2025 June: GDCM seems to have stopped making release files.
-# Now they want to track by hash tag, not by release version number.
+# Now they want to track by git tag, not by release version number.
 
 name                    gdcm
-version                 20250611
-set tag                 63aa343275d637e2aeb57b5aaea5033c106cde8e
+version                 3.0.26-20250611
+git.branch              63aa343275d637e2aeb57b5aaea5033c106cde8e
 revision                0
 categories              science graphics
 license                 BSD
@@ -21,8 +21,8 @@ description             a C++ library for DICOM medical files
 long_description        Grassroots DiCoM is a C++ library for DICOM medical files.
 
 homepage                https://sourceforge.net/projects/gdcm/
-master_sites            sourceforge
-distname                ${name}-${name}-${tag}
+master_sites            https://sourceforge.net/code-snapshots/git/g/gd/${name}/${name}.git
+distname                ${name}-${name}-${git.branch}
 use_zip                 yes
 
 checksums               rmd160  26ed36f8e23e9166e997daf7f93df11adfb8238e \
