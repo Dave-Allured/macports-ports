@@ -31,14 +31,8 @@ checksums               rmd160  26ed36f8e23e9166e997daf7f93df11adfb8238e \
 
 compiler.cxx_standard   2014
 
-# fix case mismatch with CharLS 2.1.0 and later
-# See: https://trac.macports.org/ticket/60696
-# See: https://trac.macports.org/ticket/64765
-patchfiles-append       CharLS-2.1.0.patch
-
 # fix error with newer Poppler
-patchfiles-append       patch-poppler.diff \
-                        patch-vtk.diff
+patchfiles-append       patch-poppler.diff
 
 depends_build-append    path:bin/pkg-config:pkgconfig
 
