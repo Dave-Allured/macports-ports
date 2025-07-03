@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/danielmiessler/Fabric 1.4.221 v
+go.setup            github.com/danielmiessler/Fabric 1.4.224 v
 revision            0
 name                [string tolower ${github.project}]
 categories          llm
@@ -16,9 +16,9 @@ long_description    ${name} is an ${description}. It provides a modular system f
 
 homepage            https://danielmiessler.com/p/fabric-origin-story
 
-checksums           rmd160  1d67ca369a89ac5d09da2623269244d22d4c9aaa \
-                    sha256  39e414ab069fb69f935e3653ba292df22b3a4df5ca7759dd7635fb63c7551182 \
-                    size    183062760
+checksums           rmd160  59b5cab9446258c294eed3799cf9a599cf83c4cb \
+                    sha256  2e80deb610414c86b148857410234d7ecd14a36c5deb2f8700e229818a34af7b \
+                    size    183066026
 
 # go2port fails on too many packages to be manually fixable
 go.offline_build    no
