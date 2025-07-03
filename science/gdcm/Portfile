@@ -13,7 +13,7 @@ legacysupport.newest_darwin_requires_legacy 10
 name                    gdcm
 version                 3.0.26-20250611
 git.branch              63aa343275d637e2aeb57b5aaea5033c106cde8e
-revision                0
+revision                1
 categories              science graphics
 license                 BSD
 maintainers             {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
@@ -33,6 +33,10 @@ compiler.cxx_standard   2014
 
 # fix error with newer Poppler
 patchfiles-append       patch-poppler.diff
+
+# Include only necessary components of VTK
+# https://sourceforge.net/p/gdcm/bugs/569/
+patchfiles-append       patch-CMakeLists_txt-find_vtk.diff
 
 depends_build-append    path:bin/pkg-config:pkgconfig
 
