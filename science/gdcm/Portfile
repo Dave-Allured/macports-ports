@@ -29,10 +29,7 @@ checksums               rmd160  26ed36f8e23e9166e997daf7f93df11adfb8238e \
                         sha256  cdfe4d7ef66eda2c7e2f8b1226b3218f5ac4ebb65dcd7cccc119cf05afe80d87 \
                         size    5593062
 
-compiler.cxx_standard   2014
-
-# fix error with newer Poppler
-patchfiles-append       patch-poppler.diff
+compiler.cxx_standard   2020
 
 # Include only necessary components of VTK
 # https://sourceforge.net/p/gdcm/bugs/569/
@@ -50,7 +47,7 @@ depends_lib-append      port:charls \
                         port:vtk \
                         port:zlib
 
-configure.args-append   -DCMAKE_CXX_STANDARD=14 \
+configure.args-append   -DCMAKE_CXX_STANDARD=20 \
                         -DGDCM_BUILD_DOCBOOK_MANPAGES=OFF \
                         -DGDCM_BUILD_EXAMPLES=OFF \
                         -DGDCM_BUILD_TESTING=OFF \
