@@ -1,0 +1,14 @@
+# Include only necessary components of VTK
+# https://sourceforge.net/p/gdcm/bugs/569/
+
+--- orig/CMakeLists.txt	2025-06-11 03:50:26
++++ CMakeLists.txt	2025-07-02 18:01:20
+@@ -658,7 +658,7 @@
+   if(GDCM_USE_VTK)
+     option(GDCM_USE_PARAVIEW "paraview plugin ?" OFF)
+     # needed here so that we have VTK_WRAP_PYTHON and al. available
+-    find_package(VTK REQUIRED)
++    find_package(VTK)
+     mark_as_advanced(VTK_DIR)
+     set(GDCM_VTK_DIR ${VTK_DIR})
+     mark_as_advanced(GDCM_USE_PARAVIEW)
