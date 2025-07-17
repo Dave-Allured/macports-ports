@@ -26,7 +26,7 @@ set git_version             [join [split ${version} .] _]
 # https://trac.macports.org/ticket/70652   # Ouch ouch ouch ouch
 # https://trac.macports.org/ticket/71377   # Ditto
 github.master_sites         ${github.homepage}/archive/refs/tags
-distname                    [join ${github.tag_prefix}]${github.version}
+distname                    [join ${github.tag_prefix}]${git_version}
 
 worksrcdir                  occt-V${git_version}
 
