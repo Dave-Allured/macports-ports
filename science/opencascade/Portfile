@@ -22,6 +22,11 @@ homepage                    https://www.opencascade.com/content/open-source-core
 set git_version             [join [split ${version} .] _]
 ## master_sites                "https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=refs/tags/V${git_version};sf=tgz;dummy="
 ## extract.suffix              .tgz
+
+# https://trac.macports.org/ticket/70652   # Ouch ouch ouch ouch
+# https://trac.macports.org/ticket/71377   # Ditto
+github.master_sites         ${github.homepage}/archive/refs/tags
+
 worksrcdir                  occt-V${git_version}
 
 checksums                   rmd160  3d47a42537bdc988b81b73301de75e9c521c2d4e \
