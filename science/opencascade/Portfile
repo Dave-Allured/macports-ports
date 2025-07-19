@@ -30,15 +30,13 @@ checksums                   rmd160  3d47a42537bdc988b81b73301de75e9c521c2d4e \
                             sha256  de442298cd8860f5580b01007f67f0ecd0b8900cfa4da467fa3c823c2d1a45df \
                             size    48575965
 
+# Add support for custom CMAKE_BUILD_TYPE = MacPorts, defaulted by cmake portgroup.
+# https://trac.macports.org/ticket/49108
+patchfiles-append           patch-CMakeLists.txt.diff
+
 # Fix ARCH configuration problem for 32-bit macs.
 # https://github.com/Open-Cascade-SAS/OCCT/issues/620
 patchfiles-append           patch-env-arm64.diff
-
-# Give MacPorts full control over compiler and linker options.
-# https://trac.macports.org/ticket/49108
-# However, to avoid more patching, do not use default build_type=Macports.
-# See note about build_type=None in cmake 1.1 portgroup.
-cmake.build_type            None
 
 compiler.cxx_standard       2011
 configure.args-append       -DCMAKE_CXX_STANDARD=11 \
