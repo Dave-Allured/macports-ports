@@ -24,7 +24,7 @@ checksums                   rmd160  c26b29ee7005d6c18f5160fc1479d7b14ea51c80 \
                             sha256  4d7c8b9184e11c54f4794b5cdc54d54212ca6cd1c4a5a2a0033eba547945e872 \
                             size    31112383
 
-extract.suffix              .zst
+extract.suffix              .tar.zst
 
 mpi.setup                   require_fortran
 veclibfort                  no
