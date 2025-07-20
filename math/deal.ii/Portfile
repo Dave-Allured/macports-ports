@@ -25,6 +25,9 @@ checksums                   rmd160  c26b29ee7005d6c18f5160fc1479d7b14ea51c80 \
                             size    31112383
 
 extract.suffix              .tar.zst
+extract.cmd                 tar
+extract.pre_args            -xf
+extract.post_args           ""
 
 mpi.setup                   require_fortran
 veclibfort                  no
