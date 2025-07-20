@@ -1,152 +1,47 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
-PortSystem                  1.0
-PortGroup                   github         1.0
-PortGroup                   cmake          1.1
-PortGroup                   mpi            1.0
-PortGroup                   linear_algebra 1.0
-PortGroup                   boost          1.0
+PortSystem              1.0
+PortGroup               github  1.0
+PortGroup               cmake   1.1
+PortGroup               boost   1.0
 
-name                        deal.ii
-github.setup                dealii dealii 9.6.2 v
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from         releases
-revision                    0
-categories                  math science
-license                     LGPL-2.1+
-maintainers                 {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
-description                 a C++ software library supporting the creation of finite element codes
-long_description            ${name} is {*}${description}.
+description             Computational Geometry Algorithm Library
+long_description        The goal of the ${description} is to provide easy access to\
+                        efficient and reliable geometric algorithms in the\
+                        form of a C++ library. CGAL is used in various areas\
+                        needing geometric computation, such as: computer\
+                        graphics, scientific visualization, computer aided\
+                        design and modeling, geographic information systems,\
+                        molecular biology, medical imaging, robotics and\
+                        motion planning, mesh generation, numerical methods...
 
-homepage                    https://www.dealii.org/
+github.setup            CGAL cgal 5.6.2 v
+revision                0
+conflicts               cgal4 cgal6
+github.tarball_from     releases
+name                    cgal5
+license                 LGPL-3+ GPL-3+
+categories              gis science
+platforms               any
+supported_archs         noarch
+maintainers             {vince @Veence}
+use_xz                  yes
+distname                CGAL-${version}
 
-checksums                   rmd160  c26b29ee7005d6c18f5160fc1479d7b14ea51c80 \
-                            sha256  4d7c8b9184e11c54f4794b5cdc54d54212ca6cd1c4a5a2a0033eba547945e872 \
-                            size    31112383
+homepage                http://www.cgal.org/
 
-extract.suffix              .tar.zst
-extract.cmd                 tar
-extract.pre_args            -xf
-extract.post_args           ""
+checksums               rmd160  5ee29dc52f2ec401edff16dc03ae462903d3acc0 \
+                        sha256  458f60df8e8f1f2fdad93c8f24e1aa8f4b095cc61a14fac81b90680d7306a42e \
+                        size    24489156
 
-mpi.setup                   require_fortran
-veclibfort                  no
+boost.version           1.81
 
-if {[variant_isset debug]} {
-    cmake.build_type        Debug
-} else {
-    cmake.build_type        Release
-}
+depends_lib-append      port:mpfr \
+                        port:zlib \
+                        port:gmp \
+                        path:share/pkgconfig/eigen3.pc:eigen3
 
-# deal.II sets its own optimization flags
-configure.optflags
+compiler.cxx_standard   2014
+compiler.thread_local_storage yes
 
-compiler.cxx_standard       2017
-configure.args-append       -DCMAKE_CXX_STANDARD=17
-compiler.openmp_version     4.0
-
-# see https://stackoverflow.com/questions/73363327/boost-program-options-uses-deprecated-feature
-configure.cxxflags-append   -DBOOST_NO_CXX98_FUNCTION_BASE
-
-# install location for LICENSE.md, README.md, detailed.log, summary.log, etc.
-# install location for examples
-configure.args-append       -DDEAL_II_DOCREADME_RELDIR=share/${name} \
-                            -DDEAL_II_EXAMPLES_RELDIR=share/${name}/examples \
-                            -DDEAL_II_DOCHTML_RELDIR=share/${name}/doc
-
-# always use MacPorts library
-configure.args-append       -DDEAL_II_ALLOW_BUNDLED=OFF
-
-# optional dependencies:
-#     CUDA requires a graphics card from Nvidia
-#     Ginkgo does not exist in MacPorts and requires CUDA
-#     p4est requires MPI
-#     PETSc requires MPI
-#     ScaLAPACK requires MPI
-#     SLEPc requires MPI
-#     Trilinos is not in MacPorts
-# see https://www.dealii.org/developer/readme.html
-# see https://www.dealii.org/developer/users/cmake.html
-depends_lib-append          port:ADOL-C \
-                            port:arborx \
-                            port:arpack \
-                            port:assimp
-pre-configure {
-    configure.args-append   ${cmake_linalglib}
-}
-depends_lib-append          port:cgal5
-configure.args-append       -DDEAL_II_WITH_CUDA=OFF \
-                            -DDEAL_II_WITH_GINKGO=OFF
-depends_lib-append          port:gmsh \
-                            port:gsl \
-                            port:hdf5 \
-                            port:kokkos \
-                            port:metis \
-                            port:muparser \
-                            port:opencascade
-configure.env-append        CASROOT=${prefix}/libexec/opencascade
-configure.args-append       -DDEAL_II_WITH_P4EST=OFF \
-                            -DDEAL_II_WITH_PETSC=OFF \
-                            -DDEAL_II_WITH_SCALAPACK=OFF \
-                            -DDEAL_II_WITH_SLEPC=OFF
-set sundials_ver            5
-set sundials_base           ${prefix}/libexec/sundials${sundials_ver}
-set sundials_cmake          ${sundials_base}/lib/cmake
-set sundials_include        ${sundials_base}/include
-cmake.module_path-append    ${sundials_cmake}
-configure.args-append       -DSUNDIALS_DIR=${sundials_base} \
-                            -DSUNDIALS_INCLUDE_DIR=${sundials_include} \
-                            -DSUNDIALS_CONFIG_H=${sundials_include}/sundials/sundials_config.h
-depends_lib-append          port:sundials${sundials_ver} \
-                            port:symengine \
-                            port:onetbb
-configure.args-append       -DDEAL_II_WITH_TRILINOS=OFF
-depends_lib-append          port:SuiteSparse_UMFPACK \
-                            port:zlib
-
-if {[mpi_variant_isset]} {
-    mpi.enforce_variant     hdf5
-    mpi.enforce_variant     sundials${sundials_ver}
-    mpi.enforce_variant     petsc
-
-    depends_lib-append      port:p4est \
-                            port:petsc \
-                            port:scalapack \
-                            port:slepc
-    configure.args-append   -DDEAL_II_WITH_MPI=ON
-    configure.args-delete   -DDEAL_II_WITH_P4EST=OFF \
-                            -DDEAL_II_WITH_PETSC=OFF \
-                            -DDEAL_II_WITH_SCALAPACK=OFF \
-                            -DDEAL_II_WITH_SLEPC=OFF
-    configure.args-append   -DPETSC_DIR=${prefix}/lib/petsc \
-                            -DSLEPC_DIR=${prefix}/lib/slepc
-
-    # SUNDIALS links against KLU from SuiteSparse
-    configure.ldflags-append -lklu
-} else {
-    configure.args-append   -DDEAL_II_WITH_MPI=OFF
-}
-
-variant docs description "Install ${name} documentation" {
-    depends_build-append    path:bin/doxygen:doxygen \
-                            path:bin/dot:graphviz \
-                            port:perl5.28
-    configure.args-append   -DDEAL_II_COMPONENT_DOCUMENTATION=ON \
-                            -DPERL_EXECUTABLE=${prefix}/bin/perl5.28
-}
-
-variant python description "install python bindings" {
-    global python_version
-    set python_branch       3.11
-    set python_version      [string map {. ""} ${python_branch}]
-    depends_lib-append      port:python${python_version}
-    require_active_variants [boost::depends_portname] python${python_version}
-    configure.args-append   -DDEAL_II_COMPONENT_PYTHON_BINDINGS=ON \
-                            -DPYTHON_EXECUTABLE=${prefix}/bin/python${python_branch} \
-                            -DDEAL_II_PYTHON_RELDIR=${frameworks_dir}/Python.framework/Versions/${python_branch}/lib/python${python_branch}/site-packages/PyDealII
-}
-
-test.run                    yes
-
-# avoid release candidates
-github.livecheck.regex      {([0-9.]+)}
+github.livecheck.regex  {(5[0-9.]+)}
