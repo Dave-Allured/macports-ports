@@ -49,9 +49,9 @@ depends_build-append \
 
 ##                    path:bin/cmake:cmake \
 
-depends_lib-append  port:libffi
-
-##                    port:libxml2
+depends_lib-append  port:epoll-shim \
+                    port:libffi \
+                    port:libxml2
 
 patch.pre_args-replace  -p0 -p1
 ##patchfiles-append   0001-Darwin-fixes-from-owl-compositor.patch \
