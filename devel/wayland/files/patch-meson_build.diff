@@ -1,0 +1,11 @@
+--- meson.build.orig	2025-07-06 06:11:26
++++ meson.build	2025-07-23 15:49:24
+@@ -69,7 +69,7 @@
+ config_h.set10('HAVE_BROKEN_MSG_CMSG_CLOEXEC', have_broken_msg_cmsg_cloexec)
+ 
+ if get_option('libraries')
+-	if host_machine.system() in ['freebsd', 'openbsd']
++	if host_machine.system() in ['freebsd', 'openbsd', 'darwin']
+ 		# When building for FreeBSD, epoll(7) is provided by a userspace
+ 		# wrapper around kqueue(2).
+ 		epoll_dep = dependency('epoll-shim')
