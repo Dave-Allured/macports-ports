@@ -27,6 +27,7 @@ checksums           rmd160  2a0876c8802ec7c1cec7a2ded2afa374fa340a7f \
 # Freedesktop Wayland uses meson build.
 
 depends_build-append \
+                    path:bin/cmake:cmake \
                     path:bin/pkg-config:pkgconfig
 
 depends_lib-append  port:epoll-shim \
