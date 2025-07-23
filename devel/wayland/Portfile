@@ -24,9 +24,14 @@ maintainers         nomaintainer
 description         Core Wayland protocol and libraries
 long_description    ${description}
 
-checksums           rmd160  5d60e12bd452d5a65e82da7191c6d35a5bf0c617 \
-                    sha256  82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536 \
-                    size    241764
+checksums           rmd160  2a0876c8802ec7c1cec7a2ded2afa374fa340a7f \
+                    sha256  ef9224f1a8b6dbd3049a2e51a547abb7e89612414c192a4349f3c83c7f553672 \
+                    size    277178
+
+## For XZ:
+##checksums           rmd160  5d60e12bd452d5a65e82da7191c6d35a5bf0c617 \
+##                    sha256  82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536 \
+##                    size    241764
 
 # XZ format is belayed until the bugfix in #64960 is mainlined into CI.
 # For now, fall back to Gitlab tags and bzip2 format.  Use Gitlab PG defaults.
