@@ -34,6 +34,10 @@ depends_lib-append  port:epoll-shim \
                     port:libffi \
                     port:libxml2
 
+# Fix machine config for macOS, MacPorts provides epoll.
+patch.pre_args-replace  -p0 -p1
+patchfiles-append   patch-meson_build.diff
+
 # stdatomic.h
 compiler.c_standard 2011
 
