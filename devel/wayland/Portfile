@@ -9,12 +9,8 @@ PortGroup           meson 1.0
 # CLOCK_MONOTONIC
 ##legacysupport.newest_darwin_requires_legacy 15
 
-## Force xz before portgroup; see below.
-##use_xz              yes
-
 gitlab.instance     {https://gitlab.freedesktop.org}
 gitlab.setup        wayland wayland 1.24.0
-##gitlab.master_sites ${gitlab.homepage}/-/releases/${gitlab.version}/downloads
 epoch               1
 revision            0
 
@@ -28,34 +24,14 @@ checksums           rmd160  2a0876c8802ec7c1cec7a2ded2afa374fa340a7f \
                     sha256  ef9224f1a8b6dbd3049a2e51a547abb7e89612414c192a4349f3c83c7f553672 \
                     size    277178
 
-## For XZ:
-##checksums           rmd160  5d60e12bd452d5a65e82da7191c6d35a5bf0c617 \
-##                    sha256  82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536 \
-##                    size    241764
-
-# XZ format is belayed until the bugfix in #64960 is mainlined into CI.
-# For now, fall back to Gitlab tags and bzip2 format.  Use Gitlab PG defaults.
-
-## Gitlab 1.0 portgroup bug prevents normal use of "use_xz".
-## https://trac.macports.org/ticket/64960, not correctly fixed yet.
-##use_xz              yes
-##extract.suffix      .tar.xz
-##extract.cmd         xz
-
 # Freedesktop Wayland uses meson build.
 
 depends_build-append \
                     path:bin/pkg-config:pkgconfig
 
-##                    path:bin/cmake:cmake \
-
-depends_lib-append  port:epoll-shim \
+depends_lib-append  port:expat \
                     port:libffi \
                     port:libxml2
-
-patch.pre_args-replace  -p0 -p1
-patchfiles-append   0001-Darwin-fixes-from-owl-compositor.patch \
-                    0003-os-wrappers-test-F_DUPFD_CLOEXEC-may-not-be-defined.patch
 
 # stdatomic.h
 compiler.c_standard 2011
