@@ -2,11 +2,15 @@
 
 PortSystem          1.0
 PortGroup           gitlab 1.0
-PortGroup           legacysupport 1.1
 PortGroup           meson 1.0
+
+##PortGroup           legacysupport 1.1
 
 # CLOCK_MONOTONIC
 ##legacysupport.newest_darwin_requires_legacy 15
+
+## Force xz before portgroup; see below.
+##use_xz              yes
 
 gitlab.instance     {https://gitlab.freedesktop.org}
 gitlab.setup        wayland wayland 1.24.0
@@ -26,21 +30,23 @@ checksums           rmd160  5d60e12bd452d5a65e82da7191c6d35a5bf0c617 \
 
 # Gitlab 1.0 portgroup bug prevents normal use of "use_xz".
 # https://trac.macports.org/ticket/64960, not correctly fixed yet.
-#use_xz              yes
+use_xz              yes
 extract.suffix      .tar.xz
 extract.cmd         xz
 
-depends_build-append \
-                    path:bin/cmake:cmake \
-                    path:bin/pkg-config:pkgconfig
+# Freedesktop Wayland uses meson build.
 
-depends_lib-append  port:libffi \
-                    port:libxml2
+##depends_build-append \
+##                    path:bin/cmake:cmake \
+##                    path:bin/pkg-config:pkgconfig
 
-#patch.pre_args-replace  -p0 -p1
-#patchfiles-append   0001-Darwin-fixes-from-owl-compositor.patch \
-#                    0002-wayland-os.c-LOCAL_PEERPID-may-not-be-defined.patch \
-#                    0003-os-wrappers-test-F_DUPFD_CLOEXEC-may-not-be-defined.patch
+depends_lib-append  port:libffi
+##                    port:libxml2
+
+##patch.pre_args-replace  -p0 -p1
+##patchfiles-append   0001-Darwin-fixes-from-owl-compositor.patch \
+##                    0002-wayland-os.c-LOCAL_PEERPID-may-not-be-defined.patch \
+##                    0003-os-wrappers-test-F_DUPFD_CLOEXEC-may-not-be-defined.patch
 
 # stdatomic.h
 compiler.c_standard 2011
@@ -54,4 +60,4 @@ configure.args-append \
 
 test.run            yes
 
-#github.livecheck.branch darwin-portability
+##github.livecheck.branch darwin-portability
