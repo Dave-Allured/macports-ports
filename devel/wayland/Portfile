@@ -53,10 +53,11 @@ depends_lib-append  port:libffi
 
 ##                    port:libxml2
 
-##patch.pre_args-replace  -p0 -p1
+patch.pre_args-replace  -p0 -p1
 ##patchfiles-append   0001-Darwin-fixes-from-owl-compositor.patch \
 ##                    0002-wayland-os.c-LOCAL_PEERPID-may-not-be-defined.patch \
-##                    0003-os-wrappers-test-F_DUPFD_CLOEXEC-may-not-be-defined.patch
+
+patchfiles-append   0003-os-wrappers-test-F_DUPFD_CLOEXEC-may-not-be-defined.patch
 
 # stdatomic.h
 compiler.c_standard 2011
