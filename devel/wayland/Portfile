@@ -23,8 +23,12 @@ long_description    ${description}
 checksums           rmd160  5d60e12bd452d5a65e82da7191c6d35a5bf0c617 \
                     sha256  82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536 \
                     size    241764
-#github.tarball_from archive
-use_xz              yes
+
+# Gitlab 1.0 portgroup bug prevents normal use of "use_xz".
+# https://trac.macports.org/ticket/64960, not correctly fixed yet.
+#use_xz              yes
+extract.suffix      .tar.xz
+extract.cmd         xz
 
 depends_build-append \
                     path:bin/cmake:cmake \
