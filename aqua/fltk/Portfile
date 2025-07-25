@@ -82,10 +82,6 @@ depends_lib     path:include/turbojpeg.h:libjpeg-turbo \
 
 post-patch {
 
-    reinplace "s|/Applications|${applications_dir}/fltk|g" \
-        ${worksrcpath}/fluid/Makefile \
-        ${worksrcpath}/test/Makefile
-
     # Disable silent rules
     reinplace "/^\\.SILENT:$/d" ${worksrcpath}/makeinclude.in
 
