@@ -31,8 +31,10 @@ if {${subport} eq ${name}} {
     long_description ${long_description} \
         This port provides the release of FLTK, typically updated a few times a year.
 
-    github.setup    fltk fltk 1.4.4
+    github.setup    fltk fltk 1.4.4 {} -source
     github.tarball_from releases
+    master_sites    ${github.homepage}/releases/download/release-${git.branch}
+    use_bzip2       yes
     checksums       rmd160  9805dbd88cecfa1285bcb173d1ae0b76bc4a3305 \
                     sha256  2b302c80b7ea937a8bdc01ed6718fd995035bf63e9a2895491c1001821725f1f \
                     size    8465974
@@ -62,8 +64,10 @@ if {${subport} eq ${name}} {
     #revision        0
 
     # Temporarily substitute the main release version.
-    github.setup    fltk fltk 1.4.4
+    github.setup    fltk fltk 1.4.4 {} -source
     github.tarball_from releases
+    master_sites    ${github.homepage}/releases/download/release-${git.branch}
+    use_bzip2       yes
     checksums       rmd160  9805dbd88cecfa1285bcb173d1ae0b76bc4a3305 \
                     sha256  2b302c80b7ea937a8bdc01ed6718fd995035bf63e9a2895491c1001821725f1f \
                     size    8465974
