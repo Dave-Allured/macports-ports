@@ -32,7 +32,8 @@ if {${subport} eq ${name}} {
         This port provides the release of FLTK, typically updated a few times a year.
 
     github.setup    fltk fltk 1.4.4 release-
-    distname        ${github.project}-${github.version}-source
+    worksrcdir      ${github.project}-${github.version}
+    distname        ${worksrcdir}-source
     github.tarball_from releases
     use_bzip2       yes
     checksums       rmd160  9805dbd88cecfa1285bcb173d1ae0b76bc4a3305 \
@@ -65,7 +66,8 @@ if {${subport} eq ${name}} {
 
     # Temporarily substitute the main release version.
     github.setup    fltk fltk 1.4.4 release-
-    distname        ${github.project}-${github.version}-source
+    worksrcdir      ${github.project}-${github.version}
+    distname        ${worksrcdir}-source
     github.tarball_from releases
     use_bzip2       yes
     checksums       rmd160  9805dbd88cecfa1285bcb173d1ae0b76bc4a3305 \
