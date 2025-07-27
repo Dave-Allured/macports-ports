@@ -9,9 +9,8 @@ github.setup        gtownsend icon 9.5.24b v
 #version             9.5.24b
 github.tarball_from archive
 master_sites        ${github.homepage}/archive/refs/tags
-worksrcdir          ${github.project}-${github.version}
-
-###distname            ${worksrcdir}
+distname            v${github.version}
+#worksrcdir          ${github.project}-${github.version}
 
 revision            0
 
