@@ -65,9 +65,3 @@ variant x11 {
 #livecheck.url       [lindex ${master_sites} 0]
 #livecheck.version   [strsed ${version} {g/\.//}]
 #livecheck.regex     ${name}-v(\[0-9.\]+)src${extract.suffix}
-
-# MP default =       archive/refs/tags/([^"]+)\.tar\.gz
-# File =             archive/refs/tags/v9.5.24b.tar.gz
-
-#livecheck.regex     ${name}-v(\[0-9.\]+)${extract.suffix}
-livecheck.regex     v(\[^"/\]+)${extract.suffix}
