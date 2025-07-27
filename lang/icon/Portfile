@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 #github.setup        gtownsend icon c5079159e92f12f949b5b820db876d42d3ddbf43
-github.setup        gtownsend icon 9.5.24b
+github.setup        gtownsend icon 9.5.24b v
 #version             20241119
 #version             9.5.24b
 github.tarball_from archive
@@ -65,3 +65,12 @@ variant x11 {
 #livecheck.url       [lindex ${master_sites} 0]
 #livecheck.version   [strsed ${version} {g/\.//}]
 #livecheck.regex     ${name}-v(\[0-9.\]+)src${extract.suffix}
+
+# MP default =       archive/refs/tags/([^"]+)\.tar\.gz
+# File =             archive/refs/tags/v9.5.24b.tar.gz
+
+#livecheck.regex     ${name}-v(\[0-9.\]+)${extract.suffix}
+#livecheck.regex     v(\[^"/\]+)${extract.suffix}
+#livecheck.regex     /v(\[^"/\]+)${extract.suffix}
+
+#livecheck.regex     ${extract.prefix}(\[^"/\]+)${extract.suffix}
