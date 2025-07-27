@@ -11,7 +11,7 @@ github.tarball_from archive
 master_sites        ${github.homepage}/archive/refs/tags
 worksrcdir          ${github.project}-${github.version}
 
-distname###            ${worksrcdir}
+###distname            ${worksrcdir}
 
 revision            0
 
