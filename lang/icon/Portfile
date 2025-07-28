@@ -30,10 +30,14 @@ checksums           rmd160  4aa95dc9816aa174b59629eb1e54123582be840e \
 universal_variant   no
 use_parallel_build  no
 
+# Build variables are set at build time through custom config files.
+pre-configure {
+    file copy ${filespath}/macports ${worksrcpath}/config
+}
+
 configure.cmd       make
 configure.pre_args
-
-configure.args      Configure name=macintosh
+configure.args      Configure name=macports
 
 build.target        All
 
@@ -53,7 +57,7 @@ post-destroot {
     ln -s ../../../libexec/${name}/man/man1/icont.1 ${man1_dir}
 }
 
-default_variants    +x11
+#default_variants    +x11
 
 variant x11 {
     configure.args X-Configure name=macintosh
