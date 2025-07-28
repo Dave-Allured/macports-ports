@@ -11,8 +11,8 @@
 
 # Input variables CC, CFLAGS, LDFLAGS, etc. are set by MacPorts base.
 
-CC     = $(CC)
-CFLAGS = $(CFLAGS)
+# CC         previously set as MacPorts environment variable
+# CFLAGS     previously set as MacPorts environment variable
 CFDYN  =
 RLINK  = -dynamic
 RLIBS  = -lm
