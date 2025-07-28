@@ -1,0 +1,32 @@
+System configuration:
+
+	MacPorts configuration for MacOS.
+	Controlled by MacPorts port file variables.
+
+Latest Icon version:
+
+	Version 9.5.24b of November 19, 2024
+
+Installer:
+
+	Dave Allured
+	NOAA/PSL/CIRES
+
+Missing features:
+
+Known bugs:
+
+Comments:
+
+	Experimental MacPorts support.
+
+	See the special Macintosh page in the documentation directory.
+
+	Icon runs on Darwin, which is (loosely speaking) the
+	command-line-based Unix substructure of MacOS X.  The
+	Xcode Command Line Tools must be installed to build Icon.
+	(A full Xcode installation is not required.)
+
+Date:
+
+	July 28, 2025
