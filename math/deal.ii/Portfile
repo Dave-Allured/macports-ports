@@ -8,10 +8,9 @@ PortGroup                   linear_algebra 1.0
 PortGroup                   boost          1.0
 
 name                        deal.ii
-github.setup                dealii dealii 9.4.2 v
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from         tarball
-revision                    4
+github.setup                dealii dealii 9.7.0 v
+github.tarball_from         releases
+revision                    0
 categories                  math science
 license                     LGPL-2.1+
 maintainers                 {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
@@ -20,9 +19,14 @@ long_description            ${name} is {*}${description}.
 
 homepage                    https://www.dealii.org/
 
-checksums                   rmd160  3008f48ec54ad5e5191eef2f2e1dbeb1d9377628 \
-                            sha256  37b9f09e25db710234412d6ea18f8a2d7a66b115fde7728e716f7a307876fdba \
-                            size    30299805
+checksums                   rmd160  6a0e83b8133b8d9817126c78970dd651e7f133a9 \
+                            sha256  f3c987b1f8d54851148f89ba1c66ba2ab991ed72f60f92c079c1737167eeb0c2 \
+                            size    32144495
+
+extract.suffix              .tar.zst
+extract.cmd                 tar
+extract.pre_args            -xf
+extract.post_args           ""
 
 mpi.setup                   require_fortran
 veclibfort                  no
@@ -69,7 +73,7 @@ depends_lib-append          port:ADOL-C \
 pre-configure {
     configure.args-append   ${cmake_linalglib}
 }
-depends_lib-append          port:cgal5
+depends_lib-append          port:cgal6
 configure.args-append       -DDEAL_II_WITH_CUDA=OFF \
                             -DDEAL_II_WITH_GINKGO=OFF
 depends_lib-append          port:gmsh \
