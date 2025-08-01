@@ -98,7 +98,8 @@ configure.args-append       -DSUNDIALS_DIR=${sundials_base} \
                             -DSUNDIALS_CONFIG_H=${sundials_include}/sundials/sundials_config.h
 depends_lib-append          port:sundials${sundials_ver} \
                             port:symengine
-configure.args-append       -DDEAL_II_WITH_TRILINOS=OFF
+configure.args-append       -DDEAL_II_WITH_TRILINOS=OFF \
+                            -DDEAL_II_FORCE_BUNDLED_TASKFLOW=on
 depends_lib-append          port:SuiteSparse_UMFPACK \
                             port:zlib
 
