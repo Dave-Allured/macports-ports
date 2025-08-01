@@ -97,8 +97,7 @@ configure.args-append       -DSUNDIALS_DIR=${sundials_base} \
                             -DSUNDIALS_INCLUDE_DIR=${sundials_include} \
                             -DSUNDIALS_CONFIG_H=${sundials_include}/sundials/sundials_config.h
 depends_lib-append          port:sundials${sundials_ver} \
-                            port:symengine \
-                            port:onetbb
+                            port:symengine
 configure.args-append       -DDEAL_II_WITH_TRILINOS=OFF
 depends_lib-append          port:SuiteSparse_UMFPACK \
                             port:zlib
