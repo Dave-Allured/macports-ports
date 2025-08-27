@@ -29,7 +29,7 @@ conflicts           pgplot
 # Sane location for giza.mod (fortran module file).
 # https://trac.macports.org/ticket/57103
 patchfiles          patch.src_Makefile_am.diff
-use_automake        yes
+use_autoreconf      yes
 
 depends_build       port:autoconf \
                     port:automake \
