@@ -31,7 +31,8 @@ conflicts           pgplot
 patchfiles          patch.src_Makefile_am.diff
 use_automake        yes
 
-depends_build       port:automake \
+depends_build       port:autoconf \
+                    port:automake \
                     port:pkgconfig
 
 depends_lib         path:lib/pkgconfig/cairo.pc:cairo \
