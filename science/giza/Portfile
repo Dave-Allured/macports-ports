@@ -26,10 +26,11 @@ extract.rename      yes
 
 conflicts           pgplot
 
-# Sane location for fortran module file.
+# Sane location for giza.mod (fortran module file).
 # https://trac.macports.org/ticket/57103
 patchfiles          patch.src_Makefile_am.diff
-use_autoreconf      yes
+use_automake        yes
+automake.dir        src
 
 depends_build       port:pkgconfig
 
