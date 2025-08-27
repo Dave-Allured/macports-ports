@@ -30,7 +30,6 @@ conflicts           pgplot
 # https://trac.macports.org/ticket/57103
 patchfiles          patch.src_Makefile_am.diff
 use_automake        yes
-automake.dir        ${worksrcpath}/src
 
 depends_build       port:automake \
                     port:pkgconfig
