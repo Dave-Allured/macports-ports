@@ -22,6 +22,8 @@ long_description    SPLASH is a tool for visualisation of (mainly astrophysical)
 homepage            http://users.monash.edu.au/~dprice/splash
 license             GPL-2+
 
+worksrcdir          ${name}
+
 if {![variant_isset pgplot]} {
     default_variants    +giza
 }
