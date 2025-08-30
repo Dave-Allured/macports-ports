@@ -17,8 +17,8 @@ maintainers         nomaintainer
 license             {GPL-3+ Permissive}
 
 description         The GNU compiler collection
-long_description    {*}${description}, including front ends for \
-                    C, C++, Objective-C, Objective-C++ and Fortran. \
+long_description    {*}${description}, including front ends for C, C++, \
+                    Objective-C, Objective-C++, Fortran, and Modula-2. \
                     This is an !experimental!, !BETA! version \
                     built from GCC snapshots.
 
@@ -103,7 +103,7 @@ platform darwin {
     configure.pre_args-append --build=${gcc_triple}
 }
 
-set gcc_configure_langs {c c++ objc obj-c++ lto fortran}
+set gcc_configure_langs {c c++ objc obj-c++ lto fortran m2}
 if {${subport} eq ${name} && ${build_arch} ne "i386"} {
     # jit compiler is not building on i386 systems
     # https://trac.macports.org/ticket/61130
