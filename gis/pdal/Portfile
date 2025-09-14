@@ -6,7 +6,7 @@ PortGroup           github        1.0
 PortGroup           legacysupport 1.1
 
 github.setup        PDAL PDAL 2.9.2
-revision            0
+revision            1
 
 name                pdal
 categories          gis
@@ -27,7 +27,7 @@ legacysupport.use_mp_libcxx \
 legacysupport.newest_darwin_requires_legacy \
                     18
 
-compiler.cxx_standard  2017
+compiler.cxx_standard  2020
 compiler.thread_local_storage yes
 
 github.tarball_from releases
