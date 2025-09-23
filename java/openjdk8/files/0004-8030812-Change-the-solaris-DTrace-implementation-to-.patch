@@ -1,3 +1,7 @@
+2025 Sept 23:  Remove two meaningless whitespace patches for
+hotspot/src/share/vm/prims/jni.cpp, now broken in openjdk 8u462.
+By Dave Allured for MacPorts.
+
 From 048d06fac678d9a9d5b582040d8665e5b5bfefc0 Mon Sep 17 00:00:00 2001
 From: Staffan Larsen <sla@openjdk.org>
 Date: Thu, 16 Jan 2014 20:14:21 +0100
@@ -20,6 +24,7 @@ Reviewed-by: coleenp, sspitsyn, dsamersoff
  hotspot/src/share/vm/runtime/java.cpp         |   1 +
  hotspot/src/share/vm/utilities/dtrace.hpp     |   5 +-
  13 files changed, 182 insertions(+), 361 deletions(-)
+ (*** This summary NOT updated for newer manual changes ***)
 
 diff --git hotspot/make/bsd/makefiles/dtrace.make hotspot/make/bsd/makefiles/dtrace.make
 index 9374062d115..7bef4f8a616 100644
@@ -1478,24 +1483,30 @@ index d60f751af9c..6c9f9b219ce 100644
  #endif /* USDT2 */
    return CurrentVersion;
  JNI_END
-@@ -4648,15 +4535,13 @@
- #ifndef USDT2
-   DTRACE_PROBE2(hotspot_jni, GetJavaVM__entry, env, vm);
- #else /* USDT2 */
--  HOTSPOT_JNI_GETJAVAVM_ENTRY(
--                              env, (void **) vm);
-+  HOTSPOT_JNI_GETJAVAVM_ENTRY(env, (void **) vm);
- #endif /* USDT2 */
-   *vm  = (JavaVM *)(&main_vm);
- #ifndef USDT2
-   DTRACE_PROBE1(hotspot_jni, GetJavaVM__return, JNI_OK);
- #else /* USDT2 */
--  HOTSPOT_JNI_GETJAVAVM_RETURN(
--                               JNI_OK);
-+  HOTSPOT_JNI_GETJAVAVM_RETURN(JNI_OK);
- #endif /* USDT2 */
-   return JNI_OK;
- JNI_END
+
+############################################################################
+######## 2025 Sept 23, remove broken meaningless whitespace patches ########
+#
+#@@ -4648,15 +4535,13 @@
+# #ifndef USDT2
+#   DTRACE_PROBE2(hotspot_jni, GetJavaVM__entry, env, vm);
+# #else /* USDT2 */
+#-  HOTSPOT_JNI_GETJAVAVM_ENTRY(
+#-                              env, (void **) vm);
+#+  HOTSPOT_JNI_GETJAVAVM_ENTRY(env, (void **) vm);
+# #endif /* USDT2 */
+#   *vm  = (JavaVM *)(&main_vm);
+# #ifndef USDT2
+#   DTRACE_PROBE1(hotspot_jni, GetJavaVM__return, JNI_OK);
+# #else /* USDT2 */
+#-  HOTSPOT_JNI_GETJAVAVM_RETURN(
+#-                               JNI_OK);
+#+  HOTSPOT_JNI_GETJAVAVM_RETURN(JNI_OK);
+# #endif /* USDT2 */
+#   return JNI_OK;
+# JNI_END
+############################################################################
+
 @@ -5065,8 +4950,7 @@
  #ifndef USDT2
    HS_DTRACE_PROBE1(hotspot_jni, GetDefaultJavaVMInitArgs__entry, args_);
@@ -1536,16 +1547,22 @@ index d60f751af9c..6c9f9b219ce 100644
  #endif /* USDT2 */
    return JNI_OK;
  }
-@@ -5340,8 +5221,7 @@
- #ifndef USDT2
-   DTRACE_PROBE1(hotspot_jni, DestroyJavaVM__entry, vm);
- #else /* USDT2 */
--  HOTSPOT_JNI_DESTROYJAVAVM_ENTRY(
--                                  vm);
-+  HOTSPOT_JNI_DESTROYJAVAVM_ENTRY(vm);
- #endif /* USDT2 */
-   jint res = JNI_ERR;
-   DT_RETURN_MARK(DestroyJavaVM, jint, (const jint&)res);
+
+############################################################################
+######## 2025 Sept 23, remove broken meaningless whitespace patches ########
+#
+#@@ -5340,8 +5221,7 @@
+# #ifndef USDT2
+#   DTRACE_PROBE1(hotspot_jni, DestroyJavaVM__entry, vm);
+# #else /* USDT2 */
+#-  HOTSPOT_JNI_DESTROYJAVAVM_ENTRY(
+#-                                  vm);
+#+  HOTSPOT_JNI_DESTROYJAVAVM_ENTRY(vm);
+# #endif /* USDT2 */
+#   jint res = JNI_ERR;
+#   DT_RETURN_MARK(DestroyJavaVM, jint, (const jint&)res);
+############################################################################
+
 @@ -5493,15 +5373,13 @@
  #ifndef USDT2
    DTRACE_PROBE3(hotspot_jni, AttachCurrentThread__entry, vm, penv, _args);
