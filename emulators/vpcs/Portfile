@@ -4,6 +4,7 @@ PortSystem          1.0
 
 name                vpcs
 version             0.8c-20160224
+revision            1
 
 categories          emulators
 license             BSD
