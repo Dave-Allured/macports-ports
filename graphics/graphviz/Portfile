@@ -79,8 +79,6 @@ depends_lib \
 depends_run \
                                 port:urw-fonts
 
-patchfiles-append               smyrna.patch
-
 configure.args \
                                 ac_cv_prog_AWK=/usr/bin/awk \
                                 --disable-guile \
