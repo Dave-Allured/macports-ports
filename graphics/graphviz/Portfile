@@ -388,8 +388,6 @@ subport gvedit${thisbranch} {
         }
     }
 
-    patchfiles-append           patch-cmd-gvedit-Makefile.in.diff
-
     configure.args              --disable-silent-rules \
                                 --with-qt \
                                 ac_cv_prog_AWK=/usr/bin/awk \
