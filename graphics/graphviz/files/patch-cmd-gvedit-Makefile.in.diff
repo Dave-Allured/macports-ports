@@ -1,5 +1,5 @@
 --- cmd/gvedit/Makefile.in.orig	2025-10-19 11:08:31
-+++ cmd/gvedit/Makefile.in	2025-11-01 12:36:18
++++ cmd/gvedit/Makefile.in	2025-11-01 13:13:13
 @@ -123,10 +123,7 @@
  nodist_gvedit_OBJECTS = $(am__objects_1)
  gvedit_OBJECTS = $(am_gvedit_OBJECTS) $(nodist_gvedit_OBJECTS)
@@ -12,7 +12,17 @@
  	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
  	$(am__DEPENDENCIES_1)
  AM_V_lt = $(am__v_lt_@AM_V@)
-@@ -603,10 +600,11 @@
+@@ -587,7 +584,8 @@
+ 	-I$(top_srcdir)/lib/gvc \
+ 	-I$(top_srcdir)/lib/pathplan \
+ 	-I$(top_srcdir)/lib/cgraph \
+-	-I$(top_srcdir)/lib/cdt
++	-I$(top_srcdir)/lib/cdt \
++	-I$(top_srcdir)/lib/util
+ 
+ gvedit_CPPFLAGS = \
+ 	$(AM_CPPFLAGS) \
+@@ -603,10 +601,10 @@
          -DQT_USE_FAST_OPERATOR_PLUS
  
  gvedit_LDADD = \
@@ -23,7 +33,6 @@
 +	-lgvc \
 +	-lcgraph \
 +	-lcdt \
-+        -L$(top_builddir)/lib/util \
 +	-lutil_C \
  	$(QTGUI_LIBS) \
  	$(QTCORE_LIBS) \
