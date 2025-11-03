@@ -25,7 +25,7 @@ set git_version             [join [split ${version} .] _]
 # https://trac.macports.org/ticket/71377
 github.master_sites         ${github.homepage}/archive/refs/tags
 distname                    [join ${github.tag_prefix}]${git_version}
-                            
+
 checksums                   rmd160  f2125195f917687533f874542823a2f9ceca129e \
                             sha256  3cd080d3fc33ba0c6c157e110afe3e015859524c4694dbb09812ec9d61595639 \
                             size    48588929
