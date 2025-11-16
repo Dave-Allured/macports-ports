@@ -4,9 +4,8 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           python 1.0
 
-github.setup        usnistgov fipy 3.4.5
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from tarball
+github.setup        usnistgov fipy 4.0.1
+github.tarball_from archive
 
 name                py-fipy
 categories-append   math
@@ -23,16 +22,15 @@ long_description    FiPy is an object oriented, partial differential \
 
 homepage            https://www.ctcms.nist.gov/fipy/
 
-checksums           rmd160  a049b2078226fb8254485df68c3bcc96264132d4 \
-                    sha256  ba1838fd212c10f7856e7598581475be5986887ba81099cc1f2b069b86ec3be6 \
-                    size    10776909
+checksums           rmd160  2bc7e95da9b097dd374a8da4848adcba6e926de9 \
+                    sha256  0bc02a81a7f7eb3f6f8b177b3ea4948228a320ee489960cffcfb6a9a823a8359 \
+                    size    34561676
 
-python.versions     310 311 312
+python.versions     310 311 312 313 314
 
 if {${name} ne ${subport}} {
     depends_lib-append  port:py${python.version}-numpy \
                         port:py${python.version}-matplotlib \
                         port:py${python.version}-scipy \
-                        port:gmsh \
-                        port:py${python.version}-future
+                        port:gmsh
 }
