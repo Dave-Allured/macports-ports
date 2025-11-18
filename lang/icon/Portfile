@@ -39,6 +39,10 @@ configure.pre_args
 
 configure.args      Configure name=macintosh
 
+#build.args-append   CC=${configure.cc} \
+#                    CXX=${configure.cxx} \
+#                    CPP=${configure.cpp}
+
 build.target        All
 
 destroot.target     Install
@@ -57,13 +61,13 @@ post-destroot {
     ln -s ../../../libexec/${name}/man/man1/icont.1 ${man1_dir}
 }
 
-default_variants    +x11
+#default_variants    +x11
 
 variant x11 {
     configure.args X-Configure name=macintosh
     depends_lib-append    port:xorg-libXt
 }
 
-# Include letter suffix in both the current version and the regex version.
+# Version has a letter suffix, so include letter on both sides of livecheck.
 livecheck.version   ${version}
 livecheck.regex     /tags/v(\[0-9a-z.\]+)\\.tar\\.gz
