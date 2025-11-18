@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/junegunn/fzf 0.66.0 v
+go.setup            github.com/junegunn/fzf 0.67.0 v
 github.tarball_from archive
 revision            0
 
@@ -19,9 +19,9 @@ maintainers         {isi.edu:calvin @cardi} \
                     openmaintainer
 
 checksums           ${distname}${extract.suffix} \
-                        rmd160  6ece3b41ba36bd629662fe9f3882e462975bc09c \
-                        sha256  576659beee244b4ecccf45f1c576340143d8ce6d97fa053e6cbdd3f75c66b351 \
-                        size    361069
+                        rmd160  babbc109b198f0dc871bd88adfb0e5facdf873d2 \
+                        sha256  da72936dd23045346769dbf233a7a1fa6b4cfe4f0e856b279821598ce8f692af \
+                        size    363116
 
 go.vendors          golang.org/x/text \
                         lock    v0.28.0 \

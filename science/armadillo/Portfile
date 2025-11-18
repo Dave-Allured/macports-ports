@@ -5,7 +5,7 @@ PortGroup           cmake 1.1
 PortGroup           mpi 1.0
 
 name                armadillo
-version             15.0.3
+version             15.2.1
 revision            0
 
 categories          science
@@ -27,9 +27,9 @@ master_sites        sourceforge:project/arma
 
 use_xz              yes
 
-checksums           rmd160  390fb3ad8205d3f2b96c909818f3871fb1c8eeee \
-                    sha256  9f55ec10f0a91fb6479ab4ed2b37a52445aee917706a238d170b5220c022fe43 \
-                    size    7175076
+checksums           rmd160  cb35e85e39200857176ca8b0ef8cf528b0cb12f5 \
+                    sha256  a5b8109da3c169802f51a14d3bd1246395c24bbca55601760b0c96a3c0b2f8fa \
+                    size    7086824
 
 depends_build-append \
                     port:pkgconfig

@@ -26,7 +26,7 @@ epoch                   1
 
 if {${os.platform} eq "darwin" && ${configure.cxx_stdlib} ne "libstdc++"} {
 
-    version             21.1.1
+    version             21.1.5
     revision            0
 
     livecheck.regex {"llvmorg-([0-9.]+)".*}
@@ -35,13 +35,13 @@ if {${os.platform} eq "darwin" && ${configure.cxx_stdlib} ne "libstdc++"} {
     distfiles       ${distname}.tar.xz cmake-${version}.src.tar.xz
 
     checksums       openmp-${version}.src.tar.xz \
-                    rmd160  f6017af171c1b247b0d421ec1dbc72acf38f8d4b \
-                    sha256  eb10379045844c2d2f1b89a15fd1beaf9cd0de524180c6648e9ea17a0661ece2 \
-                    size    1101460 \
+                    rmd160  8c7467295a19fc45d27932d21b7d1044d9516fb7 \
+                    sha256  4bbfe240f23f873fe5fdd4d65e07b6ec0c0a4721cd0d339018b1f520cee48a08 \
+                    size    1101652 \
                     cmake-${version}.src.tar.xz \
-                    rmd160  e43184d51ef380acfd2844820a33492d6d247e31 \
-                    sha256  9c0b9064b7d0f2a3004f1d034aadf84d2af4e5dca2135ebf697b0a1eb85ef769 \
-                    size    8972
+                    rmd160  e4e0c576be7413c26f6ca92ddac9d6b0a372c2d3 \
+                    sha256  48013d5714a96419bf993a2e5e4c5827377e8cf9c565070731fb2305d50d9511 \
+                    size    8976
 
     if {${os.major} <= 12} {
         # kmp_alloc.c includes <atomic> but libc++ is not the default on

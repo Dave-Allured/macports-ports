@@ -3,7 +3,7 @@
 PortSystem      1.0
 PortGroup       github 1.0
 
-github.setup    micronaut-projects micronaut-starter 4.9.4 v
+github.setup    micronaut-projects micronaut-starter 4.10.2 v
 revision        0
 name            micronaut
 categories      java
@@ -57,14 +57,14 @@ github.tarball_from releases
 
 if {${configure.build_arch} eq "x86_64"} {
     set micronaut_arch amd64
-    checksums    rmd160  c6b2953f99d725c6b9c55e624377496e7c8e7cc9 \
-                 sha256  622bbfc3b860c1a5b542e8e6d7efcb99e97de5d8b2922119d7502ef4bbecedce \
-                 size    29649335
+    checksums    rmd160  78f0e77dd6cd49669aa36ceb0d964e2ee278dc40 \
+                 sha256  a332c77240fa7f9f43dfc268ba75976b1c07e824854007592bf8ea437634e3da \
+                 size    29861790
 } elseif {${configure.build_arch} eq "arm64"} {
     set micronaut_arch aarch64
-    checksums    rmd160  f99a6df9764cee11bb4a924d7bb2100c5926872b \
-                 sha256  e6720b95ddb42cffc11808236bf2c10af57e21c7a0ad28e3156a09d1a36defb5 \
-                 size    29424966
+    checksums    rmd160  7f96469104b5d0a624b137d9789d2546552a816e \
+                 sha256  1213f23dec0d186d4d0452aec96f91123880fc29078956cc4a562e1c7d36faa5 \
+                 size    29635682
 } else {
     set micronaut_arch unsupported_arch
 }
