@@ -33,15 +33,28 @@ checksums           rmd160  7dd9f0905694292053a835f3929744abb281c91a \
 universal_variant   no
 use_parallel_build  no
 
+# Create a custom MacPorts "Makedefs" file for the Icon build system.
+# Overwrite the original version in icon-source/config/macintosh/Makedefs.
+
+set SYS_NAME        macintosh
+
+post-extract {
+    set makedefs [open ${worksrcpath}/config/${SYS_NAME}/Makedefs "w"]
+    puts ${makedefs} CC     = ${configure.cc}
+    puts ${makedefs} CFLAGS = ${configure.cflags}
+    puts ${makedefs} CFDYN  =
+    puts ${makedefs} RLINK  = ${configure.ldlags}
+    puts ${makedefs} RLIBS  =
+    puts ${makedefs} TLIBS  =
+    puts ${makedefs} XLIBS  = -lXpm -lX11
+    puts ${makedefs} SFLAGS =
+    close ${makedefs}
+}
+
 use_configure       yes
 configure.cmd       make
 configure.pre_args
-
-configure.args      Configure name=macintosh
-
-#build.args-append   CC=${configure.cc} \
-#                    CXX=${configure.cxx} \
-#                    CPP=${configure.cpp}
+configure.args      Configure name=${SYS_NAME}
 
 build.target        All
 
