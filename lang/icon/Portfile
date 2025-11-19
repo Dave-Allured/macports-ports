@@ -43,7 +43,7 @@ post-extract {
     puts ${makedefs} "CC     = ${configure.cc}"
     puts ${makedefs} "CFLAGS = ${configure.cflags}"
     puts ${makedefs} "CFDYN  ="
-    puts ${makedefs} "RLINK  = ${configure.ldlags}"
+    puts ${makedefs} "RLINK  = ${configure.ldflags}"
     puts ${makedefs} "RLIBS  ="
     puts ${makedefs} "TLIBS  ="
     puts ${makedefs} "XLIBS  = -lXpm -lX11"
