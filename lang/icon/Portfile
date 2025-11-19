@@ -40,14 +40,14 @@ set SYS_NAME        macintosh
 
 post-extract {
     set makedefs [open ${worksrcpath}/config/${SYS_NAME}/Makedefs "w"]
-    puts ${makedefs} CC     = ${configure.cc}
-    puts ${makedefs} CFLAGS = ${configure.cflags}
-    puts ${makedefs} CFDYN  =
-    puts ${makedefs} RLINK  = ${configure.ldlags}
-    puts ${makedefs} RLIBS  =
-    puts ${makedefs} TLIBS  =
-    puts ${makedefs} XLIBS  = -lXpm -lX11
-    puts ${makedefs} SFLAGS =
+    puts ${makedefs} "CC     = ${configure.cc}"
+    puts ${makedefs} "CFLAGS = ${configure.cflags}"
+    puts ${makedefs} "CFDYN  ="
+    puts ${makedefs} "RLINK  = ${configure.ldlags}"
+    puts ${makedefs} "RLIBS  ="
+    puts ${makedefs} "TLIBS  ="
+    puts ${makedefs} "XLIBS  = -lXpm -lX11"
+    puts ${makedefs} "SFLAGS ="
     close ${makedefs}
 }
 
