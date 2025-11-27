@@ -103,8 +103,8 @@ if {![variant_isset quartz] && ![variant_isset x11]} {
 }
 
 post-activate {
-    system "${prefix}/bin/update-desktop-database ${prefix}/share/applications"
-    system "${prefix}/bin/update-mime-database ${prefix}/share/mime"
+    system "${prefix}/bin/update-desktop-database -v ${prefix}/share/applications"
+    system "${prefix}/bin/update-mime-database -v ${prefix}/share/mime"
 }
 
 app.icon   ${worksrcpath}/images/hicolor/scalable/apps/org.gramps_project.Gramps.svg
