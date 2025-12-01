@@ -38,6 +38,7 @@ checksums               rmd160  81acb8547ecebd9a1ca335ae4cd949bd76e8df8c \
 patchfiles-append       patch-ustring_h.diff
 
 python.default_version  313
+python.pep517           no
 
 depends_build-append    path:bin/pkg-config:pkgconfig \
                         port:utfcpp
