@@ -5,7 +5,7 @@ PortGroup               mpi 1.0
 
 name                    pnetcdf
 version                 1.14.1
-revision                0
+revision                1
 maintainers             {@thiagoveloso gmail.com:thiagoveloso} openmaintainer
 categories              science devel
 license                 Permissive
