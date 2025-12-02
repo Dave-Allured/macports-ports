@@ -5,7 +5,7 @@ PortGroup               mpi 1.0
 
 name                    pnetcdf
 version                 1.14.1
-revision                0
+revision                1
 maintainers             {@thiagoveloso gmail.com:thiagoveloso} openmaintainer
 categories              science devel
 license                 Permissive
@@ -26,6 +26,8 @@ master_sites            ${homepage}/Release/
 checksums               rmd160  5989469c35c6f8cda91adf809f7e9c936e645a1e \
                         sha256  6f0f7221006c211fce9ddd2c008796b8c69dd717b2ad1be0b4027fc328fd3220 \
                         size    2512984
+
+patchfiles-append       patch-debug_check_fortran_m4.diff
 
 if {${os.platform} eq "darwin" && ${os.arch} eq "powerpc"} {
     mpi.setup           require require_fortran \
