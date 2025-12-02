@@ -1,0 +1,52 @@
+--- configure.orig	2025-07-31 15:25:30
++++ configure	2025-12-02 14:56:33
+@@ -39791,10 +39791,11 @@
+            end
+ EOF
+     ac_cv_ctype_fortran=no
+-    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if Fortran \"$NF_INT1_T\" is " >&5
+-printf %s "checking if Fortran \"$NF_INT1_T\" is ... " >&6; }
++    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking 555 if Fortran \"$NF_INT1_T\" is \n" >&5
++printf %s "checking 666 if Fortran \"$NF_INT1_T\" is ... \n" >&6; }
+     for ctype in "signed char" short int long; do
+-		cat >conftest.c <<EOF
++		printf %s "   check ctype = $ctype \n" >&6
++                cat >conftest.c <<EOF
+ 	    int $FCALLSCSUB($ctype values[4])
+ 	    {
+ 		return(values[1] != -2 || values[2] != -3);
+@@ -39802,26 +39803,34 @@
+ EOF
+ 	doit='$CC -c ${CPPFLAGS} ${CFLAGS} conftest.c'
+ 	if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$doit\""; } >&5
++  printf %s "     eval compile -c conftest.c\n" >&6
+   (eval $doit) 2>&5
+   ac_status=$?
++  printf %s "       ac_status = $ac_status \n" >&6
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+ 	    doit='$FC ${FFLAGS} -c conftestf.f'
+ 	    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$doit\""; } >&5
++  printf %s "     eval compile -c conftestf.f\n" >&6
+   (eval $doit) 2>&5
+   ac_status=$?
++  printf %s "       ac_status = $ac_status \n" >&6
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+ 	        doit='$FC -o conftest ${FFLAGS} ${FLDFLAGS} conftestf.o conftest.o ${LDFLAGS} ${LIBS}'
+ 	        if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$doit\""; } >&5
++  printf %s "     eval link ./conftest using \$FC \n" >&6
+   (eval $doit) 2>&5
+   ac_status=$?
++  printf %s "       ac_status = $ac_status \n" >&6
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+ 		    doit=./conftest
+ 		    if { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$doit\""; } >&5
++  printf %s "     eval ./conftest\n" >&6
+   (eval $doit) 2>&5
+   ac_status=$?
++  printf %s "       ac_status = $ac_status \n" >&6
+   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+ 		        		        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: \"$ctype\" in C" >&5
