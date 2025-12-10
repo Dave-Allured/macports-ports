@@ -58,11 +58,11 @@ depends_lib         port:desktop-file-utils \
 
 depends_run         path:lib/pkgconfig/librsvg-2.0.pc:librsvg
 
-patchfiles          patch-autogen.sh.diff \
-                    patch-configure.in.diff \
-                    patch-commands.c.diff \
-                    isfinite.patch \
-                    patch-lib-color.c.diff
+#patchfiles          patch-autogen.sh.diff \
+#                    patch-configure.in.diff \
+#                    patch-commands.c.diff \
+#                    isfinite.patch \
+#                    patch-lib-color.c.diff
 
 post-patch {
     reinplace s/isspecial/char_isspecial/ \
