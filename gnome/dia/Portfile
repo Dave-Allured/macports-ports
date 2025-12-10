@@ -2,13 +2,17 @@
 
 PortSystem          1.0
 PortGroup           active_variants 1.1
+PortGroup           gitlab 1.0
 
-name                dia
-version             0.97.3
-revision            7
-checksums           rmd160  a984efa1663cc154f4394060af37fab146f99175 \
-                    sha256  22914e48ef48f894bb5143c5efc3d01ab96e0a0cde80de11058d3b4301377d34 \
-                    size    5548500
+gitlab.instance     https://gitlab.gnome.org
+gitlab.setup        GNOME dia 3ce95975211707efe15d936923a2ae62433f27ec
+set git_date        20251109
+version             0.97.3-${git_date}
+revision            0
+
+checksums           rmd160  7abfd734b81f7e2fd3f056214c21909dbda0683f \
+                    sha256  25c8f722dddf0612abbdcf02296ae16e1ce6d38a3dfd6de206a696189213e00a \
+                    size    9446050
 
 set branch          [join [lrange [split ${version} .] 0 1] .]
 maintainers         nomaintainer
@@ -24,10 +28,10 @@ long_description    Dia is designed to be much like the commercial Windows \
                     to add support for new shapes by writing simple XML files, \
                     using a subset of SVG to draw the shape.
 
-homepage            https://wiki.gnome.org/Apps/Dia
-master_sites        gnome:sources/${name}/${branch}/
+#homepage            https://wiki.gnome.org/Apps/Dia
+#master_sites        gnome:sources/${name}/${branch}/
 
-use_xz              yes
+#use_xz              yes
 
 depends_build       port:intltool \
                     port:pkgconfig \
@@ -108,4 +112,9 @@ variant python27 description {Add python 2.7 bindings} {
     configure.env-append    PATH=${python_prefix}/bin:$env(PATH)
 }
 
-livecheck.type      gnome-with-unstable
+# Livecheck by whole date only.  Will miss later updates on same date.
+# For use with commit hash versions only, not normal version numbering.
+livecheck.regex     <updated>(\[0-9-\]*)T\[0-9:\]*
+livecheck.version   [string cat [string range ${git_date} 0 3  ] \
+                              - [string range ${git_date} 4 5  ] \
+                              - [string range ${git_date} 6 end] ]
