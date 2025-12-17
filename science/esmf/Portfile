@@ -16,7 +16,7 @@ mpi.setup
 mpi.enforce_variant netcdf-fortran
 
 github.setup        esmf-org esmf 8.9.0 v
-revision            0
+revision            1
 checksums           rmd160  2feba37ce838717915f5ac09f58364a8f9330242 \
                     sha256  586e0101d76ff9842d9ad43567fae50317ee794d80293430d9f1847dec0eefa5 \
                     size    14291036
@@ -49,10 +49,6 @@ depends_lib         port:netcdf \
                     port:netcdf-fortran \
                     port:xercesc3 \
                     port:yaml-cpp
-
-# Avoid duplicate LC_RPATH.
-# Discussion in https://github.com/macports/macports-ports/pull/21765
-compilers.add_gcc_rpath_support no
 
 post-patch {
     if {[variant_isset openmpi]} {
