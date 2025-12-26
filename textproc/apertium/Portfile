@@ -43,6 +43,8 @@ configure.cxxflags-append \
 legacysupport.newest_darwin_requires_legacy 18
 legacysupport.use_mp_libcxx yes
 
+use_autoreconf          yes
+
 depends_build-append    path:bin/pkg-config:pkgconfig \
                         port:utfcpp
 
