@@ -55,7 +55,7 @@ post-extract {
 use_configure       yes
 configure.cmd       make
 configure.pre_args
-configure.args      Configure name=${SYS_NAME}
+configure.args      X-Configure name=${SYS_NAME}
 
 build.target        All
 
@@ -78,8 +78,8 @@ post-destroot {
 default_variants    +x11
 
 variant x11 {
-    configure.args X-Configure name=macintosh
-    depends_lib-append    port:xorg-libXt
+    configure.args      X-Configure name=${SYS_NAME}
+    depends_lib-append  port:xorg-libXt
 }
 
 # Version has a letter suffix, so include letter on both sides of livecheck.
