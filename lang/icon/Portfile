@@ -47,7 +47,7 @@ post-extract {
     puts ${makedefs} "RLINK  = ${configure.ldflags}"
     puts ${makedefs} "RLIBS  ="
     puts ${makedefs} "TLIBS  ="
-    puts ${makedefs} "XLIBS  ="
+    puts ${makedefs} "XLIBS  = -lXpm -lX11"
     puts ${makedefs} "SFLAGS ="
     close ${makedefs}
 }
