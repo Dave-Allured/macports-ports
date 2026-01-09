@@ -47,7 +47,7 @@ post-extract {
     puts ${makedefs} "RLINK  = ${configure.ldflags}"
     puts ${makedefs} "RLIBS  ="
     puts ${makedefs} "TLIBS  ="
-    puts ${makedefs} "XLIBS  = -I${prefix}/include/X11 -lXpm -lX11"
+    puts ${makedefs} "XLIBS  ="
     puts ${makedefs} "SFLAGS ="
     close ${makedefs}
 }
@@ -81,7 +81,6 @@ variant x11 {
     depends_lib-append          port:xorg-libXt \
                                 port:xpm
     configure.args              X-Configure name=${SYS_NAME}
-    #configure.cppflags-append   -I${prefix}/include/X11 -lXpm -lX11
 }
 
 # Version has a letter suffix, so include letter on both sides of livecheck.
