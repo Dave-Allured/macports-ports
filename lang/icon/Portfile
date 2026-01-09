@@ -80,7 +80,7 @@ default_variants    +x11
 variant x11 {
     depends_lib-append          port:xorg-libXt
     configure.args              X-Configure name=${SYS_NAME}
-    configure.cppflags-append   "-I${prefix}/include/X11 -lXpm -lX11"
+    configure.cppflags-append   -I${prefix}/include/X11 -lXpm -lX11
 }
 
 # Version has a letter suffix, so include letter on both sides of livecheck.
