@@ -5,6 +5,8 @@ PortGroup           github 1.0
 
 github.setup        nrnrnr noweb 2.13
 revision            0
+github.tarball_from archive
+
 categories          devel
 maintainers         laposte.net:michael.grunewald
 description         A Simple, Extensible Tool for Literate Programming
@@ -15,7 +17,6 @@ long_description    Literate programming is the art of preparing programs \
                     Its primary advantages are simplicity, extensibility, \
                     and language-independence---especially noticeable \
                     when compared with other literate-programming tools.
-extract.suffix      .tgz
 
 checksums           rmd160  9c7c46f6882ad56f5397f8efd3f8f5ccaa3de6e9 \
                     sha256  7b32657128c8e2cb1114cca55023c58fa46789dcffcbe3dabde2c8a82fe57802 \
