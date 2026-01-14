@@ -22,4 +22,4 @@ checksums           rmd160  0b869c5e115394b1999296c5c9c9b16fbd1ae0a7 \
                     sha256  1af8b147eb1405d5839e78aeb93131690495fe9da5c91856cb33ad55a7f1e5b2 \
                     size    9077
 
-python.versions     311 312 313 314 315
+python.versions     311 312 313 314
