@@ -139,8 +139,11 @@ variant ffmpeg description {Add support for ffmpeg} {
         -DModule_vtkIOFFMPEG:BOOL=ON
 }
 
-variant qt5 description {Add Qt5 support.} {
+#variant qt5 description {Add Qt5 support.} {
+subport ${name}-qt5 {
     PortGroup           qt5 1.0
+
+    conflicts           ${name}
 
     configure.args-append \
                         -DQT_QMAKE_EXECUTABLE:PATH=${qt_qmake_cmd} \
@@ -216,7 +219,8 @@ variant xdmf description {Add XDMF readers} {
 
 if {[mpi_variant_isset]} {
     configure.args-append \
-        -DVTK_Group_MPI:BOOL=ON
+        -DVTK_Group_MPI:BOOL=ON \
+        -DVTK_USE_MPI:BOOL=ON
 }
 
 # Avoid release candidates
