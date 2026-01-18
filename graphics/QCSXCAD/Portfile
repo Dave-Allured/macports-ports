@@ -6,14 +6,13 @@ PortGroup           cmake 1.1
 PortGroup           qt5 1.0
 PortGroup           active_variants 1.1
 
-github.setup        thliebig QCSXCAD 1cde9d560a5000f4c24c249d2dd5ccda12de38b6
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from tarball
-version             20230106-[string range ${github.version} 0 7]
-checksums           rmd160  c619c2075e0e81b66c7b16dc3bc4ac9cbd44b1d0 \
-                    sha256  510c0c4b7833e4fdac51205256cd33341c55df7c500e910633b046cf40c380e0 \
-                    size    628662
-revision            1
+github.setup        thliebig QCSXCAD 63ac6f8c623665f06fdb35765048cb52c7190ce0
+github.tarball_from archive
+version             20251223-[string range ${github.version} 0 7]
+checksums           rmd160  1910912748dddeb8bbc42dede4d68dd56c810064 \
+                    sha256  782a4400f7b2e868babb1557c56079a2453cd8e4a7bf7bfb746857b1735acb73 \
+                    size    629425
+revision            0
 
 platforms           darwin macosx
 categories          graphics
