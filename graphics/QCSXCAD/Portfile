@@ -4,7 +4,6 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           cmake 1.1
 PortGroup           qt5 1.0
-PortGroup           active_variants 1.1
 
 github.setup        thliebig QCSXCAD 63ac6f8c623665f06fdb35765048cb52c7190ce0
 github.tarball_from archive
@@ -27,6 +26,4 @@ compiler.cxx_standard 2011
 depends_lib-append \
     port:CSXCAD \
     port:tinyxml \
-    port:vtk
-
-require_active_variants vtk qt5
+    port:vtk-qt5
