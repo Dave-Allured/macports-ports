@@ -1,16 +1,16 @@
---- Source/QtDialog/CMakeLists.txt.orig
-+++ Source/QtDialog/CMakeLists.txt
-@@ -308,7 +308,8 @@
+--- Source/QtDialog/CMakeLists.txt.orig	2026-01-31 22:10:48
++++ Source/QtDialog/CMakeLists.txt	2026-02-02 02:03:18
+@@ -286,7 +286,8 @@
      OUTPUT_NAME CMake
      MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist.in"
-     MACOSX_BUNDLE_SHORT_VERSION_STRING "${CMAKE_BUNDLE_VERSION}"
--    # TBD: MACOSX_BUNDLE_BUNDLE_VERSION "${CMAKE_BUNDLE_VERSION}"
-+    MACOSX_BUNDLE_LONG_VERSION_STRING "${CMAKE_BUNDLE_VERSION}-MacPorts"
-+    MACOSX_BUNDLE_BUNDLE_VERSION "${CMAKE_BUNDLE_VERSION}"
+     MACOSX_BUNDLE_SHORT_VERSION_STRING "${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}.${CMake_VERSION_PATCH}"
+-    # TBD: MACOSX_BUNDLE_BUNDLE_VERSION "${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}.${CMake_VERSION_PATCH}"
++    MACOSX_BUNDLE_LONG_VERSION_STRING "${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}.${CMake_VERSION_PATCH}-MacPorts"
++    MACOSX_BUNDLE_BUNDLE_VERSION "${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}.${CMake_VERSION_PATCH}"
      MACOSX_BUNDLE_COPYRIGHT "${CMake_COPYRIGHT_LINE}"
      MACOSX_BUNDLE_GUI_IDENTIFIER "org.cmake.cmake"
      )
-@@ -345,8 +346,12 @@
+@@ -323,8 +324,12 @@
  endif()
  
  if(APPLE)
@@ -21,11 +21,11 @@
    install(CODE "
 -    execute_process(COMMAND ln -s \"../MacOS/CMake\" cmake-gui
 +    execute_process(COMMAND ln -s \"${CMAKE_BUNDLE_LOCATION}/CMake.app/Contents/MacOS/CMake\" cmake-gui
-         WORKING_DIRECTORY \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/bin)
+         WORKING_DIRECTORY \$ENV{DESTDIR}\${CMAKE_INSTALL_PREFIX}/${CMake_INSTALL_BIN_DIR})
    " ${COMPONENT})
  endif()
---- Source/QtDialog/Info.plist.in.orig
-+++ Source/QtDialog/Info.plist.in
+--- Source/QtDialog/Info.plist.in.orig	2026-01-31 22:10:48
++++ Source/QtDialog/Info.plist.in	2026-02-01 23:24:31
 @@ -2,8 +2,15 @@
  <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
  <plist version="1.0">
@@ -51,31 +51,3 @@
  	<key>CFBundleShortVersionString</key>
  	<string>${MACOSX_BUNDLE_SHORT_VERSION_STRING}</string>
  	<key>CFBundleSignature</key>
---- CMakeLists.txt.orig
-+++ CMakeLists.txt
-@@ -440,12 +440,20 @@
-     if(APPLE)
-       set(CMAKE_BUNDLE_VERSION
-         "${CMake_VERSION_MAJOR}.${CMake_VERSION_MINOR}.${CMake_VERSION_PATCH}")
--      set(CMAKE_BUNDLE_LOCATION "${CMAKE_INSTALL_PREFIX}")
--      # make sure CMAKE_INSTALL_PREFIX ends in /
--      if(NOT CMAKE_INSTALL_PREFIX MATCHES "/$")
--        string(APPEND CMAKE_INSTALL_PREFIX "/")
-+      if(CMAKE_BUNDLE_LOCATION)
-+        message(STATUS "Using provided bundle location: ${CMAKE_BUNDLE_LOCATION}")
-+        message(STATUS "Using default install prefix: ${CMAKE_INSTALL_PREFIX}")
-+      else()
-+        set(CMAKE_BUNDLE_LOCATION "${CMAKE_INSTALL_PREFIX}")
-+        # make sure CMAKE_INSTALL_PREFIX ends in /
-+        if(NOT CMAKE_INSTALL_PREFIX MATCHES "/$")
-+          set(CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}/")
-+        endif()
-+        set(CMAKE_INSTALL_PREFIX
-+          "${CMAKE_INSTALL_PREFIX}CMake.app/Contents")
-+        message(STATUS "Using default Qt bundle location: ${CMAKE_BUNDLE_LOCATION}")
-+        message(STATUS "Using special install prefix: ${CMAKE_INSTALL_PREFIX}")
-       endif()
--      string(APPEND CMAKE_INSTALL_PREFIX "CMake.app/Contents")
-     endif()
-   endif()
- 
