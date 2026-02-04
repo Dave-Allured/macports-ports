@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/rclone/rclone 1.72.0 v
+go.setup            github.com/rclone/rclone 1.73.0 v
 go.offline_build    no
 revision            0
 
@@ -18,15 +18,14 @@ long_description \
     Backblaze B2, Yandex Disk, SFTP, and the local filesystem.
 
 checksums \
-    rmd160  47a1d82d236eccd12223290b44ac5e96d1ca0ab0 \
-    sha256  5a2eccbc3519224377c0fbbf4469c6e8125c37616ac28cf3c3ec091ccfbbe0c5 \
-    size    17605154
+    rmd160  00d00c168cc07959e92a07a4fcf95f16f98e9c75 \
+    sha256  91c777ce0bf41caa5de9aeaeae37310f9310bd7b12b5eee7337f57cbaae5830c \
+    size    17705593
 
 categories          net
 installs_libs       no
 license             MIT
-maintainers         {eborisch @eborisch} \
-                    {gmail.com:herby.gillot @herbygillot} \
+maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
 build.pre_args-append \

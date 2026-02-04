@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/air-verse/air 1.63.3 v
+go.setup            github.com/air-verse/air 1.64.5 v
 go.offline_build    no
 revision            0
 
@@ -18,9 +18,9 @@ license             GPL-3
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  1d0192fa43ff58398b0f545432c218fd8342f19c \
-                    sha256  55d320058a8992b849152cb58dd59d66ac3a9caf06feb6b0b7778fff2a6e6321 \
-                    size    1036349
+checksums           rmd160  d5587ff890146a78f82a0a8f1f996ebf8935930b \
+                    sha256  344202da98e4497825feb7459a6728ea113fffcf661215cf1ee4f313f3324a86 \
+                    size    1051289
 
 patch {
     # Set the build version directly in the Makefile. Do not attempt to

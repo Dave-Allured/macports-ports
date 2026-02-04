@@ -8,7 +8,7 @@ PortGroup           makefile 1.0
 # clock_gettime
 legacysupport.newest_darwin_requires_legacy 15
 
-github.setup        davidesantangelo krep 1.3.0 v
+github.setup        davidesantangelo krep 1.5.0 v
 github.tarball_from archive
 revision            0
 
@@ -20,17 +20,15 @@ long_description    \
     search algorithms and leverages modern hardware capabilities to deliver \
     maximum throughput.
 
-checksums           rmd160  01d5cc5043236fc94ada7bd318b7fcafc048d775 \
-                    sha256  76b0a9224b1e31aff49637c103b68e0d45d6b46456069e67e57b876a5c1ade59 \
-                    size    68200
+checksums           rmd160  ca68efc728189f838e361cfb1b3f704ee6862cae \
+                    sha256  ad8ddf43c93d96c681a555b8e614674332be6674fc2baef7d011902f0558e5bc \
+                    size    73028
 
 categories          textproc
 installs_libs       no
 license             BSD
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
-
-build.args-append   ENABLE_ARCH_DETECTION=0
 
 compiler.c_standard 2011
 # krep.h:15:10: fatal error: 'stdatomic.h' file not found
@@ -41,8 +39,11 @@ patch {
     reinplace -E {s|CC =|CC ?=|g}           ${worksrcpath}/Makefile
     reinplace -E {s|CFLAGS =|CFLAGS ?=|g}   ${worksrcpath}/Makefile
     reinplace -E {s|LDFLAGS =|LDFLAGS ?=|g} ${worksrcpath}/Makefile
-    # Remove below at next upgrade
-    reinplace -E {s|#define VERSION "1.2"|#define VERSION "1.3"|g} ${worksrcpath}/krep.c
+}
+
+variant native description "Build for native performance" {
+    build.args-append \
+                    NATIVE=1
 }
 
 destroot {

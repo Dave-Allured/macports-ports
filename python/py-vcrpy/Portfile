@@ -4,24 +4,26 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-vcrpy
-version             7.0.0
+version             8.1.1
 revision            0
+
 license             MIT
-maintainers         nomaintainer
+maintainers         {mps @Schamschula} openmaintainer
 description         This is a Python version of Ruby’s VCR library.
-long_description    {*}${description} VCR.py simplifies and speeds up tests that make HTTP requests.
+long_description    {*}${description} VCR.py simplifies and speeds up tests that make \
+                    HTTP requests.
 homepage            https://vcrpy.readthedocs.io/en/latest/
 
-checksums           rmd160  9f98a48ebc8ae9497667539c902b5e1d66b54d1e \
-                    sha256  176391ad0425edde1680c5b20738ea3dc7fb942520a48d2993448050986b3a50 \
-                    size    85502
+checksums           rmd160  d15f1af6e0c945438e96ec300275ea4d5a147320 \
+                    sha256  58e3053e33b423f3594031cb758c3f4d1df931307f1e67928e30cf352df7709f \
+                    size    85770
 
-python.versions     310 311 312 313
+python.versions     310 311 312 313 314
 
 if {${name} ne ${subport}} {
     depends_lib-append \
-                    port:py${python.version}-yaml \
+                    port:py${python.version}-urllib3 \
                     port:py${python.version}-wrapt \
-                    port:py${python.version}-yarl \
-                    port:py${python.version}-urllib3
+                    port:py${python.version}-yaml \
+                    port:py${python.version}-yarl
 }

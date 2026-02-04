@@ -4,9 +4,10 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-superqt
-version             0.7.6
+version             0.7.8
 revision            0
-categories          python
+
+categories-append   graphics
 license             BSD
 maintainers         {mps @Schamschula} openmaintainer
 description         \"missing\" widgets and components for PyQt/PySide
@@ -18,11 +19,11 @@ homepage            https://github.com/pyapp-kit/superqt
 supported_archs     noarch
 platforms           {darwin any}
 
-checksums           rmd160  d000820e4d63b30bca43519f125c61ae64288f8e \
-                    sha256  822fdba71dc391929c9d3db839f78ca2a861e2f2876926f969a288dfb2a9787e \
-                    size    107043
+checksums           rmd160  1a3c99efa66d93a8f1e1f5871b27d11c04fdad2a \
+                    sha256  799c76d780ad9ca289a6a87d481686e28d85e47e2383d1579f57a02b572392a8 \
+                    size    108367
 
-python.versions     310 311 312 313
+python.versions     310 311 312 313 314
 
 python.pep517_backend \
                     hatch

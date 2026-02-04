@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/cue-lang/cue 0.15.1 v
+go.setup            github.com/cue-lang/cue 0.15.4 v
 go.offline_build    no
 go.package          cuelang.org/go
 revision            0
@@ -22,9 +22,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  19bc9354789fc54ecc1343d0667a6baba3baee2b \
-                    sha256  d1bd4fe4fe39febdc07819e6feac8f8be9fc374202744d464ab540569855c7d8 \
-                    size    2561782
+checksums           rmd160  79426eb23f4b242a18c73c6ec212579f1a539e8c \
+                    sha256  504712c95d8df3b8b4fbb207aed2a3fea49dbdcc5dcfa873a64ca00801d5ef73 \
+                    size    2565993
 
 build.pre_args-append \
     -ldflags=\"-X ${go.package}/cmd/cue/cmd.version=${version}\" \
