@@ -10,7 +10,7 @@ legacysupport.newest_darwin_requires_legacy 13
 
 epoch               1
 
-# List of all bazel sub-ports
+# List of all bazel sub-ports ( now obsolete )
 set bazel_subports {
     bazel-6
 }
@@ -53,33 +53,15 @@ if { ${name} eq ${subport} } {
     # LTS JDK port to install if required java not found
     java.fallback   openjdk21
 
-    conflicts       bazel-6
-
 } elseif { "bazel-6" eq ${subport} } {
+    PortGroup       obsolete 1.0
+
+    # Specific version for py-tensorflow - DO NOT CHANGE
     github.setup    bazelbuild ${name} 6.5.0
-    revision        0
-    checksums       rmd160  ae91479a3518c99307029b48a8d449766dfd393e \
-                    sha256  fc89da919415289f29e4ff18a5e01270ece9a6fe83cb60967218bac4a3bb3ed2 \
-                    size    206369129
+    revision        1
 
-    set bazel_min_xcode 10.3
-    compiler.blacklist-append {clang < 1000}
-    compiler.blacklist-append {macports-clang-[5-9].0}
-
-    # fix deprectation warnings causing build failure for xcode >= 15
-    # upstream issue: https://github.com/bazelbuild/bazel/issues/20076
-    # fixed in commit  https://github.com/meteorcloudy/bazel/commit/1297bacf2f4470c23e12c3d79e5984c4d2f307ea
-    # included in bazel since 7.0.0 RC5
-    if {[vercmp ${xcodeversion} 15] >= 0} {
-        set extra_args "--copt=-Wno-deprecated-builtins --host_copt=-Wno-deprecated-builtins ${extra_args}"
-    }
-
-    # Required java version.
-    java.version    11
-    # LTS JDK port to install if required java not found
-    java.fallback   openjdk11
-
-    conflicts       bazel
+    # Obsolete Date: 2027-03-01
+    replaced_by     bazel
 }
 
 # exclude pre-release versions
