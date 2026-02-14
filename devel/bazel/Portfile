@@ -60,7 +60,7 @@ if { ${name} eq ${subport} } {
     github.setup    bazelbuild ${name} 6.5.0
     revision        1
 
-    # Obsolete Date: 2027-03-01
+    # Remove this obsolete subport after: 2027-03-01
     replaced_by     bazel
 }
 
@@ -123,7 +123,7 @@ configure.sdk_version
 configure.ccache    no
 
 # Use Python 3
-set py3ver 3.12
+set py3ver 3.13
 
 depends_lib-append  port:cctools
 
