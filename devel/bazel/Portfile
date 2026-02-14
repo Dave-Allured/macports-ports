@@ -307,10 +307,9 @@ destroot {
 }
 
 post-destroot {
-    # Mark documentation, source, and example directories
+    # Mark documentation and source directories
     set docdir ${myprefix}/share/doc
     set srcdir ${myprefix}/src
-    set expdir ${myprefix}/share/examples
     set bindir ${myprefix}/bin
 
     # Copy documentation files
@@ -326,10 +325,6 @@ post-destroot {
     # Copy source files
     xinstall -d ${destroot}${srcdir}
     file copy -force {*}[glob ${worksrcpath}/src/*] ${destroot}${srcdir}
-
-    # Copy example files
-    xinstall -d ${destroot}${expdir}
-    file copy -force {*}[glob ${worksrcpath}/examples/*] ${destroot}${expdir}
 
     # Link to binary in main prefix
     ln -s ${bindir}/${name} ${destroot}${prefix}/bin/${subport}
