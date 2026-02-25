@@ -13,11 +13,11 @@ legacysupport.newest_darwin_requires_legacy 10
 # PHP Warning:  Version warning: Imagick was compiled against Image Magick version XXXX but version YYYY is loaded. Imagick will run but may behave surprisingly in Unknown on line 0
 
 name                        ImageMagick
-version                     6.9.13-21
+version                     6.9.13-40
 revision                    0
-checksums                   rmd160  e933a953d06f5bbaec3fc5eb77279ba73292583d \
-                            sha256  985b9bf373c8b67c9df66d53247bdbb44aa79d133e75fb84d73179b238af8471 \
-                            size    9620376
+checksums                   rmd160  a7428025290f2cb439b4455347b0e7cf8681e80f \
+                            sha256  07d5e0f150d5065c6eda5765b1d3d0636ec2a5b99009c465b9456200432c0704 \
+                            size    14133687
 
 categories                  graphics devel
 maintainers                 {ryandesign @ryandesign}
