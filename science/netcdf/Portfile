@@ -28,7 +28,7 @@ homepage                    https://www.unidata.ucar.edu/software/netcdf
 
 # Fetch from upstream release archive, not github.
 # Distfile standard suffix is .tar.gz, the MacPorts default.
-master_sites                https://downloads.unidata.ucar.edu/netcdf-c/
+master_sites                https://downloads.unidata.ucar.edu/netcdf-c/${version}
 distname                    netcdf-c-${version}
 
 checksums           rmd160  f227127be3d4d4d2bc9b2dd5911c900a2977dba6 \
