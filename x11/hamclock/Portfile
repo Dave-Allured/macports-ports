@@ -72,13 +72,13 @@ variant web1600x960     description {Web 1600x960}     {build.target hamclock-we
 variant web2400x1440    description {Web 2400x1440}    {build.target hamclock-web-2400x1440}
 variant web3200x1920    description {Web 3200x1920}    {build.target hamclock-web-3200x1920}
 
-# add xorg-libX11 dependency for x11 variants
+# Add xorg-libX11 dependency for x11 variants.
+# Check the first character after "hamclock-" in the build target.
+# A digit "0-9" indicates an X11 variant.  "w" indicates a web variant.
 
-if {   [variant_isset x800x480  ] || [variant_isset x1600x960 ]
-    || [variant_isset x2400x1440] || [variant_isset x3200x1920] } {
-        depends_lib-append  port:xorg-libX11
+if {[string is digit [string index ${build.target} 9]]} {
+    depends_lib-append  port:xorg-libX11
 }
-
 
 if {${os.platform} eq "darwin" && ${os.major} < 16} {
     build.env-append    LIBS=-lMacportsLegacySupport
