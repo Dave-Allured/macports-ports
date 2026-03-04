@@ -8,22 +8,21 @@ PortGroup               legacysupport 1.1
 # clock_gettime
 legacysupport.newest_darwin_requires_legacy 16
 
-github.setup            lfortran lfortran 0.42.0 v
+github.setup            lfortran lfortran 0.60.0 v
 revision                0
 categories              lang fortran
 maintainers             {@barracuda156 gmail.com:vital.had} openmaintainer
 license                 BSD
 description             Modern open-source interactive Fortran compiler
 long_description        LFortran is a modern open-source interactive Fortran compiler built on top of LLVM. \
-                        It can execute user’s code interactively to allow exploratory work \
+                        It can execute user's code interactively to allow exploratory work \
                         (much like Python, MATLAB or Julia) as well as compile to binaries \
-                        with the goal to run user’s code on modern architectures such as multi-core CPUs and GPUs.
+                        with the goal to run user's code on modern architectures such as multi-core CPUs and GPUs.
 homepage                https://lfortran.org
 
-checksums               rmd160  c7a21ce5cb83adc9979278731b3ab0282c359de0 \
-                        sha256  9da79d6789b2bd1bb864b653cd217fcd9fc3af3b9a1e24ee527f41cc7c515e8b \
-                        size    2921696
-github.tarball_from     archive
+checksums               rmd160  a0822ab0d0ca562895d3d6b5e359845dbfe74259 \
+                        sha256  6cd36a260fd24f7bba8817d1d21a8eb29e5bebbea4241bf7ce71572cd3c8f7ba \
+                        size    2515536
 
 set port_libfmt         libfmt11
 cmake.module_path-append \
