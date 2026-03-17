@@ -314,7 +314,7 @@ livecheck.regex                 \"name\":\s*\"(\[0-9\]+\\.\[0-9\]+\\.\[0-9\]+)*\
 subport graphviz-gui${thisbranch} {
     PortGroup                   xcode 1.0
 
-    revision                    0
+    revision                    1
 
     conflicts                   graphviz-gui${otherbranch} graphviz-oldgui
 
