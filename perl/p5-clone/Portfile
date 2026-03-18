@@ -24,8 +24,8 @@ checksums           rmd160  39345e46df7aa52af499a1da23db5be0290bd371 \
 # Fetch from cloned repo, avoid name conflict with existing MacPorts cached distfile.
 # This is an exact binary copy of the original GitHub 0.48 tar file.
 #
-master_sites        https://github.com/Dave-Allured/Clone/releases/download/${version}
-distname            ${version}.copy-github
+master_sites        https://github.com/Dave-Allured/Clone/releases/download/0.48
+distname            0.48.copy-github
 
 if {${perl5.major} != ""} {
     depends_build-append \
