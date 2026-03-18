@@ -20,7 +20,12 @@ checksums           rmd160  39345e46df7aa52af499a1da23db5be0290bd371 \
 # Avoid invalid extended attributes in CPAN tar file.
 # https://trac.macports.org/ticket/73560
 # Remove this block when a valid CPAN tar file becomes available.
-master_sites        https://github.com/garu/Clone/archive/refs/tags
+#
+# Fetch from cloned repo, avoid name conflict with existing MacPorts cached distfile.
+# This is an exact binary copy of the original GitHub 0.48 tar file.
+#
+master_sites        https://github.com/Dave-Allured/Clone/releases/download/${version}
+distname            ${version}.copy-github
 
 if {${perl5.major} != ""} {
     depends_build-append \
