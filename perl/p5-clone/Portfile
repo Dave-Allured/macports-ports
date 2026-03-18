@@ -11,9 +11,16 @@ maintainers         nomaintainer
 description         Clone - recursively copy Perl datatypes
 long_description    {*}${description}
 
-checksums           rmd160  03dec0bf092ed1aafc39497702fb91a5d9c91788 \
-                    sha256  321d4cd1078e19519600abd7bda2991b468603c58455479e3d2e25a5acb1911f \
-                    size    160997
+checksums           rmd160  39345e46df7aa52af499a1da23db5be0290bd371 \
+                    sha256  61ff1812f89666ed16c3acb1aa4012625e5b350e18098aebcdbad3a3022976a5 \
+                    size    161857
+
+# TEMPORARY 2026 March 18:  Fix builds for macOS 10.7-10.14.
+# Fetch upstream GitHub tar file.
+# Avoid invalid extended attributes in CPAN tar file.
+# https://trac.macports.org/ticket/73560
+# Remove this block when a valid CPAN tar file becomes available.
+master_sites        https://github.com/garu/Clone/archive/refs/tags
 
 if {${perl5.major} != ""} {
     depends_build-append \
