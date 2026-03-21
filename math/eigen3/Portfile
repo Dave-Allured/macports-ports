@@ -1,168 +1,119 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
+PortGroup           active_variants 1.1
 PortGroup           compilers 1.0
-PortGroup           cmake 1.1
-PortGroup           gitlab 1.0
 
-name                eigen3
-license             {MPL-2 LGPL-2.1+} LGPL-3+
-categories          math science
-maintainers         {eborisch @eborisch} {@barracuda156 gmail.com:vital.had} \
-                    openmaintainer
-description         A C++ template library for linear algebra: vectors, \
-                    matrices, and related algorithms.
-long_description    {*}${description}
+name                imager
+version             202603
+revision            0
+set source_version  4.7-01
+set my_version      [string tolower [clock format [clock scan 2000-[string range ${version} 4 5]-10] -format %b]][string range ${version} 2 3][string range ${version} 6 end]
 
-depends_build-append    path:bin/pkg-config:pkgconfig
+categories          science
+maintainers         {u-bordeaux.fr:arnaud.collioud @collioud}
+license             permissive
 
-if {${subport} eq ${name}} {
-    gitlab.setup        libeigen eigen 3.4.0
-    revision            1
-    conflicts           eigen3-devel
+description         Radio-interferometry data analysis software
 
-    checksums           rmd160  4b70962c6c1454d0909ed04776c812a78ffdce03 \
-                        sha256  b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626 \
-                        size    2143091
+long_description    IMAGER (and its associated visualization tool VIEWER) is a state-of-the-art \
+                    software oriented toward (sub-)millimeter radioastronomical interferometry. \
+                    It is used to reduce data acquired with the IRAM NOEMA interferometer \
+                    and the ALMA or JVLA arrays, with a simple, convenient user interface.
 
-    # Backport of: https://gitlab.com/libeigen/eigen/-/commit/4d05765345e7e4a984d600039f797e2fede924f3
-    patchfiles-append   patch-ppc.diff
+homepage            https://imager.oasu.u-bordeaux.fr
 
-    compiler.cxx_standard \
-                        2011
-}
+set site_base       https://share.oasu.u-bordeaux.fr/imager
+master_sites        ${site_base}/
+distname            ${name}-${my_version}
+distfiles           ${name}-${my_version}.tgz
+worksrcdir          ${name}-src-${my_version}
 
-subport eigen3-devel {
-    gitlab.setup        libeigen eigen 8ad4344c
-    # For when there is no current development version (other than rolling snapshot)
-    version             3.4-tracking-20241122
-    revision            0
-    epoch               3
-    gitlab.livecheck.branch master
+checksums           rmd160  da11df8b1e689d8290af833cd25c57f0b040440a \
+                    sha256  7ebaa8ebab4166f952ce5a128421bad29bf6fc36b6ee676b47772f7a0b86994f \
+                    size    31639511
 
-    conflicts           eigen3
+set py_ver          3.14
+set py_ver_nodot    [string map {. {}} ${py_ver}]
 
-    long_description    {*}${description} This (-devel) version tracks \
-                        development of the current (3.4) branch.
+# coreutils needed to use GNU gsort instead of native BSD sort as older version
+# of sort do not support sort -V:
+depends_build-append \
+                    port:cfitsio \
+                    path:libexec/coreutils/libstdbuf.so:coreutils \
+                    port:groff \
+                    path:bin/pkg-config:pkgconfig
 
-    checksums           rmd160  c7891fe0d6b45c82bb938a0fa596803148456abb \
-                        sha256  2550f496965bc1409f421f3fb20e4b3adecb374712cdb3e57f173e1f4f23a97c \
-                        size    2278889
+depends_lib-append \
+                    port:fftw-3-single \
+                    path:lib/pkgconfig/gdk-pixbuf-2.0.pc:gdk-pixbuf2 \
+                    path:lib/pkgconfig/gtk+-2.0.pc:gtk2 \
+                    path:lib/pkgconfig/harfbuzz.pc:harfbuzz \
+                    port:libpng \
+                    port:python${py_ver_nodot} \
+                    port:py${py_ver_nodot}-numpy
 
-    # Eigen's source code specifically checks the version of Apple Clang.
-    compiler.blacklist-append \
-                        {clang < 900}
-    compiler.cxx_standard \
-                        2014
-    compilers.setup     require_fortran
-}
+set my_build_opts   "-o openmp"
+#variant openmp description {Add OpenMP support} {set my_build_opts "-o openmp"}
 
-# Exclude pre-release versions
-gitlab.livecheck.regex {([0-9.]+)}
+# need x11 and cannot be used with quartz; see ticket #42886
+require_active_variants gtk2 x11 quartz
 
-homepage            http://eigen.tuxfamily.org/
+# need the fortran interface; see ticket #50543
+compilers.enforce_some_fortran cfitsio
 
-variant doc description \
-    {Place local documentation into <prefix>/share/doc/eigen3/html} {
-        depends_build-append    path:bin/doxygen:doxygen \
-                                port:texlive-latex \
-                                path:bin/dot:graphviz
-        build.target-append     doc
-}
+# correction bug duplicate LC_RPATH
+compilers.add_gcc_rpath_support no
 
-variant blas description \
-    {Build eigen's blas (libeigen_blas*) : needs +gccNN, +g95, or +gfortran} {
-        PortGroup               muniversal 1.0
+compilers.choose    fc
+compilers.setup     -gcc46 require_fortran
 
-        build.target-append     blas
-        universal_variant       yes
-        configure.universal_args ""
-}
+# Xcode clang on 10.7 fails: invalid instruction mnemonic 'cvtsi2ssl'
+# https://github.com/macports/macports-ports/pull/17193
+# https://github.com/william-dawson/NTPoly/issues/192
+compiler.blacklist-append \
+                    {clang < 500}
 
-configure.env-append    PKG_CONFIG_LIBDIR=${prefix}/lib/pkgconfig
+configure.python    ${prefix}/bin/python${py_ver}
 
-test.run            yes
-test.target         check
-test.env-append     EIGEN_MAKE_ARGS=-j{build.jobs} \
-                    EIGEN_CTEST_ARGS=-j{build.jobs}
-
-# Enable parallel builds
-build.env-append    EIGEN_MAKE_ARGS=-j{build.jobs}
-
-### END CMAKE SUPPORT
-
-# Setup compilers support / requirements
-
-if {[variant_isset blas]} {
-    compilers.choose    cc cxx cpp fc f77 f90
-    compilers.setup     require_fortran
-} elseif {[variant_isset doc]} {
-    compilers.choose    cc cxx cpp
-    compilers.setup
-} else {
-    # No architecture-dependent files installed; set noarch
-    supported_archs     noarch
-    platforms           any
-    compilers.setup
-}
-
-### Extra phases
-
-# Install licenses and (if +doc) documentation
-pre-destroot {
-    set build_suffix {}
-    if {![info exists universal_archs_to_use]} {
-        lappend build_suffix ""
-    } else {
-        set dash "-"
-        foreach arch ${universal_archs_to_use} {
-            lappend build_suffix ${dash}${arch}
-        }
+configure {
+    set cxxstdlib {}
+    if {[string match *clang* ${configure.cxx}]} {
+        set cxxstdlib [string map {lib -l} ${configure.cxx_stdlib}]
     }
 
-    foreach sfx ${build_suffix} {
-        set docdir ${destroot}${sfx}${prefix}/share/doc/eigen3
-        xinstall -d ${docdir}
-
-        foreach item [glob -directory ${worksrcpath} COPYING.*] {
-            xinstall -m 644 -W ${worksrcpath} ${item} ${docdir}
-        }
-
-        # Install documentation if requested
-        if {[variant_isset doc]} {
-            if {[string equal ${sfx} [lindex ${build_suffix} 0]]} {
-                # The documentation created is slightly different for each arch
-                # which makes muniversal hiccup. Just copy one set of docs
-                # into destroot directories.
-                file copy ${cmake.build_dir}${sfx}/doc/html ${docdir}
-            }
-        }
-
-        if {[variant_isset blas]} {
-            set libdir ${destroot}${sfx}${prefix}/lib
-            xinstall -d ${libdir}
-            file copy \
-                {*}[glob ${cmake.build_dir}${sfx}/blas/libeigen_blas*] ${libdir}
-        }
-    }
+    reinplace -W ${worksrcpath}/admin "s|@PREFIX@|${prefix}|g" define-system.sh imager-env.sh
+    reinplace -W ${worksrcpath}/admin "s|@CC@|${configure.cc}|g" define-system.sh
+    reinplace -W ${worksrcpath}/admin "s|@CCFLAGS@|${configure.cflags}|g" Makefile.def
+    reinplace -W ${worksrcpath}/admin "s|@FC@|${configure.fc}|g" define-system.sh
+    reinplace -W ${worksrcpath}/admin "s|@FCFLAGS@|${configure.fcflags}|g" Makefile.def
+    reinplace -W ${worksrcpath}/admin "s|@CXX@|${configure.cxx}|g" define-system.sh
+    reinplace -W ${worksrcpath}/admin "s|@CPP@|${configure.cpp}|g" Makefile.def define-system.sh
+    reinplace -W ${worksrcpath}/admin "s|@CPPFLAGS@|${configure.cppflags}|g" Makefile.def
+    reinplace -W ${worksrcpath}/admin "s|@LDFLAGS@|${configure.ldflags}|g" Makefile.def
+    reinplace -W ${worksrcpath}/admin "s|@PYTHON@|${configure.python}|g" define-system.sh
 }
 
-post-destroot {
-    # Grab extra items install doesn't out of unsupported
-    foreach n {README.txt bench} {
-        file copy ${worksrcpath}/unsupported/${n} \
-            ${destroot}${prefix}/include/eigen3/unsupported
-    }
+build {
+    set my_machine   [if {[string match *arm* ${os.arch}]} {list arm64} {list x86_64}]
+    set my_env_vers  [string tolower [exec sw_vers -productName | tr -d " "]]
 
-    # Install FindEigen3.cmake file, if it is provided.
-    xinstall -d ${destroot}${cmake_share_module_dir}
-    if {[file exists ${worksrcpath}/cmake/FindEigen3.cmake]} {
-        xinstall -m 444 ${worksrcpath}/cmake/FindEigen3.cmake \
-            ${destroot}${cmake_share_module_dir}
-    }
+    system -W ${worksrcpath} "source admin/imager-env.sh -c ${configure.fc} ${my_build_opts} -s ${prefix}/include:${prefix}/lib:/System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/Versions/Current/ && export GAG_SLDFLAGS='-shared -o ${prefix}/lib/imager/${my_machine}-${my_env_vers}-gfortran/lib/\$(notdir \$@) -install_name ${prefix}/lib/imager/${my_machine}-${my_env_vers}-gfortran/lib/\$(notdir \$@)' && export DYLD_LIBRARY_PATH=${worksrcpath}/integ/${my_machine}-${my_env_vers}-gfortran/lib && export GAG_ADDONS=yes && make --jobs=${build.jobs} -w install"
 }
 
-notes "
-This product includes software developed by the University of Chicago, as\
-Operator of Argonne National Laboratory.
-"
+destroot {
+    copy ${workpath}/imager-exe-${my_version} ${destroot}${prefix}/lib/imager
+
+    xinstall ${filespath}/imager.in ${destroot}${prefix}/bin/imager
+    xinstall ${filespath}/viewer.in ${destroot}${prefix}/bin/viewer
+
+    set my_machine   [if {[string match *arm* ${os.arch}]} {list arm64} {list x86_64}]
+    set my_env_vers  [string tolower [exec sw_vers -productName | tr -d " "]]
+
+    reinplace -W ${destroot}${prefix}/bin s|@PREFIX@|${prefix}|g imager viewer
+    reinplace -W ${destroot}${prefix}/bin s|@ARCH@|${my_machine}|g imager viewer
+    reinplace -W ${destroot}${prefix}/bin s|@OSNAME@|${my_env_vers}|g imager viewer
+
+}
+
+livecheck.url       ${site_base}
