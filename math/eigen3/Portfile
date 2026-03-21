@@ -57,9 +57,8 @@ subport eigen3-devel {
     compilers.setup     require_fortran
 }
 
-# Constrain to legacy 3.x series only.
-# Exclude pre-release versions.
-gitlab.livecheck.regex {(3.[0-9.]+)}
+# Exclude pre-release versions
+gitlab.livecheck.regex {(3[0-9.]+)}
 
 homepage            http://eigen.tuxfamily.org/
 
