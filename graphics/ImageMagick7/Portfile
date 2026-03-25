@@ -61,6 +61,7 @@ master_sites        https://imagemagick.org/archive/ \
                     https://mirror.metanet.ch/imagemagick/ \
                     http://mirror.checkdomain.de/imagemagick/releases/ \
                     ftp://sunsite.icm.edu.pl/packages/ImageMagick/releases/
+distname            ImageMagick-${version}
 
 depends_lib         port:bzip2 \
                     port:djvulibre \
