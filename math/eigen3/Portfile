@@ -17,13 +17,13 @@ long_description    {*}${description}
 depends_build-append    path:bin/pkg-config:pkgconfig
 
 if {${subport} eq ${name}} {
-    gitlab.setup        libeigen eigen 3.4.0
-    revision            1
+    gitlab.setup        libeigen eigen 3.4.1
+    revision            0
     conflicts           eigen3-devel
 
-    checksums           rmd160  4b70962c6c1454d0909ed04776c812a78ffdce03 \
-                        sha256  b4c198460eba6f28d34894e3a5710998818515104d6e74e5cc331ce31e46e626 \
-                        size    2143091
+    checksums           rmd160  d9e19bc11df8b106f0e93271785474d335df8052 \
+                        sha256  8bb7280b7551bf06418d11a9671fdf998cb927830cf21589b394382d26779821 \
+                        size    2157363
 
     # Backport of: https://gitlab.com/libeigen/eigen/-/commit/4d05765345e7e4a984d600039f797e2fede924f3
     patchfiles-append   patch-ppc.diff
@@ -57,8 +57,9 @@ subport eigen3-devel {
     compilers.setup     require_fortran
 }
 
-# Exclude pre-release versions
-gitlab.livecheck.regex {([0-9.]+)}
+# Constrain to legacy 3.x series only.
+# Exclude pre-release versions.
+gitlab.livecheck.regex {(3.[0-9.]+)}
 
 homepage            http://eigen.tuxfamily.org/
 
