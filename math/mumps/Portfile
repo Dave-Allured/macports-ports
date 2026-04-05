@@ -26,9 +26,9 @@ master_sites                ${homepage}
 
 distname                    MUMPS_${version}
 
-checksums                   rmd160  a11df7b1399aa5ffbc74723c662ef01c0702c2d6 \
-                            sha256  84a47f7c4231b9efdf4d4f631a2cae2bdd9adeaabc088261d15af040143ed112 \
-                            size    4542883
+checksums                   rmd160  165c816921cede9c7983b972164a0ea9d8b82037 \
+                            sha256  eb515aa688e6dbab414bb6e889ff4c8b23f1691a843c68da5230a33ac4db7039 \
+                            size    4476609
 
 conflicts_build-append      ${name}
 
