@@ -26,14 +26,14 @@ compiler.blacklist-append {clang < 1100}
 # not from the official VTK download page in gz format.
 
 gitlab.instance     https://gitlab.kitware.com
-gitlab.setup        vtk vtk 9.5.2 v
-revision            1
+gitlab.setup        vtk vtk 9.6.1 v
+revision            0
 categories          graphics devel
 license             BSD
 
-checksums           rmd160  06caa56eedf6a01d1e10bcc07ab2242e2dee1252 \
-                    sha256  a85763e3c040b6ae3139f1097339369456e1cc9d2aa6920f46da3709ddbe48e4 \
-                    size    40310394
+checksums           rmd160  78b698175f3a50258a536cd74197b314e65bf2b9 \
+                    sha256  6285ac066afbf411270fcd728647d89bf5145deb39c169592a1e4b4ecad7de53 \
+                    size    44120201
 
 maintainers         {@Dave-Allured noaa.gov:dave.allured} \
                     openmaintainer
@@ -207,5 +207,11 @@ if {[mpi_variant_isset]} {
         -DVTK_USE_MPI:BOOL=ON
 }
 
-# Avoid release candidates
-gitlab.livecheck.regex  {([0-9.]+)}
+# Fetch Github mirror to avoid Anubis blocker.
+# Kitware Gitlab instance is Anubis blocked.
+# Kitware main VTK website is Anubis blocked.
+# Avoid release candidates.
+
+livecheck.url    https://github.com/Kitware/VTK/tags
+livecheck.type   regex
+livecheck.regex  {tags/[v]*([0-9.]+).tar}
