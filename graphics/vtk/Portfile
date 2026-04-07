@@ -26,8 +26,8 @@ compiler.blacklist-append {clang < 1100}
 # not from the official VTK download page in gz format.
 
 gitlab.instance     https://gitlab.kitware.com
-gitlab.setup        vtk vtk 9.5.2 v
-revision            1
+gitlab.setup        vtk vtk 9.6.1 v
+revision            0
 categories          graphics devel
 license             BSD
 
@@ -208,4 +208,4 @@ if {[mpi_variant_isset]} {
 }
 
 # Avoid release candidates
-gitlab.livecheck.regex  {([0-9.]+)}
+livecheck.regex  {(anub[a-zA-Z0-9{}/.,<>_()-]+)}
