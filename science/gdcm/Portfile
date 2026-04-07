@@ -35,8 +35,7 @@ compiler.blacklist-append \
                         {clang < 801}
 
 # fix error with newer Poppler
-patchfiles-append       patch-poppler.diff \
-                        patch-cstr.diff
+patchfiles-append       patch-poppler.diff
 
 depends_build-append    path:bin/pkg-config:pkgconfig
 
