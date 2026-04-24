@@ -2,6 +2,9 @@
 
 set -e
 
+echo bootstrap.sh: Start.
+xcrun metal -v
+
 MPBB=$1
 
 printtag() {
@@ -82,12 +85,18 @@ test ! -d /opt/homebrew || /usr/bin/sudo /usr/bin/find /opt/homebrew -mindepth 1
 hash -r
 endgroup
 
+echo Check:
+xcrun metal -v
+
 begingroup "Selecting Xcode version"
 case "$OS_MAJOR" in
     23) sudo xcode-select --switch /Applications/Xcode_16.2.app/Contents/Developer
         ;;
 esac
 endgroup
+
+echo Check:
+xcrun metal -v
 
 begingroup "Installing getopt"
 # Install getopt required by mpbb
@@ -110,6 +119,8 @@ sudo tar -xpf "${MACPORTS_FILENAME}" -C /
 rm -f "${MACPORTS_FILENAME}"
 endgroup
 
+echo Check:
+xcrun metal -v
 
 begingroup "Configuring MacPorts"
 # Set PATH for portindex
@@ -130,6 +141,8 @@ echo "archive_site_local https://packages-private.macports.org/:tbz2" | sudo tee
 #echo "preferred_hosts packages.macports.org" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
 endgroup
 
+echo Check:
+xcrun metal -v
 
 if [ -n "$MPBB" ] ; then
 begingroup "Updating PortIndex"
@@ -154,3 +167,7 @@ begingroup "Running postflight"
 # Create macports user
 sudo /opt/local/libexec/macports/postflight/postflight
 endgroup
+
+echo bootstrap.sh: Final check.
+xcrun metal -v
+echo bootstrap.sh: End.
