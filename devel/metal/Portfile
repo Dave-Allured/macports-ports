@@ -1,0 +1,36 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem 1.0
+
+name                metal
+version             1.0
+revision            0
+
+categories          devel
+license             BSD
+maintainers         {@Dave-Allured noaa.gov:dave.allured} \
+                    openmaintainer
+
+description         Pseudo port to test for Metal Toolchain
+long_description    {*}${description}
+
+homepage            none
+master_sites        none
+livecheck.type      none
+
+# Port phases
+
+fetch {}
+#checksum {}
+#extract {}
+#patch {}
+
+#configure {}
+
+configure.cmd       xcrun metal -v
+
+build {}
+test {}
+destroot {}
+install {}
+activate {}
