@@ -21,8 +21,8 @@ livecheck.type      none
 # Port phases
 
 fetch {}
-#checksum {}
-#extract {}
+checksum {}
+extract {}
 #patch {}
 
 #configure {}
