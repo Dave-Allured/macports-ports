@@ -39,6 +39,8 @@ mpi.enforce_variant         scalapack
 
 linalg.setup                blas_only
 
+patchfiles-append           patch-ana_omp_m.diff
+
 use_parallel_build          no
 
 build.target                all allshared
