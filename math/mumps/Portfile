@@ -9,7 +9,7 @@ PortGroup                   muniversal 1.0
 
 name                        mumps
 version                     5.7.3
-revision                    1
+revision                    2
 categories                  math
 license                     CeCILL-C
 maintainers                 {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
