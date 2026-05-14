@@ -1,0 +1,22 @@
+--- src/ana_omp_m.F.orig	2026-04-28 07:06:05
++++ src/ana_omp_m.F	2026-05-14 11:50:08
+@@ -782,7 +782,7 @@
+           INV_PERM_L0_OMP ( I ) = I
+       END DO
+       IF ( L_PHYS_L0_OMP .GT. 1 ) THEN
+-        CALL MUMPS_QUICK_SORT_PHYS_L0( N, STEP(1), PHYS_L0_OMP(1),
++        CALL MUMPS_QUICK_SORT_PHYS_L0( N, STEP, PHYS_L0_OMP,
+      &     INV_PERM_L0_OMP, L_PHYS_L0_OMP, 1, L_PHYS_L0_OMP )
+       ENDIF
+       DO I = 1, L_PHYS_L0_OMP
+@@ -830,8 +830,8 @@
+       IPOOL_A_L0_OMP(LPOOL_A_L0_OMP-1) = 0
+       IPOOL_A_L0_OMP(LPOOL_A_L0_OMP-2) = 0
+       IF (LEAF .GT. 1) THEN
+-        CALL MUMPS_QUICK_SORT_IPOOL_PO( N, STEP(1), 
+-     &            IPOOL_A_L0_OMP(1), LEAF, 1, LEAF )
++        CALL MUMPS_QUICK_SORT_IPOOL_PO( N, STEP, 
++     &            IPOOL_A_L0_OMP, LEAF, 1, LEAF )
+       ENDIF
+  300  CONTINUE
+       IF (allocated(NB_TASK_PER_THREAD)) DEALLOCATE (NB_TASK_PER_THREAD)
