@@ -4,9 +4,7 @@ PortSystem          1.0
 PortGroup           cmake 1.1
 PortGroup           github 1.0
 
-
-github.setup        coin3D coin 4.0.8 v -src
-github.tarball_from releases
+github.setup        coin3D coin 4.0.8 v
 revision            0
 license             BSD
 description         cross platform C++ OpenGL scene graph library
@@ -15,9 +13,12 @@ long_description    Coin is a high-level 3D graphics library with a   \
                     structures to render real-time graphics suitable for mostly all   \
                     kinds of scientific and engineering visualization applications.
 
-#conflicts           coin-framework
+conflicts           coin-framework
 categories          graphics devel
 maintainers         nomaintainer
+
+github.tarball_from releases
+distname            ${github.project}-${github.version}-src
 
 checksums           rmd160  5aba4b01506e51ba474a54f9e98d4f229d015aa5 \
                     sha256  aff6c7edf24cfb935edba46574ec5f83b543c47ff79e40c21fb92dc709b0f2c4 \
