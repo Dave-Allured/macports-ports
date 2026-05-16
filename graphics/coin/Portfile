@@ -37,11 +37,11 @@ depends_lib-append  port:simage \
 #                    patch-include-Inventor-C-base-math-undefs.h.diff \
 #                    patch-Info.plist.in.diff
 
-configure.args-append \
-                    --disable-debug \
-                    --disable-symbols \
-                    --disable-dependency-tracking \
-                    --without-framework
+#configure.args-append \
+#                    --disable-debug \
+#                    --disable-symbols \
+#                    --disable-dependency-tracking \
+#                    --without-framework
 
 #post-build {
 #    reinplace -E {s|-arch [a-z0-9_]+||g} \
