@@ -5,8 +5,7 @@ PortGroup           cmake 1.1
 PortGroup           github 1.0
 
 
-name                coin
-github.setup        coin3D coin 4.0.8 v
+github.setup        coin3D coin 4.0.8 v -src
 github.tarball_from releases
 revision            0
 license             BSD
