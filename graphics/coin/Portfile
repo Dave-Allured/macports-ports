@@ -15,7 +15,6 @@ long_description    Coin is a high-level 3D graphics library with a   \
 
 conflicts           coin-framework
 categories          graphics devel
-platforms           darwin
 maintainers         nomaintainer
 
 checksums           rmd160  5aba4b01506e51ba474a54f9e98d4f229d015aa5 \
