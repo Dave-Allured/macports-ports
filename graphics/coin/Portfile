@@ -1,6 +1,7 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
+PortGroup           cmake 1.1
 PortGroup           github 1.0
 
 github.setup        coin3D coin 4.0.8
@@ -40,11 +41,11 @@ configure.args-append \
                     --disable-dependency-tracking \
                     --without-framework
 
-post-build {
-    reinplace -E {s|-arch [a-z0-9_]+||g} \
-        ${worksrcpath}/Coin.pc \
-        ${worksrcpath}/coin-default.cfg
-}
+#post-build {
+#    reinplace -E {s|-arch [a-z0-9_]+||g} \
+#        ${worksrcpath}/Coin.pc \
+#        ${worksrcpath}/coin-default.cfg
+#}
 
 if {${name} eq ${subport}} {
 
