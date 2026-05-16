@@ -6,6 +6,7 @@ PortGroup           github 1.0
 
 github.setup        coin3D coin 4.0.8 v
 revision            0
+github.tarball_from releases
 license             BSD
 description         cross platform C++ OpenGL scene graph library
 long_description    Coin is a high-level 3D graphics library with a   \
