@@ -4,9 +4,11 @@ PortSystem          1.0
 PortGroup           cmake 1.1
 PortGroup           github 1.0
 
+
+name                coin
 github.setup        coin3D coin 4.0.8 v
-revision            0
 github.tarball_from releases
+revision            0
 license             BSD
 description         cross platform C++ OpenGL scene graph library
 long_description    Coin is a high-level 3D graphics library with a   \
@@ -28,12 +30,12 @@ depends_lib-append  port:simage \
                     port:zlib \
                     port:bzip2
 
-patchfiles          configure.patch \
-                    for.patch \
-                    clang-name-lookup.diff \
-                    fix-weird-error.diff \
-                    patch-include-Inventor-C-base-math-undefs.h.diff \
-                    patch-Info.plist.in.diff
+#patchfiles          configure.patch \
+#                    for.patch \
+#                    clang-name-lookup.diff \
+#                    fix-weird-error.diff \
+#                    patch-include-Inventor-C-base-math-undefs.h.diff \
+#                    patch-Info.plist.in.diff
 
 configure.args-append \
                     --disable-debug \
