@@ -19,6 +19,7 @@ maintainers         nomaintainer
 
 github.tarball_from releases
 distname            ${github.project}-${github.version}-src
+worksrcdir          ${name}
 
 checksums           rmd160  5aba4b01506e51ba474a54f9e98d4f229d015aa5 \
                     sha256  aff6c7edf24cfb935edba46574ec5f83b543c47ff79e40c21fb92dc709b0f2c4 \
