@@ -11,28 +11,20 @@ array set pypy_versions {
     3.8   7.3.11
     3.9   7.3.16
     3.10  7.3.19
-    3.11  7.3.20
+    3.11  7.3.22
 }
 
 # Set default to latest offered Python version: 3.11
 set python.branch   3.11
 version             $pypy_versions(${python.branch})
 
-# Use github.setup to configure the portgroup for livecheck,
-# then override the variables it sets for fetching.
 github.setup        pypy pypy ${version} release-pypy${python.branch}-v
-
-# Override distname and master_sites to match the actual release asset URL
-distname            ${github.tag_prefix}${version}
-master_sites        https://github.com/pypy/pypy/archive/refs/tags/
-extract.suffix      .tar.gz
+github.tarball_from archive
 revision            0
 
 categories          lang python devel
 license             MIT PSF
 maintainers         {danchr @danchr} openmaintainer
-
-platforms           darwin macosx
 
 homepage            https://www.pypy.org/
 
@@ -56,12 +48,7 @@ patchfiles          patch-no-cffi-at-build.diff \
 # deprecated.eol_version no
 use_configure       no
 
-# no effort has been made to get the JIT working anywhere but x86-64,
-# and without that, PyPy has little or no benefit over CPython; if
-# you're looking for support for Apple Silicon - or ARM64 - see
-# https://morepypy.blogspot.com/2020/12/mac-meets-arm64.html and
-# https://trac.macports.org/ticket/63486#comment:3
-supported_archs     x86_64
+supported_archs     x86_64 arm64
 
 # a simple mapping from scripts to modules -- ideally, upstream
 # provided these
@@ -70,8 +57,6 @@ array set module_scripts {
     2to3 lib2to3
     smtpd.py smtpd
 }
-
-worksrcdir          pypy-${github.tag_prefix}${version}
 
 subport pypy38 {
     set python.branch 3.8
@@ -159,53 +144,49 @@ subport pypy311-tkinter {
     github.tag_prefix   release-pypy3.11-v
 }
 
-if {$subport == ${name}} {
+if {$subport eq ${name}} {
     set python.branch 3.11
 
     depends_run-append port:python3_select
     select.entries-append [list python3 python3-$subport $subport]
 }
 
-if {${python.branch} == 2.7} {
+if {${python.branch} eq 2.7} {
     patchfiles-append   pypy2-darwin.py.diff
-
     checksums           rmd160  962c6d7a898769a78907af9f4044b3be9e246339 \
                         sha256  39b0972956f6548ce5828019dbae12503c32d6cbe91a2becf88d3e42cc52197b \
                         size    23328628
+    set use_prefix      no
 
-    set use_prefix no
-} elseif {${python.branch} == 3.8} {
+} elseif {${python.branch} eq 3.8} {
     patchfiles-append   pypy3-darwin.py.diff
-
     checksums           rmd160  e0724177307c1d21e4fe4e2977c3f72be1a9642f \
                         sha256  5b5d9d9256f12a129af8384e2f581bdfab3bc0fbbe3a0a480d9c1d2e95490eb1 \
                         size    26642176
+    set use_prefix      yes
 
-    set use_prefix yes
-} elseif {${python.branch} == 3.9} {
+} elseif {${python.branch} eq 3.9} {
     patchfiles-append   pypy3-darwin.py.diff
-
     checksums           rmd160  a977b07ac5ae199054563eb0cfbb9f5ed8acd11d \
-      sha256  a77340a91e81aedf02e78e6e2ea96806f76b50256c6338067f5ff540edbae072 \
-                          size    28200000
-    set use_prefix yes
-} elseif {${python.branch} == 3.10} {
-      patchfiles-append   pypy3-darwin.py.diff
+                        sha256  a77340a91e81aedf02e78e6e2ea96806f76b50256c6338067f5ff540edbae072 \
+                        size    28200000
+    set use_prefix      yes
 
-      checksums           rmd160  962c6d7a898769a78907af9f4044b3be9e246339 \
-                          sha256  48648aa0a63f4e5fa30315e06b27999ea7157da68a8d4503ebc4a7ee308b5f66 \
-                          size    27700000
 
-      set use_prefix yes
-  } elseif {${python.branch} == 3.11} {
-        patchfiles-append   pypy3-darwin.py.diff
+} elseif {${python.branch} eq 3.10} {
+    patchfiles-append   pypy3-darwin.py.diff
+    checksums           rmd160  962c6d7a898769a78907af9f4044b3be9e246339 \
+                        sha256  48648aa0a63f4e5fa30315e06b27999ea7157da68a8d4503ebc4a7ee308b5f66 \
+                        size    27700000
+    set use_prefix      yes
 
-        checksums           rmd160  4ca85835a4a689e27c6ef0960e2abb54b576c1e2 \
-                            sha256  a77340a91e81aedf02e78e6e2ea96806f76b50256c6338067f5ff540edbae072 \
-                            size    29626380
-
-        set use_prefix yes
-    }
+} elseif {${python.branch} eq 3.11} {
+    patchfiles-append   pypy3-darwin.py.diff
+    checksums           rmd160  4ca85835a4a689e27c6ef0960e2abb54b576c1e2 \
+                        sha256  a77340a91e81aedf02e78e6e2ea96806f76b50256c6338067f5ff540edbae072 \
+                        size    29626380
+    set use_prefix      yes
+}
 
 description         A fast interpreter for Python ${python.branch}
 long_description \
