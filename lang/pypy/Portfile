@@ -7,7 +7,7 @@ PortGroup           openssl 1.0
 
 # Define PyPy versions for each Python branch - update these pairs together
 array set pypy_versions {
-    2.7   7.3.20
+    2.7   7.3.22
     3.8   7.3.11
     3.9   7.3.16
     3.10  7.3.19
@@ -153,9 +153,9 @@ if {$subport eq ${name}} {
 
 if {${python.branch} eq 2.7} {
     patchfiles-append   pypy2-darwin.py.diff
-    checksums           rmd160  962c6d7a898769a78907af9f4044b3be9e246339 \
-                        sha256  39b0972956f6548ce5828019dbae12503c32d6cbe91a2becf88d3e42cc52197b \
-                        size    23328628
+    checksums           rmd160  4be87bdc40dd4582d9b9c6f2e69f96785495dca6 \
+                        sha256  572ee3f6ca929a7c0051dd78a8d9c0e11def75b5c9c17d24f5fdd23e0b8225b6 \
+                        size    25099270
     set use_prefix      no
 
 } elseif {${python.branch} eq 3.8} {
@@ -182,9 +182,9 @@ if {${python.branch} eq 2.7} {
 
 } elseif {${python.branch} eq 3.11} {
     patchfiles-append   pypy3-darwin.py.diff
-    checksums           rmd160  4ca85835a4a689e27c6ef0960e2abb54b576c1e2 \
-                        sha256  a77340a91e81aedf02e78e6e2ea96806f76b50256c6338067f5ff540edbae072 \
-                        size    29626380
+    checksums           rmd160  0aec18a2df06025709fc0f931d2b95aba7a4c96a \
+                        sha256  231e3e7f2aafb03e98281fb44c8f6669790ea77d5e411f94c09c8b05e0195f18 \
+                        size    29643191
     set use_prefix      yes
 }
 
