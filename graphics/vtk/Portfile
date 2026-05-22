@@ -159,7 +159,7 @@ default_variants +viskores
 variant viskores description {Add support for Viskores} {
     depends_lib-append port:viskores
     configure.args-append \
-        -DModule_vtkviskores:BOOL=ON \
+        -DVTK_MODULE_ENABLE_vtkviskores=WANT \
         -DVTK_MODULE_USE_EXTERNAL_VTK_vtkviskores:BOOL=ON
 }
 
