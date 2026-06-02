@@ -36,11 +36,11 @@ compiler.cxx_standard       2020
 # https://stackoverflow.com/questions/78170391/why-is-jthread-not-presented-in-libc-using-clang-18-c26
 # configure.cxxflags-append   -fexperimental-library
 
-compiler.blacklist-append   {clang < 1600}
+compiler.blacklist-append   {clang < 1800}
 
 # fatal error: 'ranges' file not found. Retrying the clang limits set previously.
 # See discussion https://github.com/macports/macports-ports/pull/32476
-compiler.blacklist-append   {clang < 1500}
+#compiler.blacklist-append   {clang < 1500}
 
 compiler.thread_local_storage yes
 compilers.choose            cc cxx
