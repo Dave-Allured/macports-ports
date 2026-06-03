@@ -44,8 +44,12 @@ configure.args-append \
                     -DHDF5_HAVE_PARALLEL=OFF \
                     -DPYTHON_EXECUTABLE=${prefix}/bin/python${python.branch}
 
-# Disable indirect dependency.  ZLIB is managed through HDF5, not here.
+# Disable building dependencies HDF5, ZLIB.  Use MacPorts versions.
 # For details, see source/options.cmake.
+configure.args-append \
+                    -Dh5fortran_find=OFF
+
+# Ignore indirect dependency.  ZLIB is managed through HDF5, not here.
 configure.args-append \
                     -Dh5fortran_hdf5_zlib=OFF
 
