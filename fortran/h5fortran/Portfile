@@ -44,6 +44,11 @@ configure.args-append \
                     -DHDF5_HAVE_PARALLEL=OFF \
                     -DPYTHON_EXECUTABLE=${prefix}/bin/python${python.branch}
 
+# Disable indirect dependency.  ZLIB is managed through HDF5, not here.
+# For details, see source/options.cmake.
+configure.args-append \
+                    -Dh5fortran_hdf5_zlib=OFF
+
 if {[variant_isset mpich] || [variant_isset openmpi]} {
     require_active_variants \
                     port:hdf5 [list fortran mpich]
