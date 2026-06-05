@@ -20,9 +20,10 @@ long_description            ${description}
 set git_version             [join [split ${version} .] _]
 
 # Workarounds for URL bug in github portgroup.
+# This is because upstream uses dots in version docs, but underscores on github.
 # https://trac.macports.org/ticket/70652
 # https://trac.macports.org/ticket/71377
-#github.master_sites         ${github.homepage}/archive/refs/tags
+github.master_sites         ${github.homepage}/archive/refs/tags
 distname                    [join ${github.tag_prefix}]${git_version}
 
 checksums                   rmd160  6241a2e3fee4a873e84d161509ee6c5fb99f34ab \
