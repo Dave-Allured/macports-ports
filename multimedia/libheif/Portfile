@@ -10,7 +10,7 @@ categories                  multimedia
 license                     LGPL-3+
 maintainers                 {mcalhoun @MarcusCalhoun-Lopez} {mascguy @mascguy} openmaintainer
 description                 a ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
-long_description            ${name} is {*}${description}.
+long_description            ${name} is {*}${description}. 
 
 # filesystem
 legacysupport.newest_darwin_requires_legacy 18
