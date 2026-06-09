@@ -43,12 +43,6 @@ configure.args  --disable-asm \
 
 minimum_xcodeversions   {8 2.5}
 
-post-destroot {
-    set docdir ${prefix}/share/doc/${name}
-    xinstall -m 0644 -W ${worksrcpath} AUTHORS CHANGES COPYING LICENSE README \
-        ${destroot}${docdir}
-}
-
 test.run        yes
 test.target     check
 
