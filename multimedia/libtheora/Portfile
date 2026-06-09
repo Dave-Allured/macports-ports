@@ -5,14 +5,13 @@ PortGroup       xcodeversion 1.0
 
 name            libtheora
 epoch           1
-version         1.1.1
-revision        3
-checksums       rmd160  1d07234bd7e2296c61d6e30fe9816415aa7fd8e5 \
-                sha256  b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc \
-                size    1903175
+version         1.2.0
+revision        0
+checksums       rmd160  cc16202316db077064aa2ae317663bed20d16ccb \
+                sha256  ebdf77a8f5c0a8f7a9e42323844fa09502b34eb1d1fece7b5f54da41fe2122ec \
+                size    1803124
 
 categories      multimedia
-platforms       darwin
 license         BSD
 maintainers     nomaintainer
 description     Xiph.org Foundation's open video codec
@@ -27,7 +26,7 @@ long_description \
 
 homepage        https://www.theora.org/
 master_sites    https://ftp.osuosl.org/pub/xiph/releases/theora/
-use_bzip2       yes
+use_xz          yes
 
 depends_build   port:autoconf \
                 port:automake \
@@ -80,4 +79,3 @@ platform darwin powerpc {
 livecheck.type  regex
 livecheck.url   [lindex ${master_sites} 0]
 livecheck.regex "${name}-(\\d+(?:\\.\\d+)*)${extract.suffix}"
-
