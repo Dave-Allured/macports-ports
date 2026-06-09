@@ -28,16 +28,9 @@ homepage        https://www.theora.org/
 master_sites    https://ftp.osuosl.org/pub/xiph/releases/theora/
 use_xz          yes
 
-depends_build   port:autoconf \
-                port:automake \
-                port:libtool \
-                port:pkgconfig
-
 depends_lib     port:libogg
 
-patchfiles      autogen.sh.patch \
-                no-fforce-addr.patch \
-                unversioned-docdir.patch
+patchfiles      unversioned-docdir.patch
 
 configure.env   SDL_CONFIG=/usr/bin/false \
                 HAVE_PDFLATEX=no          \
@@ -49,13 +42,6 @@ configure.args  --disable-asm \
                 --disable-examples \
                 --disable-oggtest \
                 --disable-vorbistest
-
-# configure and Makefile.in files were generated with ancient autotools
-# versions (autoconf 2.63, automake 1.6.3, libtool 2.2.6). We need fixes
-# from newer libtool, including the fix for the "Yosemite libtool bug"
-# that misidentifies OS X 10.10 and later as Mac OS X 10.1, and the
-# "Big Sur libtool bug" that does not identify macOS 11 or later at all.
-configure.cmd   ./autogen.sh
 
 minimum_xcodeversions   {8 2.5}
 
