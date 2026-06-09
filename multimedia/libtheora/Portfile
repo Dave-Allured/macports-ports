@@ -30,8 +30,6 @@ use_xz          yes
 
 depends_lib     port:libogg
 
-patchfiles      unversioned-docdir.patch
-
 configure.env   SDL_CONFIG=/usr/bin/false \
                 HAVE_PDFLATEX=no          \
                 HAVE_DOXYGEN=no           \
