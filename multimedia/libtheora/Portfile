@@ -13,7 +13,8 @@ checksums       rmd160  cc16202316db077064aa2ae317663bed20d16ccb \
 
 categories      multimedia
 license         BSD
-maintainers     nomaintainer
+maintainers     {@Dave-Allured noaa.gov:dave.allured} \
+                openmaintainer
 description     Xiph.org Foundation's open video codec
 
 long_description \
@@ -42,6 +43,12 @@ configure.args  --disable-asm \
                 --disable-vorbistest
 
 minimum_xcodeversions   {8 2.5}
+
+post-destroot {
+    set docdir ${prefix}/share/doc/${name}
+    xinstall -m 0644 -W ${worksrcpath} \
+        AUTHORS CHANGES COPYING LICENSE README.md ${destroot}${docdir}
+}
 
 test.run        yes
 test.target     check
