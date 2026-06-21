@@ -36,6 +36,10 @@ compiler.blacklist-append \
 # fix error with newer Poppler
 patchfiles-append       patch-poppler.diff
 
+# Use only needed VTK components, not all possible ones.  Reduce dependencies.
+# https://discourse.vtk.org/t/could-not-find-libproj/15779
+patchfiles-append       patch-vtk_components.diff
+
 depends_build-append    path:bin/pkg-config:pkgconfig
 
 depends_lib-append      port:charls \
