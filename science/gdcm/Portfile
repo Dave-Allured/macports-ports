@@ -69,11 +69,6 @@ configure.args-append   -DCMAKE_CXX_STANDARD=14 \
                         -DGDCM_WRAP_JAVA=OFF \
                         -DGDCM_WRAP_PYTHON=OFF
 
-#  PROJ version should be in sync with VTK
-set proj_version        proj9
-configure.args-append   -DLibPROJ_INCLUDE_DIR=${prefix}/lib/${proj_version}/include
-configure.env-append    CMAKE_LIBRARY_PATH=${prefix}/lib/${proj_version}/lib
-
 variant applications description {build Application} {
     PortGroup               qt5 1.0
 
