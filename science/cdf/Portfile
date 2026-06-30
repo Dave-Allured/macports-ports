@@ -6,11 +6,11 @@ PortGroup               makefile 1.0
 
 name                    cdf
 epoch                   1
-version                 3.9.0
+version                 3.9.2
 revision                0
-checksums               rmd160  a5567603757d3e984f06154efa9e4cfe4a6c4114 \
-                        sha256  b8566cfc8733e8a32341da634bfebad579cd277515d5afa49a3db3489d232419 \
-                        size    2448203
+checksums               rmd160  50543c507688d7ae7423aa941bc4411e2c2c50d2 \
+                        sha256  59d01bb36badd0da3b8c909025249783faac8f1a401ae36289187532d601fc7f \
+                        size    6805374
 
 set my_branch           [join [lrange [split ${version} .] 0 1] ""]
 set my_version          ${my_branch}_[join [lrange [split ${version} .] 2 end] "_"]
@@ -27,7 +27,7 @@ long_description        The Common Data Format (CDF) is a self-describing \
                         discipline independent fashion.
 
 homepage                https://cdf.gsfc.nasa.gov
-master_sites            https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/${name}${my_short_version}/unix/
+master_sites            https://spdf.gsfc.nasa.gov/pub/software/cdf/dist/${name}${my_short_version}/linux/
 
 dist_subdir             ${name}/${version}
 distname                ${name}${my_short_version}-dist
@@ -65,8 +65,8 @@ pre-build {
         set endian_flag __ppc__
     }
 
-    # When upgrading, verify COPTIONS still approximately reflects what’s in the Makefile.
-    # Using ${configure.cc_archflags} in LD because ${configure.ld_archflags} doesn’t use -m32 / -m64 flags when they’re needed.
+    # When upgrading, verify COPTIONS still approximately reflects what's in the Makefile.
+    # Using ${configure.cc_archflags} in LD because ${configure.ld_archflags} doesn't use -m32 / -m64 flags when they're needed.
     build.args-append   COPTIONS_${cdf_os}_${cdf_env}="-D${endian_flag} -D__APPLE__ -D__MACH__ -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE -D_LARGEFILE_SOURCE \$CFLAGS" \
                         LD_${cdf_os}_${cdf_env}="\$CC"
 
