@@ -26,28 +26,18 @@ long_description    ${description} extends NetCDF-4 \
 homepage            https://intelligent-data-design-inc.github.io/NEP/
 
 depends_lib-append  port:bzip2 \
+                    port:hdf5 \
                     port:libgeotiff \
                     port:lz4 \
                     port:netcdf \
                     path:bin/pkg-config:pkgconfig
 
 configure.args-append \
-                    -DENABLE_GEOTIFF=OFF
-
-default_variants    +geotiff
+                    -DENABLE_GEOTIFF=ON
 
 variant docs description {Build documentation} {
     depends_build-append \
                     path:bin/doxygen:doxygen
     configure.args-append \
                     --target docs
-}
-
-variant geotiff description {Include GeoTIFF reader} {
-    depends_build-append \
-                    port:libgeotiff
-    configure.args-delete \
-                    -DENABLE_GEOTIFF=OFF
-    configure.args-append \
-                    -DENABLE_GEOTIFF=ON
 }
