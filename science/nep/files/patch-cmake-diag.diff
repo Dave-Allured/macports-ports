@@ -1,1 +1,13 @@
-new patch file
+--- orig/CMakeLists.txt	2026-06-29 06:55:09
++++ CMakeLists.txt	2026-06-30 12:57:21
+@@ -155,6 +155,10 @@
+             set(HAVE_GEOTIFF TRUE)
+             message(STATUS "GeoTIFF library detection enabled (library location only, no UDF yet)")
+         else()
++            message(STATUS "  libgeotiff status: ${GEOTIFF_LIBRARY}")
++            message(STATUS "  libgeotiff headers status: ${GEOTIFF_INCLUDE_DIR}")
++            message(STATUS "  libtiff status: ${TIFF_LIBRARY}")
++            message(STATUS "  libtiff headers status: ${TIFF_INCLUDE_DIR}")
+             message(FATAL_ERROR "libgeotiff is required for the GeoTIFF dispatch layer. Include the library path in CPPFLAGS/LDFLAGS, or use -DENABLE_GEOTIFF=OFF")
+         endif()
+     endif()
