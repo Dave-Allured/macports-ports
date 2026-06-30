@@ -1,14 +1,5 @@
 --- orig/CMakeLists.txt	2026-06-29 06:55:09
-+++ CMakeLists.txt	2026-06-30 13:51:44
-@@ -28,7 +28,7 @@
- 
- # GeoTIFF library detection (v1.5.0) - default ON; disable with -DENABLE_GEOTIFF=OFF
- option(ENABLE_GEOTIFF "Enable GeoTIFF library detection" ON)
--
-+-DENABLE_FITS=OFF
- # Documentation option
- option(BUILD_DOCUMENTATION "Build documentation with Doxygen" ON)
- 
++++ CMakeLists.txt	2026-06-30 14:24:35
 @@ -142,19 +142,17 @@
      # GeoTIFF library detection (v1.5.0)
      if(ENABLE_GEOTIFF)
