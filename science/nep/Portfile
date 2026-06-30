@@ -34,22 +34,51 @@ depends_lib-append  port:bzip2 \
                     path:bin/pkg-config:pkgconfig
 
 configure.args-append \
-                    -DENABLE_GEOTIFF=OFF
+                    -DBUILD_DOCUMENTATION=OFF \
+                    -DENABLE_CDF=OFF \
+                    -DENABLE_FITS=OFF \
+                    -DENABLE_FORTRAN=OFF \
+                    -DENABLE_GEOTIFF=OFF \
+                    -DENABLE_GRIB2=OFF
 
 default_variants    +geotiff
 
 variant docs description {Build documentation} {
     depends_build-append \
                     path:bin/doxygen:doxygen
-    configure.args-append \
-                    --target docs
+    configure.args-replace \
+                    {-DBUILD_DOCUMENTATION=OFF} {-DBUILD_DOCUMENTATION=ON}
+}
+
+variant cdf description {Include CDF reader} {
+    depends_build-append \
+                    port:cdf
+    configure.args-replace \
+                    {-DENABLE_CDF=OFF} {-DENABLE_CDF=ON}
+}
+
+variant fits description {Include FITS reader} {
+    depends_build-append \
+                    port:FITS
+    configure.args-replace \
+                    {-DENABLE_FITS=OFF} {-DENABLE_FITS=ON}
+}
+
+variant fortran description {Include fortran wrappers and tests} {
+    configure.args-replace \
+                    {-DENABLE_FORTRAN=OFF} {-DENABLE_FORTRAN=ON}
 }
 
 variant geotiff description {Include GeoTIFF reader} {
     depends_build-append \
                     port:libgeotiff
-    configure.args-delete \
-                    -DENABLE_GEOTIFF=OFF
-    configure.args-append \
-                    -DENABLE_GEOTIFF=ON
+    configure.args-replace \
+                    {-DENABLE_GEOTIFF=OFF} {-DENABLE_GEOTIFF=ON}
+}
+
+variant grib2 description {Include GRIB2 reader} {
+    depends_build-append \
+                    port:grib2
+    configure.args-replace \
+                    {-DENABLE_GRIB2=OFF} {-DENABLE_GRIB2=ON}
 }
