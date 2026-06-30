@@ -25,6 +25,8 @@ long_description    ${description} extends NetCDF-4 \
 
 homepage            https://intelligent-data-design-inc.github.io/NEP/
 
+patchfiles-append   patch-cmake-diag.diff
+
 depends_lib-append  port:bzip2 \
                     port:hdf5 \
                     port:libgeotiff \
