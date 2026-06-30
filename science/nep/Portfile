@@ -1,1 +1,38 @@
-start
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           cmake 1.1
+PortGroup           github 1.0
+
+name                nep
+github.setup        Intelligent-Data-Design-Inc NEP 2.0.0 v
+github.tarball_from archive
+revision            0
+categories          science
+
+checksums           rmd160  633d4f698ef93b004122aae61804251765c23613 \
+                    sha256  5fa70b75f5c16ecbe3b6f7a93a124bec0d9d3714b45d42963355b06501a4335e \
+                    size    46973197
+
+license             MIT
+maintainers         {@Dave-Allured noaa.gov:dave.allured} \
+                    openmaintainer
+
+description         NetCDF Expansion Pack
+long_description    ${description} extends NetCDF-4 \
+                    with high-performance compression \
+                    and access for alternative scientific file formats.
+
+homepage            https://intelligent-data-design-inc.github.io/NEP/
+
+depends_lib-append  port:bzip2 \
+                    port:libgeotiff \
+                    port:lz4 \
+                    port:netcdf
+
+variant docs description {Build documentation} {
+    depends_build-append \
+                    path:bin/doxygen:doxygen
+    configure.args-append \
+                    --target docs
+}
