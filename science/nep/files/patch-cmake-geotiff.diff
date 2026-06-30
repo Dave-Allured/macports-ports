@@ -1,22 +1,37 @@
 --- orig/CMakeLists.txt	2026-06-29 06:55:09
-+++ CMakeLists.txt	2026-06-30 13:19:49
-@@ -142,7 +142,7 @@
++++ CMakeLists.txt	2026-06-30 13:51:44
+@@ -28,7 +28,7 @@
+ 
+ # GeoTIFF library detection (v1.5.0) - default ON; disable with -DENABLE_GEOTIFF=OFF
+ option(ENABLE_GEOTIFF "Enable GeoTIFF library detection" ON)
+-
++-DENABLE_FITS=OFF
+ # Documentation option
+ option(BUILD_DOCUMENTATION "Build documentation with Doxygen" ON)
+ 
+@@ -142,19 +142,17 @@
      # GeoTIFF library detection (v1.5.0)
      if(ENABLE_GEOTIFF)
          find_library(GEOTIFF_LIBRARY NAMES geotiff)
 -        find_path(GEOTIFF_INCLUDE_DIR geotiff/geotiff.h)
+-        find_library(TIFF_LIBRARY NAMES tiff)
+-        find_path(TIFF_INCLUDE_DIR tiff.h)
+-        
+-        if(GEOTIFF_LIBRARY AND GEOTIFF_INCLUDE_DIR AND TIFF_LIBRARY AND TIFF_INCLUDE_DIR)
 +        find_path(GEOTIFF_INCLUDE_DIR NAMES geotiff/geotiff.h geotiff.h)
-         find_library(TIFF_LIBRARY NAMES tiff)
-         find_path(TIFF_INCLUDE_DIR tiff.h)
-         
-@@ -155,6 +155,10 @@
++
++        if(GEOTIFF_LIBRARY AND GEOTIFF_INCLUDE_DIR)
+             message(STATUS "Found libgeotiff: ${GEOTIFF_LIBRARY}")
+             message(STATUS "Found libgeotiff headers: ${GEOTIFF_INCLUDE_DIR}")
+-            message(STATUS "Found libtiff: ${TIFF_LIBRARY}")
+-            message(STATUS "Found libtiff headers: ${TIFF_INCLUDE_DIR}")
+-            include_directories(${GEOTIFF_INCLUDE_DIR} ${TIFF_INCLUDE_DIR})
++            include_directories(${GEOTIFF_INCLUDE_DIR})
              set(HAVE_GEOTIFF TRUE)
              message(STATUS "GeoTIFF library detection enabled (library location only, no UDF yet)")
          else()
 +            message(STATUS "  libgeotiff status: ${GEOTIFF_LIBRARY}")
 +            message(STATUS "  libgeotiff headers status: ${GEOTIFF_INCLUDE_DIR}")
-+            message(STATUS "  libtiff status: ${TIFF_LIBRARY}")
-+            message(STATUS "  libtiff headers status: ${TIFF_INCLUDE_DIR}")
              message(FATAL_ERROR "libgeotiff is required for the GeoTIFF dispatch layer. Include the library path in CPPFLAGS/LDFLAGS, or use -DENABLE_GEOTIFF=OFF")
          endif()
      endif()
