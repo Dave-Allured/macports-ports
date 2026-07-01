@@ -41,20 +41,22 @@ configure.args-append \
                     -DENABLE_GEOTIFF=OFF \
                     -DENABLE_GRIB2=OFF
 
-default_variants    +geotiff
-
-variant docs description {Build documentation} {
-    depends_build-append \
-                    path:bin/doxygen:doxygen
-    configure.args-replace \
-                    {-DBUILD_DOCUMENTATION=OFF} {-DBUILD_DOCUMENTATION=ON}
-}
+## Geotiff is currently broken due to nonstandard location assumptions within NEP.
+## Disable until resolved.
+## default_variants    +geotiff
 
 variant cdf description {Include CDF reader} {
     depends_build-append \
                     port:cdf
     configure.args-replace \
                     {-DENABLE_CDF=OFF} {-DENABLE_CDF=ON}
+}
+
+variant docs description {Build documentation} {
+    depends_build-append \
+                    path:bin/doxygen:doxygen
+    configure.args-replace \
+                    {-DBUILD_DOCUMENTATION=OFF} {-DBUILD_DOCUMENTATION=ON}
 }
 
 variant fits description {Include FITS reader} {
