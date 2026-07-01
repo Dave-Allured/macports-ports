@@ -37,10 +37,6 @@ depends_lib             port:ncurses
 
 worksrcdir              ${name}${my_short_version}-dist
 
-post-patch {
-    reinplace "s|\\\$(INSTALLDIR)/bin/definitions\\.\\(\[BCK\]\\)|${prefix}/bin/definitions.\\1|" ${worksrcpath}/Makefile
-}
-
 compilers.choose        cc fc
 compilers.setup
 compilers.allow_arguments_mismatch \
