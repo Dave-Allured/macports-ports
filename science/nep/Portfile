@@ -32,12 +32,21 @@ depends_lib-append  port:bzip2 \
                     path:bin/pkg-config:pkgconfig
 
 configure.args-append \
-                    -DBUILD_DOCUMENTATION=OFF \
-                    -DENABLE_CDF=OFF \
-                    -DENABLE_FITS=OFF \
-                    -DENABLE_FORTRAN=OFF \
-                    -DENABLE_GEOTIFF=OFF \
-                    -DENABLE_GRIB2=OFF
+                    -DNEP_ENABLE_FORTRAN=OFF \
+                    -DNEP_ENABLE_BENCHMARKS=OFF \
+                    -DNEP_ENABLE_PARALLEL_TESTS=OFF \
+                    -DNEP_BUILD_DOCUMENTATION=OFF \
+
+# Filters.
+configure.args-append \
+                    -DNEP_ENABLE_CDF=OFF \
+                    -DNEP_ENABLE_FITS=OFF \
+                    -DNEP_ENABLE_GEOTIFF=OFF \
+                    -DNEP_ENABLE_GRIB2=OFF \
+                    -DNEP_ENABLE_PDS4=OFF
+
+# LZ4 and BZIP2 are standard, so no variants provided.  (Would be possible.)
+# All other filters are MacPorts explicit variants.
 
 default_variants    +geotiff
 
@@ -45,7 +54,7 @@ variant cdf description {Include CDF reader} {
     depends_build-append \
                     port:cdf
     configure.args-replace \
-                    {-DENABLE_CDF=OFF} {-DENABLE_CDF=ON}
+                    {-DNEP_ENABLE_CDF=OFF} {-DNEP_ENABLE_CDF=ON}
 }
 
 variant docs description {Build documentation} {
@@ -59,24 +68,24 @@ variant fits description {Include FITS reader} {
     depends_build-append \
                     port:FITS
     configure.args-replace \
-                    {-DENABLE_FITS=OFF} {-DENABLE_FITS=ON}
+                    {-DNEP_ENABLE_FITS=OFF} {-DNEP_ENABLE_FITS=ON}
 }
 
 variant fortran description {Include fortran wrappers and tests} {
     configure.args-replace \
-                    {-DENABLE_FORTRAN=OFF} {-DENABLE_FORTRAN=ON}
+                    {-DNEP_ENABLE_FORTRAN=OFF} {-DNEP_ENABLE_FORTRAN=ON}
 }
 
 variant geotiff description {Include GeoTIFF reader} {
     depends_build-append \
                     port:libgeotiff
     configure.args-replace \
-                    {-DENABLE_GEOTIFF=OFF} {-DENABLE_GEOTIFF=ON}
+                    {-DNEP_ENABLE_GEOTIFF=OFF} {-DNEP_ENABLE_GEOTIFF=ON}
 }
 
 variant grib2 description {Include GRIB2 reader} {
     depends_build-append \
                     port:grib2
     configure.args-replace \
-                    {-DENABLE_GRIB2=OFF} {-DENABLE_GRIB2=ON}
+                    {-DNEP_ENABLE_GRIB2=OFF} {-DNEP_ENABLE_GRIB2=ON}
 }
