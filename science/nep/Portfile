@@ -1,1 +1,82 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
+PortSystem          1.0
+PortGroup           cmake 1.1
+PortGroup           github 1.0
+
+name                nep
+github.setup        Intelligent-Data-Design-Inc NEP 2.5.0 v
+github.tarball_from archive
+revision            0
+categories          science
+
+checksums           rmd160  0613b662a179a6527306797110afc5f914a8f48e \
+                    sha256  fbc160eb8333b2b34c49119c07947f5fa2f526c3ba747d482c8578be8b8c97ef \
+                    size    53759702
+
+license             MIT
+maintainers         {@Dave-Allured noaa.gov:dave.allured} \
+                    openmaintainer
+
+description         NetCDF Expansion Pack
+long_description    ${description} extends NetCDF-4 \
+                    with high-performance compression \
+                    and access for alternative scientific file formats.
+
+homepage            https://intelligent-data-design-inc.github.io/NEP/
+
+depends_lib-append  port:bzip2 \
+                    port:hdf5 \
+                    port:lz4 \
+                    port:netcdf \
+                    path:bin/pkg-config:pkgconfig
+
+configure.args-append \
+                    -DBUILD_DOCUMENTATION=OFF \
+                    -DENABLE_CDF=OFF \
+                    -DENABLE_FITS=OFF \
+                    -DENABLE_FORTRAN=OFF \
+                    -DENABLE_GEOTIFF=OFF \
+                    -DENABLE_GRIB2=OFF
+
+default_variants    +geotiff
+
+variant cdf description {Include CDF reader} {
+    depends_build-append \
+                    port:cdf
+    configure.args-replace \
+                    {-DENABLE_CDF=OFF} {-DENABLE_CDF=ON}
+}
+
+variant docs description {Build documentation} {
+    depends_build-append \
+                    path:bin/doxygen:doxygen
+    configure.args-replace \
+                    {-DBUILD_DOCUMENTATION=OFF} {-DBUILD_DOCUMENTATION=ON}
+}
+
+variant fits description {Include FITS reader} {
+    depends_build-append \
+                    port:FITS
+    configure.args-replace \
+                    {-DENABLE_FITS=OFF} {-DENABLE_FITS=ON}
+}
+
+variant fortran description {Include fortran wrappers and tests} {
+    configure.args-replace \
+                    {-DENABLE_FORTRAN=OFF} {-DENABLE_FORTRAN=ON}
+}
+
+variant geotiff description {Include GeoTIFF reader} {
+    depends_build-append \
+                    port:libgeotiff
+    configure.args-replace \
+                    {-DENABLE_GEOTIFF=OFF} {-DENABLE_GEOTIFF=ON}
+}
+
+variant grib2 description {Include GRIB2 reader} {
+    depends_build-append \
+                    port:grib2
+    configure.args-replace \
+                    {-DENABLE_GRIB2=OFF} {-DENABLE_GRIB2=ON}
+}
