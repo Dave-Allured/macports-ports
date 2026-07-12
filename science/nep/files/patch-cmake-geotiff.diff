@@ -1,8 +1,8 @@
---- orig/CMakeLists.txt	2026-06-29 06:55:09
-+++ CMakeLists.txt	2026-06-30 14:24:35
-@@ -142,19 +142,17 @@
+--- CMakeLists.txt.orig	2026-07-11 13:41:10
++++ CMakeLists.txt	2026-07-11 23:59:03
+@@ -162,19 +162,17 @@
      # GeoTIFF library detection (v1.5.0)
-     if(ENABLE_GEOTIFF)
+     if(NEP_ENABLE_GEOTIFF)
          find_library(GEOTIFF_LIBRARY NAMES geotiff)
 -        find_path(GEOTIFF_INCLUDE_DIR geotiff/geotiff.h)
 -        find_library(TIFF_LIBRARY NAMES tiff)
@@ -23,6 +23,6 @@
          else()
 +            message(STATUS "  libgeotiff status: ${GEOTIFF_LIBRARY}")
 +            message(STATUS "  libgeotiff headers status: ${GEOTIFF_INCLUDE_DIR}")
-             message(FATAL_ERROR "libgeotiff is required for the GeoTIFF dispatch layer. Include the library path in CPPFLAGS/LDFLAGS, or use -DENABLE_GEOTIFF=OFF")
+             message(FATAL_ERROR "libgeotiff is required for the GeoTIFF dispatch layer. Include the library path in CPPFLAGS/LDFLAGS, or use -DNEP_ENABLE_GEOTIFF=OFF")
          endif()
      endif()
