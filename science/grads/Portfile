@@ -45,8 +45,8 @@ depends_lib         port:readline   \
                     port:xorg-libXmu
 depends_build       port:pkgconfig
 
-patchfiles          patch-configure.diff \
-                    patch-src-Makefile.in.diff
+#patchfiles          patch-configure.diff \
+#                    patch-src-Makefile.in.diff
 
 post-patch {
    reinplace "s|/usr/local/lib|${prefix}/share|g" ${worksrcpath}/src/gxsubs.c
