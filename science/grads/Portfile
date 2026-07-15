@@ -1,30 +1,26 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
+PortGroup           github 1.0
 
 name                grads
-version             2.2.1
-revision            23
+github.setup        j-m-adams GrADS 2.2.3 v
+revision            0
 set branch          [join [lrange [split ${version} .] 0 1] .]
-maintainers         {takeshi @tenomoto}
+maintainers         {@Dave-Allured noaa.gov:dave.allured} \
+                    {takeshi @tenomoto} \
+                    openmaintainer
 license             GPL-2
 categories          science
-description         interactive visualization tool for earth science data
-master_sites        ftp://cola.gmu.edu/grads/${branch}/:src \
-                    ftp://cola.gmu.edu/grads/:data
-set gradssrc        ${name}-${version}-src${extract.suffix}
-set gradsdata       data2${extract.suffix}
-distfiles           ${gradssrc}:src ${gradsdata}:data
-checksums           ${gradssrc} \
-                    rmd160  498232b716b1bbda674976f38b421dd284d68900 \
-                    sha256  695e2066d7d131720d598bac0beb61ac3ae5578240a5437401dc0ffbbe516206 \
-                    size    5976570 \
-                    ${gradsdata} \
-                    rmd160 98637dd79e49335e0d986429549fbce2b81afc7a \
-                    sha256 55419fe15478d8213031bb1bfa7adec96984379373ec751cbe37d4bb22f6ce18 \
-                    size    1779887
-set url http://cola.gmu.edu/grads/
-homepage            ${url}
+
+github.tarball_from archive
+checksums           rmd160  8d1870aed23b1578095041191c5ff1263dc326f7 \
+                    sha256  2cbb67284fe64763c589ecaf08d5bd31144554dfd82a1fccf71e1cc424695a9e \
+                    size    6559168
+
+homepage            https://github.com/j-m-adams/GrADS
+
+description         Display and analysis tool for earth science data
 long_description   \
     The Grid Analysis and Display System (GrADS) is an interactive     \
     desktop tool that is used for easy access, manipulation, and       \
@@ -92,7 +88,3 @@ platform darwin 8 {
     configure.args-delete   --with-dap
     configure.args-append   --without-dap
 }
-
-livecheck.type      regex
-livecheck.url       ${url}/downloads.php
-livecheck.regex     {GrADS version (\d+\.\d+\.\d+) is the latest}
