@@ -29,24 +29,25 @@ long_description   \
     GrADS has been implemented worldwide on a variety of commonly used \
     operating systems and is freely distributed over the Internet.
 
-depends_build       port:gadap
-depends_lib         port:readline   \
-                    port:netcdf     \
-                    port:udunits    \
-                    port:hdf4       \
-                    port:hdf5       \
-                    port:gd2        \
-                    port:libdap     \
-                    port:wgrib2     \
-                    port:curl       \
-                    port:libgeotiff \
-                    port:shapelib   \
-                    path:lib/pkgconfig/cairo.pc:cairo \
-                    port:xorg-libXmu
-depends_build       port:pkgconfig
+depends_build-append    port:pkgconfig
 
-#patchfiles          patch-configure.diff \
-#                    patch-src-Makefile.in.diff
+depends_lib-append      path:lib/pkgconfig/cairo.pc:cairo \
+                        port:curl       \
+                        port:freetype   \
+                        port:gd2        \
+                        port:hdf4       \
+                        port:hdf5       \
+                        port:libdap     \
+                        port:libgeotiff \
+                        port:netcdf     \
+                        port:readline   \
+                        port:shapelib   \
+                        port:udunits    \
+                        port:wgrib2     \
+                        port:xorg-libXmu
+
+#patchfiles              patch-configure.diff \
+#                        patch-src-Makefile.in.diff
 
 post-patch {
    reinplace "s|/usr/local/lib|${prefix}/share|g" ${worksrcpath}/src/gxsubs.c
@@ -57,21 +58,20 @@ configure.args          --without-gui   \
                         --with-readline \
                         --with-grib2    \
                         --with-sdf      \
-                        --with-gadap    \
+                        --without-gadap \
                         --with-shp      \
-                        --with-cairo=${prefix}    \
-                        --with-geotiff=${prefix}  \
-                        --with-hdf4=${prefix} \
-                        --with-hdf5=${prefix} \
-                        --with-netcdf=${prefix} \
+                        --with-cairo=${prefix}   \
+                        --with-geotiff=${prefix} \
+                        --with-hdf4=${prefix}    \
+                        --with-hdf5=${prefix}    \
+                        --with-netcdf=${prefix}  \
                         --libdir=${prefix}/lib/${name} \
                         --with-x
 
-configure.cflags-append \
-                    -DH5_USE_110_API
+configure.cflags-append -DH5_USE_110_API
 
-test.run            yes
-test.target         check
+test.run                yes
+test.target             check
 
 post-destroot {
     xinstall -d -m 755 ${destroot}${prefix}/share/${name}
@@ -84,7 +84,12 @@ post-destroot {
     reinplace "s|PREFIX|${prefix}|" ${destroot}${prefix}/share/${name}/udpt
 }
 
-platform darwin 8 {
-    configure.args-delete   --with-dap
-    configure.args-append   --without-dap
+#platform darwin 8 {
+#    configure.args-delete   --with-dap
+#    configure.args-append   --without-dap
+#}
+
+variant gadap description {Enable OpenDAP for site data} {
+    depends_lib-append      port:gadap
+    configure.args-replace  --without-gadap --with-gadap
 }
