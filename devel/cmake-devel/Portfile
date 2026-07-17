@@ -39,7 +39,7 @@ platforms           darwin freebsd
 
 # Fetch from Github.  Avoid Anubis block on Gitlab primary repo.
 
-github.setup        Kitware CMake 4.4.0
+github.setup        Kitware CMake 4.4.0 v
 github.tarball_from releases
 revision            0
 epoch               2
