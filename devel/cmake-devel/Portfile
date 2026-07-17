@@ -48,6 +48,7 @@ checksums           rmd160  123bfef3597691b6c9ba52db19a306bedc6ac850 \
                     sha256  65757f442fdd242e27f1728fc26dc0cba4164f7a0791a5c788631c00080369bc \
                     size    13275398
 
+distname            ${my_name}-${github.version}
 dist_subdir         ${my_name}
 
 compiler.cxx_standard \
