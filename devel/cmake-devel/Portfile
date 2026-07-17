@@ -23,7 +23,9 @@ set my_name         cmake
 categories          devel
 license             BSD
 installs_libs       no
-maintainers         {michaelld @michaelld} {mascguy @mascguy}
+maintainers         {mascguy @mascguy} \
+                    {@Dave-Allured noaa.gov:dave.allured} \
+                    openmaintainer
 
 description         Cross-platform make
 set base_long_description \
@@ -35,15 +37,16 @@ set base_long_description \
 homepage            https://cmake.org
 platforms           darwin freebsd
 
-github.setup        Kitware CMake 485f11a780435eb6495b79227d3237383778ac3e
-github.tarball_from archive
-distname            ${my_name}-${github.version}
-version             20251208-4.2.1-[string range ${github.version} 0 7]
-checksums           rmd160  3ffa584f5eed1f9e5a2c9505a1c86d304010c11c \
-                    sha256  ec393855522456226659e7a6ce4b0c05973abc927bd5ee36b27865f685ee6fb0 \
-                    size    12354138
+# Fetch from Github.  Avoid Anubis block on Gitlab primary repo.
+
+github.setup        Kitware CMake 4.4.0
+github.tarball_from releases
 revision            0
-epoch               1
+epoch               2
+
+checksums           rmd160  123bfef3597691b6c9ba52db19a306bedc6ac850 \
+                    sha256  65757f442fdd242e27f1728fc26dc0cba4164f7a0791a5c788631c00080369bc \
+                    size    13275398
 
 dist_subdir         ${my_name}
 
@@ -417,7 +420,7 @@ if {${subport} eq ${name}} {
     test.target             test
 
     # Ignore RC versions
-    github.livecheck.regex  {([0-9.]+)}
+    github.livecheck.regex  {v([0-9.]+)}
 } else {
     livecheck.type          none
 }
