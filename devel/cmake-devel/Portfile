@@ -77,7 +77,7 @@ patchfiles-append patch-fix_cxx14_17_checks.diff
 #patchfiles-append patch-fix-system-prefix-path.diff
 #patchfiles-append patch-cmake-leopard-tiger.diff
 patchfiles-append patch-fix-clock_gettime-test.diff
-#patchfiles-append patch-qt5gui.diff
+patchfiles-append patch-qt5gui.diff
 patchfiles-append patch-cmake-cmInstallRuntime-initializer-fix.diff
 #patchfiles-append patch-libuv-legacy-systems.diff
 patchfiles-append patch-remove-homebrew-references.diff
