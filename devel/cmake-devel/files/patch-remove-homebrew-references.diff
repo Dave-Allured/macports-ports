@@ -1,25 +1,5 @@
---- Modules/CMakeFindFrameworks.cmake.orig	2026-07-09 11:24:15
-+++ Modules/CMakeFindFrameworks.cmake	2026-07-18 17:08:46
-@@ -39,19 +39,11 @@
-   macro(CMAKE_FIND_FRAMEWORKS fwk)
-     set(${fwk}_FRAMEWORKS)
-     if(APPLE)
--      # 'Frameworks' directory from Brew (Apple Silicon and Intel)
--      if(CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
--        set(_brew_framework_path /opt/homebrew/Frameworks)
--      else()
--        set(_brew_framework_path /usr/local/Frameworks)
--      endif()
--
-       file(TO_CMAKE_PATH "$ENV{CMAKE_FRAMEWORK_PATH}" _cmff_CMAKE_FRAMEWORK_PATH)
-       set(_cmff_search_paths
-             ${CMAKE_FRAMEWORK_PATH}
-             ${_cmff_CMAKE_FRAMEWORK_PATH}
-             ~/Library/Frameworks
--            ${_brew_framework_path}
-             /Library/Frameworks
-             /System/Library/Frameworks
-             /Network/Library/Frameworks
+# Note: Modules/CMakeFindFrameworks.cmake is patched in a separate patch file.
+
 --- Modules/FindGTK2.cmake.orig	2026-07-09 11:24:15
 +++ Modules/FindGTK2.cmake	2026-07-18 17:09:46
 @@ -407,7 +407,6 @@
