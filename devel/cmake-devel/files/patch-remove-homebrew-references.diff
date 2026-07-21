@@ -91,7 +91,7 @@
  if (NOT Ruby_EXECUTABLE AND NOT Ruby_FIND_VIRTUALENV STREQUAL "ONLY")
    _RUBY_CHECK_SYSTEM()
 --- Modules/Platform/Darwin.cmake.orig	2026-07-09 11:24:15
-+++ Modules/Platform/Darwin.cmake	2026-07-18 17:17:53
++++ Modules/Platform/Darwin.cmake	2026-07-19 18:53:54
 @@ -238,28 +238,6 @@
  unset(_apps_paths)
  
@@ -121,3 +121,22 @@
  
  if(_CMAKE_OSX_SYSROOT_PATH)
    if(EXISTS ${_CMAKE_OSX_SYSROOT_PATH}/usr/include)
+@@ -275,7 +253,3 @@
+     endforeach()
+   endif()
+ endif()
+-list(APPEND CMAKE_SYSTEM_PREFIX_PATH
+-  /sw        # Fink
+-  /opt/local # MacPorts
+-  )
+--- Modules/Platform/UnixPaths.cmake.orig	2026-07-09 11:24:15
++++ Modules/Platform/UnixPaths.cmake	2026-07-20 17:09:17
+@@ -37,7 +37,7 @@
+ # synchronized
+ list(APPEND CMAKE_SYSTEM_PREFIX_PATH
+   # Standard
+-  /usr/local /usr /
++  /usr /
+   )
+ if(_CMAKE_INSTALL_DIR)
+   list(APPEND CMAKE_SYSTEM_PREFIX_PATH
