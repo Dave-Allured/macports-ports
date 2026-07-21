@@ -5,7 +5,7 @@ PortGroup           github 1.0
 PortGroup           python 1.0
 
 name                py-itables
-github.setup        mwouts itables 2.8.1 v
+github.setup        mwouts itables 2.9.0 v
 github.tarball_from archive
 revision            0
 
@@ -16,9 +16,9 @@ description         Pandas and Polar DataFrames as interactive DataTables
 long_description    {*}${description}
 homepage            https://mwouts.github.io/itables/
 
-checksums           rmd160  c056b44e77dfae591395a723b69f0dcbb532a1c9 \
-                    sha256  4f2e43000216bc53ee5db9d3381e3baad24af35d4295107fc0d4f4bc9b8e68e6 \
-                    size    1249483
+checksums           rmd160  71b2852dab3ffd6a2b4d953066e8fa345fb9fd63 \
+                    sha256  7a76022eb500f171a7727ecd97e574ffa4e6713d2c0239468da6bde9ba2c8ec9 \
+                    size    1417397
 
 python.versions     311 312 313 314
 
@@ -37,12 +37,14 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-narwhals \
                     port:py${python.version}-numpy \
                     port:py${python.version}-pandas \
+                    port:py${python.version}-platformdirs \
                     port:py${python.version}-pyarrow \
                     port:py${python.version}-traitlets \
                     port:py${python.version}-typeguard
                     
     if {${python.version} < 311} {
         depends_lib-append \
+                    port:py${python.version}-tomli \
                     port:py${python.version}-typing_extensions
     }
 

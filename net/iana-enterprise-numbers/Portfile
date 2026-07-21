@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                iana-enterprise-numbers
-version             20260715
+version             20260721
 categories          net
 license             public-domain
 maintainers         {dports @drkp} openmaintainer
@@ -31,15 +31,15 @@ set pen_distfile    ${pen_file}-${version}
 # the IANA assignments, pinned to a specific commit so the downloaded bytes are
 # reproducible. The file in the repository is unversioned, so synthesize a
 # versioned distfile name by appending a dummy GET parameter.
-set pen_commit      a5981690cf92c865cec1c3b276d35e5e04f30a1f
+set pen_commit      47508bab09463fa15e2a597500d481bd80da055c
 master_sites        macports_distfiles \
                     https://raw.githubusercontent.com/larseggert/iana-assignments/${pen_commit}/${pen_file}/${pen_file}?dummy=
 
 distfiles           ${pen_distfile}
 
-checksums           rmd160  bc8603f1176b21a067d392d15deee2410297acc2 \
-                    sha256  bc1f044e3315ca3d139c57a171fee4df4b3df0d159861f2aef206537609db8f3 \
-                    size    5076674
+checksums           rmd160  729e5b7f7e469ed60354f251958126564be62b92 \
+                    sha256  4d1037e9f185ef70b7e688804de6dd38a3bee0a81d97efd25646988bf10c7669 \
+                    size    5080534
 
 use_configure       no
 build               {}
