@@ -3,14 +3,14 @@
 PortSystem              1.0
 PortGroup               github 1.0
 
-github.setup            HandBrake HandBrake 1.11.0
+github.setup            HandBrake HandBrake 1.11.2
 revision                0
 
 categories              multimedia
 maintainers             {@Dave-Allured noaa.gov:dave.allured} \
                         openmaintainer
 license                 GPL-2
-description             HandBrake is an open-source video transcoder
+description             Open-source video transcoder
 long_description        HandBrake is a tool for converting video from \
                         nearly any format to a selection of modern, \
                         widely supported codecs.
@@ -26,9 +26,9 @@ github.tarball_from     releases
 distname                HandBrake-${version}-source
 use_bzip2               yes
 
-checksums               rmd160  0d162f304c36c5cd0db6e57743e0fdb9db748605 \
-                        sha256  c5de77365b083f519c76b9edcc0685d8bda9ce04fc0ad59c3c38145355ef1b17 \
-                        size    11756006
+checksums               rmd160  32f6b488e7570d45d988f00eab591c9777f838d3 \
+                        sha256  12b046350f2422dc28783ff94229aff4ba5fe5e683431e057355d36163b2593a \
+                        size    11761530
 
 extract.rename          yes
 
