@@ -36,7 +36,7 @@ extract.rename          yes
 # for a while, but has to be changed.
 # We also do not want to hardcode clang, which is what upstream does.
 
-set py_ver              3.11
+set py_ver              3.14
 set py_ver_nodot        [string map {. {}} ${py_ver}]
 configure.python        ${prefix}/bin/python${py_ver}
 
