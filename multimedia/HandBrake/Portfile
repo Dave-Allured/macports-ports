@@ -21,7 +21,7 @@ github.tarball_from     releases
 
 # TODO: switch to downloading sources without git fetch.
 # master_sites-append     https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/:contrib \
-                        https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/:contrib
+##                        https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/:contrib
 
 distname                HandBrake-${version}-source
 use_bzip2               yes
@@ -32,30 +32,11 @@ checksums               rmd160  32f6b488e7570d45d988f00eab591c9777f838d3 \
 
 extract.rename          yes
 
-# TODO: powerpc build hardcodes gcc14 at the moment. This is okay
-# for a while, but has to be changed.
-# We also do not want to hardcode clang, which is what upstream does.
-
 set py_ver              3.14
 set py_ver_nodot        [string map {. {}} ${py_ver}]
 configure.python        ${prefix}/bin/python${py_ver}
 
-post-extract {
-    # This currently assumes gcc14:
-##    copy ${filespath}/ppc-darwin-gcc.meson ${worksrcpath}/make/cross/
-    # Fix broken configure and build of ffmpeg:
-##    copy ${filespath}/A32-ffmpeg-fix-static_asserts.patch ${worksrcpath}/contrib/ffmpeg/
-    # Disabled since we use the port:
-    # copy ${filespath}/A02-x264-ppc.patch ${worksrcpath}/contrib/x264/
-    if {[string match *clang* ${configure.compiler}]} {
-##            copy ${filespath}/A02-fix-avx2-flags.patch ${worksrcpath}/contrib/zimg/
-    }
-}
-
 patch.pre_args-replace  -p0 -p1
-
-# Broken in upstream: https://github.com/HandBrake/HandBrake/issues/6320
-##patchfiles              0001-configure.py-use-correct-build-tuple-for-powerpc-dar.patch \
 
 patchfiles              0002-Disable-vtb.patch \
                         0003-Build-fixes.patch
@@ -63,17 +44,12 @@ patchfiles              0002-Disable-vtb.patch \
 # Avoid building what can be used from ports:
 patchfiles-append       0004-Avoid-unneccessary-bundled-deps.patch
 
-# Fix build target (not used at the moment):
-patchfiles-append       0005-contrib_libvpx.patch
-
 if {[string match *gcc* ${configure.compiler}]} {
     patchfiles-append   0006-Cocoa-compat.patch
 }
 
 if {${os.platform} eq "darwin" && ${os.major} < 11} {
     depends_lib-append  path:lib/MacportsLegacySupport.dylib:legacy-support
-
-##    patchfiles-append   0007-contrib_ffmpeg_module.patch \
 
     patchfiles-append   0008-legacy-support.patch \
                         0009-fix-dvdnav-dvdread-build.patch
@@ -83,7 +59,6 @@ if {${os.platform} eq "darwin" && ${os.major} < 11} {
             ${worksrcpath}/gtk/meson.build \
             ${worksrcpath}/gtk/module.defs \
             ${worksrcpath}/libhb/module.defs
-##            ${worksrcpath}/contrib/ffmpeg/module.defs
     }
 }
 
