@@ -5,7 +5,7 @@ PortGroup           github 1.0
 PortGroup           python 1.0
 
 name                py-httpcore2
-github.setup        pydantic httpx2 2.8.0 v
+github.setup        pydantic httpx2 2.9.1 v
 github.tarball_from archive
 revision            0
 
@@ -16,9 +16,9 @@ description         The HTTP Core package provides a minimal low-level HTTP clie
 long_description    {*}${description}
 homepage            https://github.com/pydantic/httpx2/tree/main/src/httpcore2
 
-checksums           rmd160  ac290f79a2a7cde06bdf25de997d2423f0785430 \
-                    sha256  e19628d1f513fdbe359f8261864f5b519cc521ff028b6803244bdab0e50c4c11 \
-                    size    2086475
+checksums           rmd160  ee52c6cdc944211a34e3346e00bc1da1ff97b6df \
+                    sha256  b753ebecd627532f80e2202921241f2c3b72bf92ec747f8cb686c67dd9d55ae8 \
+                    size    2093326
 
 python.versions     310 311 312 313 314
 
