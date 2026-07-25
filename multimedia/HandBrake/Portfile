@@ -1,168 +1,171 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
-PortSystem              1.0
-PortGroup               github 1.0
+PortSystem          1.0
+PortGroup           mpi 1.0
+PortGroup           legacysupport 1.1
+PortGroup           github 1.0
+PortGroup           cmake 1.1
 
-github.setup            HandBrake HandBrake 1.11.2
-revision                0
+github.setup        HDFGroup hdf5 2.1.1
+revision            0
 
-categories              multimedia
-maintainers             {@Dave-Allured noaa.gov:dave.allured} \
-                        openmaintainer
-license                 GPL-2
-description             Open-source video transcoder
-long_description        HandBrake is a tool for converting video from \
-                        nearly any format to a selection of modern, \
-                        widely supported codecs.
+categories          science
+maintainers         {eborisch @eborisch} openmaintainer
 
-homepage                https://handbrake.fr
+description         HDF5 general purpose library and file format for storing\
+                    scientific data
 
-github.tarball_from     releases
+long_description    HDF5 is a data model, library, and file format for storing\
+                    and managing data. It supports an unlimited variety of\
+                    datatypes, and is designed for flexible and efficient I/O\
+                    and for high volume and complex data. HDF5 is portable and\
+                    is extensible, allowing applications to evolve in their use\
+                    of HDF5. The HDF5 Technology suite includes tools and\
+                    applications for managing, manipulating, viewing, and\
+                    analyzing data in the HDF5 format.
 
-# TODO: switch to downloading sources without git fetch.
-# master_sites-append     https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/:contrib \
-                        https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/:contrib
+homepage            https://www.hdfgroup.org/solutions/hdf5/
+github.tarball_from releases
 
-distname                HandBrake-${version}-source
-use_bzip2               yes
+checksums \
+    rmd160  e1fc58cd2d17ad1d269ef7d2fa4f9e4a8b84e499 \
+    sha256  efff93b5a904d66e8f626d7da60b5eedc9faf544be27dbabbaa87967b8ad798b \
+    size    42049698
 
-checksums               rmd160  32f6b488e7570d45d988f00eab591c9777f838d3 \
-                        sha256  12b046350f2422dc28783ff94229aff4ba5fe5e683431e057355d36163b2593a \
-                        size    11761530
+patchfiles          fortran_build_fix.patch
 
-extract.rename          yes
+compiler.cxx_standard       2011
 
-# TODO: powerpc build hardcodes gcc14 at the moment. This is okay
-# for a while, but has to be changed.
-# We also do not want to hardcode clang, which is what upstream does.
+mpi.setup           -gcc44 -gcc45
 
-set py_ver              3.14
-set py_ver_nodot        [string map {. {}} ${py_ver}]
-configure.python        ${prefix}/bin/python${py_ver}
+depends_lib         port:zlib port:libaec
 
-post-extract {
-    # This currently assumes gcc14:
-    copy ${filespath}/ppc-darwin-gcc.meson ${worksrcpath}/make/cross/
-    # Fix broken configure and build of ffmpeg:
-    copy ${filespath}/A32-ffmpeg-fix-static_asserts.patch ${worksrcpath}/contrib/ffmpeg/
-    # Disabled since we use the port:
-    # copy ${filespath}/A02-x264-ppc.patch ${worksrcpath}/contrib/x264/
-    if {[string match *clang* ${configure.compiler}]} {
-            copy ${filespath}/A02-fix-avx2-flags.patch ${worksrcpath}/contrib/zimg/
-    }
-}
+# llvm-gcc-4.2 produced code fails type conversion tests
+# Upstream suggestion is use -O0. Clang-produced code passes all tests.
+compiler.blacklist-append \
+                    llvm-gcc-4.2
 
-patch.pre_args-replace  -p0 -p1
+# #pragma pack() results in "too many #pragma options align=reset"
+compiler.blacklist-append \
+                    gcc-3.3 gcc-4.0 gcc-4.2 apple-gcc-4.2
 
-# Broken in upstream: https://github.com/HandBrake/HandBrake/issues/6320
-patchfiles              0001-configure.py-use-correct-build-tuple-for-powerpc-dar.patch \
-                        0002-Disable-vtb.patch \
-                        0003-Build-fixes.patch
+# <stdin>:2115:2: error: invalid instruction mnemonic 'cvtsi2ssl'
+compiler.blacklist-append \
+                    {clang < 500}
 
-# Avoid building what can be used from ports:
-patchfiles-append       0004-Avoid-unneccessary-bundled-deps.patch
+compiler.c_standard 1999
 
-# Fix build target (not used at the moment):
-patchfiles-append       0005-contrib_libvpx.patch
+# Avoid duplicate LC_RPATH's in dylibs, satisfy Xcode 15 linker.
+compilers.add_gcc_rpath_support no
 
-if {[string match *gcc* ${configure.compiler}]} {
-    patchfiles-append   0006-Cocoa-compat.patch
-}
+# Use lib/hdf5 rather than hdf5/lib plugin directory
+configure.args \
+                    -DCMAKE_BUILD_TYPE:STRING=Release \
+                    -DCMAKE_FIND_DEBUG_MODE:BOOL=OFF \
+                    -DH5_DEFAULT_PLUGINDIR:STRING=${prefix}/lib/hdf5 \
+                    -DHDF5_BUILD_CPP_LIB:BOOL=ON \
+                    -DHDF5_BUILD_FORTRAN:BOOL=OFF \
+                    -DHDF5_ENABLE_OPTIMIZATION:BOOL=ON \
+                    -DHDF5_ENABLE_SZIP_SUPPORT:BOOL=ON \
+                    -DHDF5_ENABLE_ZLIB_SUPPORT:BOOL=ON \
+                    -DHDF5_INSTALL_CMAKE_DIR:STRING=${cmake_share_module_dir} \
+                    -DSZIP_INCLUDE_DIR:PATH=${prefix}/lib/libaec/include \
+                    -DSZIP_LIBRARY:FILEPATH=${prefix}/lib/libaec/lib/libsz.dylib \
+                    -DSZIP_USE_EXTERNAL:BOOL=OFF \
+                    -Dlibaec_INCLUDE_DIR:PATH=${prefix}/lib/libaec/include \
+                    -Dlibaec_LIBRARY:FILEPATH=${prefix}/lib/libaec/lib/libaec.dylib
 
-if {${os.platform} eq "darwin" && ${os.major} < 11} {
-    depends_lib-append  path:lib/MacportsLegacySupport.dylib:legacy-support
+configure.env-append ZLIB_ROOT=${prefix}/lib
+configure.env-append libaec_DIR=${prefix}/lib/libaec
+configure.cflags-append -fno-common
 
-    patchfiles-append   0007-contrib_ffmpeg_module.patch \
-                        0008-legacy-support.patch \
-                        0009-fix-dvdnav-dvdread-build.patch
+# Actively checks how to get clang to warn on implicit functions with this.
+configure.checks.implicit_function_declaration.whitelist-append strchr
 
-    post-patch {
-        reinplace "s|@PREFIX@|${prefix}|g" \
-            ${worksrcpath}/gtk/meson.build ${worksrcpath}/gtk/module.defs \
-            ${worksrcpath}/libhb/module.defs ${worksrcpath}/contrib/ffmpeg/module.defs
-    }
-}
+# https://github.com/HDFGroup/hdf5/pull/5638
+license             BSD
 
-post-patch {
-    fs-traverse f ${worksrcpath} {
-        if {[string match *.py ${f}]} {
-            reinplace -q "s|/usr/bin/env python3|${configure.python}|" ${f}
+default_variants +fortran
+
+variant fortran description {Build fortran libs} {
+    configure.args-replace  -DHDF5_BUILD_FORTRAN:BOOL=OFF -DHDF5_BUILD_FORTRAN:BOOL=ON
+    configure.args-append   -DHDF5_INSTALL_MOD_FORTRAN:BOOL=ON
+
+    post-destroot {
+        foreach f [ glob ${destroot}${prefix}/mod/static/* ] {
+            move $f ${destroot}${prefix}/include/
         }
+
+        delete ${destroot}${prefix}/mod
     }
 }
 
-depends_build-append    port:autoconf \
-                        port:automake \
-                        path:bin/cmake:cmake \
-                        path:bin/git:git \
-                        port:gnutar \
-                        port:libtool \
-                        port:meson \
-                        port:ninja \
-                        path:bin/pkg-config:pkgconfig \
-                        port:python${py_ver_nodot}
-
-platform i386 {
-    depends_build-append \
-                        port:nasm
+post-destroot {
+    # Move LICENSE, etc.
+    xinstall -d ${destroot}${prefix}/share/hdf5/
+    foreach f [ glob -type f ${destroot}${prefix}/share/* ] {
+        move $f ${destroot}${prefix}/share/hdf5/
+    }
 }
 
-depends_lib-append      port:bzip2 \
-                        path:lib/pkgconfig/cairo.pc:cairo \
-                        path:lib/pkgconfig/gdk-pixbuf-2.0.pc:gdk-pixbuf2 \
-                        path:lib/pkgconfig/glib-2.0.pc:glib2 \
-                        path:lib/pkgconfig/gtk4.pc:gtk4 \
-                        port:jansson \
-                        port:lame \
-                        path:lib/pkgconfig/libass.pc:libass \
-                        port:libiconv \
-                        path:include/turbojpeg.h:libjpeg-turbo \
-                        port:libogg \
-                        port:libopus \
-                        port:libtheora \
-                        port:libvorbis \
-                        path:lib/pkgconfig/vpx.pc:libvpx \
-                        port:libxml2 \
-                        path:lib/pkgconfig/pango.pc:pango \
-                        port:speex \
-                        port:x264 \
-                        port:xorg-libX11 \
-                        port:xz \
-                        port:zlib
+test.run            yes
+test.env-append     DYLD_FALLBACK_LIBRARY_PATH=${workpath}/build/bin
 
-depends_run-append      port:dbus \
-                        port:desktop-file-utils
+variant threadsafe description {
+    Enable threadsafety.
+  +threadsafe is EXPERIMENTAL
+} {
+    # Tell hdf5 to configure in this experimental configuration
+    configure.args-append       -DHDF5_ALLOW_UNSUPPORTED=ON \
+                                -DHDF5_ENABLE_THREADSAFE=ON
 
-compiler.c_standard             2011
-compiler.thread_local_storage   yes
-compiler.blacklist-append       {clang < 1300}
+    pre-configure {
+        ui_warn {
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+hdf5 has been configured in an unsupported "Experimental" mode due to\
++threadsafe.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+    }
 
-configure.args-append   --disable-libdovi \
-                        --disable-vt \
-                        --disable-xcode \
-                        --enable-asm \
-                        --enable-ffmpeg-aac \
-                        --enable-ffmpeg-prores \
-                        --enable-gtk \
-                        --enable-x265 \
-                        --force \
-                        --prefix=${prefix} \
-                        --verbose
 
-build.dir               ${worksrcpath}/build
-build.target
-build.args-append       V=1
+    notes-append {
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+hdf5 has been installed in an unsupported "Experimental" mode due to\
++threadsafe.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
 
-configure.ldflags-append \
-                        -L${worksrcpath}/contrib/lib
-
-post-activate {
-    system "${prefix}/bin/update-desktop-database ${prefix}/share/applications"
 }
 
-# https://trac.macports.org/ticket/70137
-notes "
-If you get an error upon launching the app,\
-set GSK_RENDERER=cairo in the environment.\
-You may also add it into a shell config file.
-"
+if {[ mpi_variant_isset ]} {
+    # -DMPIEXEC_MAX_NUMPROCS=6 sets number of jobs used in 'make check'
+    configure.args-append       -DHDF5_ENABLE_PARALLEL=ON \
+                                -DHDF5_ALLOW_UNSUPPORTED=ON \
+                                -DMPIEXEC_MAX_NUMPROCS=6
+    notes-append {
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+hdf5 has been installed in an unsupported "Experimental" mode due to\
+selecing an MPI variant. Mixing MPI and C++ HDF5 calls is experimental.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+}
+
+if {[variant_isset fortran] && ![fortran_variant_isset]} {
+    default_variants +gfortran
+    if {![fortran_variant_isset]} {
+        error "+fortran requires a fortran compiler to be selected"
+    }
+}
+
+notes-append {
+Mac users may need to set the environment variable "HDF5_USE_FILE_LOCKING"\
+to the five-character string "FALSE" when accessing network mounted files.\
+This is an application run-time setting, not a configure or build setting.\
+Otherwise errors such as "unable to open file" or "HDF5 error" may be\
+encountered.
+}
+
+# Livecheck on GitHub release tags only.  Exclude non-release tags.
+# Accept matches both with and without "hdf5_" or "hdf5-" prefix.
+livecheck.regex     {releases/tag/[hdf5_-]*([0-9.]+)"}
