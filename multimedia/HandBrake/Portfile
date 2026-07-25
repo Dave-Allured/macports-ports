@@ -21,7 +21,7 @@ github.tarball_from     releases
 
 # TODO: switch to downloading sources without git fetch.
 # master_sites-append     https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/:contrib \
-##                        https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/:contrib
+                        https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs2/:contrib
 
 distname                HandBrake-${version}-source
 use_bzip2               yes
@@ -134,8 +134,8 @@ build.dir               ${worksrcpath}/build
 build.target
 build.args-append       V=1
 
-configure.ldflags-append \
-                        -L${worksrcpath}/contrib/lib
+##configure.ldflags-append \
+##                        -L${worksrcpath}/contrib/lib
 
 post-activate {
     system "${prefix}/bin/update-desktop-database ${prefix}/share/applications"
