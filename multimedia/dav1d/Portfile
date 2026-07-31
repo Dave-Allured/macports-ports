@@ -34,7 +34,7 @@ if {[exists extract.rename]} {
 extract.rename      yes
 }
 
-use_bzip2           yes
+use_xz              yes
 
 # nasm is not needed on arm64 platforms
 if { ${build_arch} in "i386 x86_64" || [variant_isset universal] } {
