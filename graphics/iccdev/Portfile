@@ -37,6 +37,8 @@ depends_lib-append  port:dotnet-cli \
 
 #                    port:${wxWidgets.port} \
 
+worksrcdir          ${distname}/Build/Cmake
+
 #configure.args-append   --verbose
 
 livecheck.url       ${github.homepage}/releases
