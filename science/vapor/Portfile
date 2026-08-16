@@ -30,17 +30,28 @@ checksums           rmd160  1cf9bf2eef17bbf6840657f9b69e8e2c44c45366 \
 
 #depends_build       port:gmake
 
-depends_lib         port:assimp2 \
-                    port:expat \
-                    port:glew \
+depends_lib         port:expat \
+                    port:freetype \
                     port:hdf5 \
+                    port:jpeg \
                     port:libgeotiff \
                     port:netcdf \
-                    port:proj4 \
-                    port:py27-numpy \
-                    port:py27-scipy \
-                    port:qt4-mac \
+                    port:py-numpy \
                     port:udunits2
+
+## find_package(Python COMPONENTS Interpreter Development NumPy)
+
+#depends_lib         port:assimp2 \
+#                    port:expat \
+#                    port:glew \
+#                    port:hdf5 \
+#                    port:libgeotiff \
+#                    port:netcdf \
+#                    port:proj4 \
+#                    port:py27-numpy \
+#                    port:py27-scipy \
+#                    port:qt4-mac \
+#                    port:udunits2
 
 #patchfiles          patch-options.mk.diff \
 #                    patch-make-config-Darwin.mk.diff
