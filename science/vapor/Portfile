@@ -45,7 +45,7 @@ depends_lib-append  port:assimp \
                     port:netcdf \
                     port:proj \
                     port:py-numpy \
-                    port:python \
+                    port:python314 \
                     port:qt5 \
                     port:udunits2 \
                     port:xorg-xcb-proto \
