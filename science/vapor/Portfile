@@ -21,17 +21,15 @@ long_description    VAPOR is the Visualization and Analysis Platform \
                     equipped with modern 3D graphics cards.
 
 homepage            https://www.vapor.ucar.edu
-##master_sites        https://www.vapor.ucar.edu/sites/default/files/
-##distname            ${name}-${version}-src
-github.tarball_from archive
 
+github.tarball_from archive
 checksums           rmd160  1cf9bf2eef17bbf6840657f9b69e8e2c44c45366 \
                     sha256  d4fe0ad20b0f353cb36a99b571c364414a6870b2e38611bc06d4507f6c0c7f0a \
                     size    3132424
 
 # https://vapordocumentationwebsite.readthedocs.io/en/latest/contributingToVapor/codeContributions.html#third-party-libraries
 
-depends_lib         port:assimp \
+depends_lib-append  port:assimp \
                     port:dbus \
                     port:expat \
                     port:freeglut \
