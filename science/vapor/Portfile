@@ -44,12 +44,13 @@ depends_lib-append  port:assimp \
                     port:libgeotiff \
                     port:netcdf \
                     port:proj \
-                    port:py-numpy \
-                    port:python314 \
                     port:qt5 \
                     port:udunits2 \
                     port:xorg-xcb-proto \
                     port:xorg-libxcb
+
+#                    port:py-numpy \
+#                    port:python314 \
 
 # not found:
 # ospray -- new port needed
@@ -79,7 +80,9 @@ depends_lib-append  port:assimp \
 #patchfiles          patch-options.mk.diff \
 #                    patch-make-config-Darwin.mk.diff
 
-#use_configure       no
+configure.args-append \
+                     -DBUILD_OSP=OFF \
+                     -DBUILD_PYTHON=OFF
 
 #post-configure {
 #    reinplace "s|@@MP_INSTALL_PREFIX@@|${destroot}${prefix}|g" ${worksrcpath}/options.mk
@@ -96,9 +99,6 @@ depends_lib-append  port:assimp \
 #}
 
 use_parallel_build  no
-
-#build.cmd           gmake
-#destroot.cmd        gmake
 
 #post-destroot {
 #    file delete -force ${destroot}${prefix}/share/udunits
