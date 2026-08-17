@@ -29,18 +29,42 @@ checksums           rmd160  1cf9bf2eef17bbf6840657f9b69e8e2c44c45366 \
                     sha256  d4fe0ad20b0f353cb36a99b571c364414a6870b2e38611bc06d4507f6c0c7f0a \
                     size    3132424
 
-#depends_build       port:gmake
+# https://vapordocumentationwebsite.readthedocs.io/en/latest/contributingToVapor/codeContributions.html#third-party-libraries
 
-depends_lib         port:expat \
+depends_lib         port:assimp \
+                    port:dbus \
+                    port:expat \
+                    port:freeglut \
                     port:freetype \
+                    port:git \
+                    port:glew \
+                    port:glib2 \
+                    port:glm \
                     port:hdf5 \
+                    port:HDF5-External-Filter-Plugins \
                     port:jpeg \
                     port:libgeotiff \
                     port:netcdf \
+                    port:proj \
                     port:py-numpy \
-                    port:udunits2
+                    port:python \
+                    port:qt5 \
+                    port:udunits2 \
+                    port:xorg-xcb-proto \
+                    port:xorg-libxcb
+
+# not found:
+# ospray -- new port needed
+# https://www.ospray.org
+# https://github.com/RenderKit/ospray
 
 ## find_package(Python COMPONENTS Interpreter Development NumPy)
+
+#sudo apt-get
+#  install git 
+#  freeglut3-dev 
+#  libglib2.0-0 
+#  libdbus1-3
 
 #depends_lib         port:assimp2 \
 #                    port:expat \
