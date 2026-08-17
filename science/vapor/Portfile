@@ -59,9 +59,9 @@ depends_lib-append  port:assimp \
 ## find_package(Python COMPONENTS Interpreter Development NumPy)
 
 #sudo apt-get
-#  install git 
-#  freeglut3-dev 
-#  libglib2.0-0 
+#  install git
+#  freeglut3-dev
+#  libglib2.0-0
 #  libdbus1-3
 
 #depends_lib         port:assimp2 \
@@ -80,7 +80,8 @@ depends_lib-append  port:assimp \
 #                    patch-make-config-Darwin.mk.diff
 
 configure.args-append \
-                     -DBUILD_OSP=OFF
+                     -DBUILD_OSP=OFF \
+                     -DBUILD_PYTHON=OFF
 
 #post-configure {
 #    reinplace "s|@@MP_INSTALL_PREFIX@@|${destroot}${prefix}|g" ${worksrcpath}/options.mk
