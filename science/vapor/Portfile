@@ -44,13 +44,12 @@ depends_lib-append  port:assimp \
                     port:libgeotiff \
                     port:netcdf \
                     port:proj \
+                    port:py-numpy \
+                    port:python39 \
                     port:qt5 \
                     port:udunits2 \
                     port:xorg-xcb-proto \
                     port:xorg-libxcb
-
-#                    port:py-numpy \
-#                    port:python314 \
 
 # not found:
 # ospray -- new port needed
@@ -81,8 +80,7 @@ depends_lib-append  port:assimp \
 #                    patch-make-config-Darwin.mk.diff
 
 configure.args-append \
-                     -DBUILD_OSP=OFF \
-                     -DBUILD_PYTHON=OFF
+                     -DBUILD_OSP=OFF
 
 #post-configure {
 #    reinplace "s|@@MP_INSTALL_PREFIX@@|${destroot}${prefix}|g" ${worksrcpath}/options.mk
