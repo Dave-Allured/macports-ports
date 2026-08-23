@@ -10,7 +10,7 @@ revision            1
 
 name                vapor-toolbox
 categories          devel
-platforms           {darwin >= 24}
+platforms           {darwin >= 22}
 license             MIT
 maintainers         nomaintainer
 
