@@ -1,0 +1,65 @@
+From 9342d1e9687f0430538d93edc949ac638395be74 Mon Sep 17 00:00:00 2001
+From: Remi Collet <remi@remirepo.net>
+Date: Wed, 24 Jun 2026 07:45:10 +0200
+Subject: [PATCH] Fix #437 revert soname change
+
+---
+ configure                | 4 ++--
+ m4/version.m4            | 4 ++--
+ magick/libMagickCore.map | 2 +-
+ wand/libMagickWand.map   | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/configure b/configure
+index 5c32fcc57..2b6fd5223 100755
+--- a/configure
++++ b/configure
+@@ -5338,8 +5338,8 @@ MAGICK_GIT_REVISION=c1e211d2b:20260621
+ 
+ 
+ # Substitute library versioning
+-MAGICK_LIBRARY_CURRENT=8
+-MAGICK_LIBRARY_REVISION=0
++MAGICK_LIBRARY_CURRENT=7
++MAGICK_LIBRARY_REVISION=1
+ MAGICK_LIBRARY_AGE=0
+ MAGICK_LIBRARY_CURRENT_MIN=`expr $MAGICK_LIBRARY_CURRENT - $MAGICK_LIBRARY_AGE`
+ 
+diff --git a/m4/version.m4 b/m4/version.m4
+index d21a5b8d4..e9f11d0e6 100644
+--- a/m4/version.m4
++++ b/m4/version.m4
+@@ -52,8 +52,8 @@ m4_define([magick_tarname], [ImageMagick])
+ # files if you raise these versions.
+ #
+ # Bump the minor release # whenever there is an SOVersion bump.
+-m4_define([magick_library_current], [8])
+-m4_define([magick_library_revision], [0])
++m4_define([magick_library_current], [7])
++m4_define([magick_library_revision], [1])
+ m4_define([magick_library_age], [0])
+ 
+ m4_define([magickpp_library_current], [9])
+diff --git a/magick/libMagickCore.map b/magick/libMagickCore.map
+index 823a45ffa..85297c9a6 100644
+--- a/magick/libMagickCore.map
++++ b/magick/libMagickCore.map
+@@ -1,4 +1,4 @@
+- VERS_8.0 {
++ VERS_7.0 {
+      	 global:
+      		 *;
+      };
+diff --git a/wand/libMagickWand.map b/wand/libMagickWand.map
+index 823a45ffa..85297c9a6 100644
+--- a/wand/libMagickWand.map
++++ b/wand/libMagickWand.map
+@@ -1,4 +1,4 @@
+- VERS_8.0 {
++ VERS_7.0 {
+      	 global:
+      		 *;
+      };
+-- 
+2.54.0
+
