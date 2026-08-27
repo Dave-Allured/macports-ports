@@ -15,7 +15,7 @@ legacysupport.newest_darwin_requires_legacy 11
 
 name                        ImageMagick
 github.setup                ImageMagick ImageMagick6 6.9.13-55
-revision                    0
+revision                    1
 
 github.tarball_from         releases
 distname                    ${name}-${version}
@@ -52,6 +52,11 @@ long_description            This is the legacy ImageMagick version 6.  For the \
                             PhotoCD and TIFF.
 
 homepage                    https://legacy.imagemagick.org
+
+# Temporary -- Revert unexpected soname change, assuming upstream mistake.
+# Remove this after resolved upstream.
+# https://trac.macports.org/ticket/74369
+patchfiles-append           0001-Fix-437-revert-soname-change.patch
 
 depends_lib                 port:bzip2 \
                             port:djvulibre \
