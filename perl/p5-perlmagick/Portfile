@@ -10,7 +10,7 @@ epoch               1
 perl5.branches      5.28 5.30 5.32 5.34
 perl5.setup         PerlMagick 6.9.13-55
 github.setup        ImageMagick ImageMagick6 6.9.13-55
-revision            0
+revision            1
 
 set my_name         ImageMagick
 github.tarball_from releases
@@ -47,6 +47,11 @@ if {${perl5.major} != ""} {
 depends_lib-append  port:ImageMagick
 
 patchfiles          no-usr-include-ImageMagick.patch
+
+# Temporary -- Revert unexpected soname change, assuming upstream mistake.
+# Remove this after resolved upstream.
+# https://trac.macports.org/ticket/74369
+patchfiles-append   0001-Fix-437-revert-soname-change.patch
 
 # https://trac.macports.org/wiki/WimplicitFunctionDeclaration#strchr
 configure.checks.implicit_function_declaration.whitelist-append strchr
