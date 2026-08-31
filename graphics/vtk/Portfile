@@ -26,15 +26,15 @@ compiler.blacklist-append {clang < 1100}
 # Gitlab instance and VTK custom download page are both Anubis blocked.
 # On Github, only tags are mirrored, not releases.
 
-github.setup        Kitware vtk 9.6.2 v
+github.setup        Kitware vtk 9.7.0 v
 github.tarball_from archive
 revision            0
 categories          graphics devel
 license             BSD
 
-checksums           rmd160  5b25818b50f7922633ecb8a92de511c8eca189f8 \
-                    sha256  de5c02499c550aa09052b2d5f3823a8cae54c72ce1b0014afcde2dabd8e390ea \
-                    size    54875775
+checksums           rmd160  6e1c14b20b6b1bdd34578f3b4948361c848a026b \
+                    sha256  dbc22701625d85e4eefd078b85e4d91456c0c28434b854a704a16ba116385f7c \
+                    size    59243519
 
 maintainers         {@Dave-Allured noaa.gov:dave.allured} \
                     openmaintainer
