@@ -10,7 +10,7 @@ legacysupport.newest_darwin_requires_legacy 8
 name                hwloc
 version             2.14.0
 set branch          [join [lrange [split ${version} .] 0 [llength [split ${version} .] ]-2 ] .]
-revision            1
+revision            0
 epoch               1
 categories          devel
 maintainers         {i0ntempest @i0ntempest} openmaintainer
