@@ -7,7 +7,7 @@ PortGroup           github 1.0
 github.setup        letmaik rawpy 0.17.3 v
 github.tarball_from archive
 name                py-rawpy
-revision            1
+revision            0
 license             MIT
 
 checksums           rmd160  2b77e731a084b2102a46a2c8002aa7ef8c20adc8 \
