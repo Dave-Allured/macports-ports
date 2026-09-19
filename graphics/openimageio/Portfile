@@ -25,7 +25,7 @@ if {${port_latest}} {
                         size    54775625
 } else {
     github.setup        AcademySoftwareFoundation OpenImageIO 2.1.20.0 v
-    revision            19
+    revision            18
     checksums           rmd160  7f241baddcc6e731a29fb37090e4582953560f38 \
                         sha256  0ad46bda55d6357a3c474b8c8ccbb41d9732313247cffaf4a65fc50e6aad9e78 \
                         size    29116032
