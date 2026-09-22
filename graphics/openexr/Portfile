@@ -5,13 +5,13 @@ PortGroup                       cmake           1.1
 PortGroup                       github          1.0
 PortGroup                       legacysupport   1.1
 
-github.setup                    AcademySoftwareFoundation openexr 3.4.15 v
+github.setup                    AcademySoftwareFoundation openexr 3.5.0 v
 github.tarball_from             releases
 revision                        0
 
-checksums                       rmd160  f5f692aebdefaf65837ada45b4bcdc88250db09b \
-                                sha256  ab893d8003773ccd9a5556b2caf38da591ae37e20b06ee9d589a08984c5191f2 \
-                                size    25840011
+checksums                       rmd160  a685a5791bd03578560985113f432c89e608ffa8 \
+                                sha256  2ee8d3551170614a659a49bcf81ce59dd72c68b2b8eb73c08036225140ba283a \
+                                size    26399468
 
 categories                      graphics
 license                         BSD
