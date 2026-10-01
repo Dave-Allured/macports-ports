@@ -4,17 +4,17 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # GitHub version lags behind.
-R.setup             cran sgsokol rmumps 5.2.1-30
-revision            1
+R.setup             cran sgsokol rmumps 5.2.1-43
+revision            0
 categories-append   math
 maintainers         nomaintainer
 license             GPL-2+
 description         Wrapper for MUMPS library
 long_description    {*}${description}
 homepage            https://github.com/sgsokol/rmumps
-checksums           rmd160  3a6917d960432e61f09c10a80c8b5e3ee89f22a8 \
-                    sha256  8445b5770ddb08589f1b6cf71133b9cb51c9819c3189e6a9bba83513566de657 \
-                    size    2304989
+checksums           rmd160  c2c537cf0a741d4f51c20718dfcf4364e5ba3703 \
+                    sha256  a76f1d139b59bd90fbc7281990450a80b75eabc56804df245fa73cb17a4478e7 \
+                    size    2356516
 
 depends_lib-append  port:metis \
                     port:mumps \
@@ -27,3 +27,8 @@ depends_test-append port:R-slam \
                     port:R-testthat
 
 test.run            yes
+
+# CRAN livecheck in R portgroup seems to be broken.
+# Note, extra minus sign is needed in regex for rmumps.
+livecheck.url       https://cran.r-project.org/web/packages/${R.package}
+livecheck.regex     [quotemeta ${R.package}]_(\[0-9.-\]+).tar.gz
