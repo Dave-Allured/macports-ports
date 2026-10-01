@@ -178,6 +178,7 @@ variant qt5 description {Add Qt5 support.} {
 variant qt6 description {Add Qt6 support.} {
     PortGroup           qt6 1.0
 
+    qt6.find_method     {prefix_path}
     configure.args-append \
                         -DVTK_QT_VERSION=6 \
                         -DVTK_GROUP_ENABLE_Qt:STRING=YES \
