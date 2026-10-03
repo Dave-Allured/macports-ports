@@ -7,19 +7,21 @@ PortGroup                   muniversal 1.1
 PortGroup                   gitlab 1.0
 
 gitlab.instance             https://gitlab.inria.fr
-gitlab.setup                scotch scotch 7.0.5 v
+gitlab.setup                scotch scotch 7.0.16 v
 
 categories                  science math
-maintainers                 {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
+maintainers                 nomaintainer
 license                     CeCILL-C
 
 description                 a software package for graph and mesh/hypergraph \
                             partitioning and sparse matrix ordering
 long_description            Scotch is {*}${description}.
 
-checksums                   rmd160  b7fe20f5cd39f936618fea9329cb26ae437bfe21 \
-                            sha256  6f7ac6ebbf2e2b8524ff5f59eb9562a26ba6670b8b327ef0257dd37a6bca67be \
-                            size    7044004
+# Note: Fetch the TAG tarball, not the release asset as shown by gitlab.
+use_bzip2                   yes
+checksums                   rmd160  b6ca926dd2743ca7113844bb840911d250946458 \
+                            sha256  33c5c854b98a3c23cbb611189de3719d5c2695fadc8005a9a5b47224d2a11d8f \
+                            size    8087078
 
 compilers.choose            cc fc
 mpi.setup                   require
