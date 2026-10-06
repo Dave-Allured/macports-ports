@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-platformdirs
-version             4.12.0
+version             4.12.3
 revision            0
 
 categories-append   devel
@@ -18,9 +18,9 @@ long_description    {*}${description}, e.g. a \"user data dir\".
 
 homepage            https://github.com/platformdirs/platformdirs
 
-checksums           rmd160  2f5134b295c6647f5306e7d771607f9753bd277a \
-                    sha256  095be5c143382b1bee917c4f3e9987a0d8d6a582261f1d061ad0c403b7695b5b \
-                    size    58964
+checksums           rmd160  f40dcb40a477c70f7c2d9122b982b9934ffb5164 \
+                    sha256  427fc0bb321ae0c5b037fa03238ca74820437be162e78b4848c4d4055b9b766c \
+                    size    59538
 
 # keep the Python 2.7 subport as it is a dependency of py-virtualenv
 # See <https://trac.macports.org/wiki/Python#VersionPolicy>

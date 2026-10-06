@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/evilmartians/lefthook 2.1.12 v
+go.setup            github.com/evilmartians/lefthook 2.1.17 v
 go.offline_build    no
 go.toolchain_min    1.26.6
 revision            0
@@ -25,9 +25,9 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  0502a3baf7ffb6542a86c34813228d41cf588fdd \
-                    sha256  c2e79ff53d31aaeb5a5765d118552a7b6f6e2667647347200386615ee4e88acf \
-                    size    227213
+checksums           rmd160  1056497358d11bc6e58b346a154295a9090c8f17 \
+                    sha256  93b3bb1b52e63194b287ba6ab921a5c07b85f4911c8c9295dfc73228194c6789 \
+                    size    240225
 
 destroot {
     xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/
