@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                yfinance
-version             1.4.1
+version             1.7.0
 revision            0
 
 categories-prepend  finance
@@ -18,16 +18,16 @@ long_description    {*}${description}
 
 homepage            https://github.com/ranaroussi/yfinance
 
-checksums           rmd160  bb4ef29d172dd008c40d59090679f13bccc8aedc \
-                    sha256  9acecec3036b4aa96d1e3120ff85ca4f6f81d239d968f56b6eb7877f89fea7a3 \
-                    size    153823
+checksums           rmd160  ce87dd3c956a33301993f7b7ccb9d6c3cffbc066 \
+                    sha256  442f780d13d3e52fefa6c721c2c9bfee321078c1987d6585ec193b5c24382f8a \
+                    size    176142
 
 python.default_version 314
 
 depends_lib-append \
                 port:py${python.version}-beautifulsoup4 \
                 port:py${python.version}-curl-cffi \
-                port:py${python.version}-frozendict \
+                port:py${python.version}-lxml \
                 port:py${python.version}-multitasking \
                 port:py${python.version}-numpy \
                 port:py${python.version}-pandas \

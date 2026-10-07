@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        github copilot-cli 1.0.73 v
+github.setup        github copilot-cli 1.0.92 v
 
 categories          llm
 license             Restrictive/Distributable
@@ -27,14 +27,14 @@ build               {}
 # Pre-built binary -- architecture-specific distfiles
 if {${configure.build_arch} eq "arm64"} {
     set arch_string     darwin-arm64
-    checksums           rmd160  5d0d980137d88006ffcbde83487636b507b61629 \
-                        sha256  858081270a544c396af0132926449f8d92ba5086c2b802c633a376a9da5e83d6 \
-                        size    91329267
+    checksums           rmd160  3de402672e0a2db2fe86b6d17e572d5048e86de2 \
+                        sha256  6aa2af1d0436b23c92810f11ea35a3d1c2b36b716d3e6d7c44299d199f905c5b \
+                        size    97976340
 } else {
     set arch_string     darwin-x64
-    checksums           rmd160  6cb96cbbeb601723f82e51f3abb699ec7bb350f9 \
-                        sha256  91f9420cd903e35a235407fa87901493625267f502dd3e5d2eab1882b0a8c658 \
-                        size    101953880
+    checksums           rmd160  7b990f1e7bd09e03ea42ca9bccff633ffd157069 \
+                        sha256  7527cdd1c254d1daeb3e3fbd042deec3ba1f283cce86c83dced2bea8b63cc28b \
+                        size    110302746
 }
 
 dist_subdir         ${name}/${version}

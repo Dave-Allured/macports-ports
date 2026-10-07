@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                claude-code
-version             2.1.217
+version             2.1.292
 revision            0
 
 categories          llm
@@ -26,14 +26,14 @@ platforms           {darwin >= 22}
 
 if {${configure.build_arch} eq "x86_64"} {
     set arch_classifier x64
-    checksums    rmd160  eb96e0bb5a2c3accd91af33fea35e2b81c59f5ae \
-                 sha256  8387a6fd44edfd40d7e74c5fdc3270a15f5e6b1b58c7c6fee560e70d3d1943da \
-                 size    259908496
+    checksums    rmd160  0037df93aa0ec7632601aa86ea82b032c4eb93f4 \
+                 sha256  a9739a215728ce72435885fedb19d1317ee1ccec61e246fbfb3acaf01689c473 \
+                 size    243514624
 } elseif {${configure.build_arch} eq "arm64"} {
     set arch_classifier arm64
-    checksums    rmd160  36a67701da887432d166eb6ef22f0b8476320c8c \
-                 sha256  5840c777fd47115e9ca276e165563c6e121e7c7e2b4d86598e0025f8cc37de56 \
-                 size    250456784
+    checksums    rmd160  1171028f18268545e3b2598085ca551f7fcd6bf5 \
+                 sha256  97a01e5bc74a199e67189435d0331ea3a24eac2e07db4b76d9148c5b0386138f \
+                 size    235017328
 } else {
     set arch_classifier unsupported_arch
     distfiles
@@ -79,7 +79,7 @@ destroot {
     if {![variant_isset telemetry]} {
         append launch_command " DISABLE_TELEMETRY=1"
     }
-    append launch_command " ${binary} \"$@\""
+    append launch_command " exec ${binary} \"$@\""
     puts $launch_script $launch_command
     close $launch_script
 }

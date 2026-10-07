@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        rust-analyzer rust-analyzer 2026-07-13
+github.setup        rust-lang rust-analyzer 2026-10-05
 github.tarball_from archive
 version             [string map { {-} {} } ${github.version}]
 revision            0
@@ -25,9 +25,9 @@ maintainers         @fabius \
                     openmaintainer
 
 checksums           ${distname}${extract.suffix} \
-                        rmd160  711abdf6360041bf3ec6d0402091a3bd0a66b078 \
-                        sha256  5ef91e9d1a616bd30b143ca7ac72f1d378aa2c733b4f40e244ae921f39b50b85 \
-                        size    4027632
+                    rmd160  bb17cb8b51ff1bc6c73d0727c5dfe3432981db3c \
+                    sha256  d69fb6a2ae8da854237517b34228d94732f1b197f09cb03eb0f5e0222b8ff14b \
+                    size    4065129
 
 destroot {
     xinstall -m 0755 \
@@ -60,7 +60,7 @@ cargo.crates \
     cargo-platform                      0.3.3  dd0061da739915fae12ea00e16397555ed4371a6bb285431aab930f61b0aa4ba \
     cargo_metadata                     0.23.1  ef987d17b0a113becdd19d3d0022d04d7ef41f9efe4f3fb63ac44ba61df3ade9 \
     cast                                0.3.0  37b2a672a2cb129a2e41c10b1224bb368f9f37a2b16b612598138befd7b37eb5 \
-    cc                                 1.2.63  556e016178bb5662a08681bbe0f00f8e17631781a4dfc8c45e466e4b185ec27f \
+    cc                                  1.4.3  509591b7bcd67f4ef775afad7662703b4935daaa6ec0e5605cfb1090b32a2b6d \
     cfg-if                              1.0.4  9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801 \
     cfg_aliases                         0.2.1  613afe47fcd5fac7ccf1db93babcb082c5994d996f20b8b159f2ad1658eb5724 \
     ciborium                            0.2.2  42e69ffd6f0917f5c029256a24d0161db17cea3997d185db0d35926308770f0e \
@@ -102,7 +102,7 @@ cargo.crates \
     errno                              0.3.14  39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb \
     expect-test                         1.5.1  63af43ff4431e848fb47472a920f14fa71c24de13255a5692e93d4e90302acb0 \
     fastrand                            2.4.1  9f1f227452a390804cdb637b74a86990f2a7d7ba4b7d5693aac9b4dd6defd8d6 \
-    find-msvc-tools                     0.1.9  5baebc0774151f905a1a2cc41989300b1e6fbb29aff0ceffa1064fdd3088d582 \
+    find-msvc-tools                    0.1.11  d45db016d36b838f563236e9193d0ee6ce38f3f68b6c94e914b4929c96bbb890 \
     fixedbitset                         0.5.7  1d674e81391d1e1ab681a28d99df07927c6d4aa5b027d7da16ba32d1d21ecd99 \
     flate2                              1.1.9  843fba2746e448b37e26a819579957415c8cef339bf08564fe8b7ddbd959573c \
     fnv                                 1.0.7  3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1 \
@@ -114,7 +114,7 @@ cargo.crates \
     futures-core                       0.3.32  7e3450815272ef58cec6d564423f6e755e25379b217b0bc688e295ba24df6b1d \
     futures-task                       0.3.32  037711b3d59c33004d3856fbdc83b99d4ff37a24768fa1be9ce3538a1cde4393 \
     futures-util                       0.3.32  389ca41296e6190b48053de0321d02a77f32f8a5d2461dd38762c0593805c6d6 \
-    gen-lsp-types                      0.10.0  4cd635c5206acd03ea024d6b5902539e5c903de3afa220fdb5c94b583af77f4f \
+    gen-lsp-types                      0.11.0  b64887ac3a8083427ae935a7296db876871582cd57eac077564f8bc18fa49116 \
     getrandom                          0.2.17  ff2abc00be7fca6ebc474524697ae276ad847ad0a6b3faa4bcb027e9a4614ad0 \
     getrandom                           0.3.4  899def5c37c4fd7b2664648c28120ecec138e4d395b459e5ca34f9cce2dd77fd \
     getrandom                           0.4.2  0de51e6874e94e7bf76d726fc5d13ba782deca734ff60d5bb2fb2607c7406555 \
@@ -210,17 +210,17 @@ cargo.crates \
     quote                              1.0.45  41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924 \
     r-efi                               5.3.0  69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f \
     r-efi                               6.0.0  f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf \
-    ra-ap-rustc_abi                   0.165.0  2f25a779e21ca3bba6795193b16508c8ab159f96ee4b07349893fd272065b525 \
-    ra-ap-rustc_ast_ir                0.165.0  0218ca6c7b096466e85a497e6150c39be5b7bc36637fe62c1cd20370a9d9aac7 \
-    ra-ap-rustc_hashes                0.165.0  d6b410bacf1a7c8038f376fa6283003784d568ac012e35fc0aeefa9a5ab11a2e \
-    ra-ap-rustc_index                 0.165.0  2271b55e4a5d0cc0cbe9bdf8056c07ac69e32919a48ce66722ed0526d62588c3 \
-    ra-ap-rustc_index_macros          0.165.0  b6a89e743fb881a1e13544e3395a5ad9ad9280d56384256a121066119abd7af2 \
-    ra-ap-rustc_lexer                 0.165.0  a6d7c9cc05e0e6b72a214a455a106d9b22b0494164d50a657b17bd319534c218 \
-    ra-ap-rustc_next_trait_solver     0.165.0  cb3017c2f0ace80b8e6068b9c613aa56ed50e0374bf44a891447511f1264e40d \
-    ra-ap-rustc_parse_format          0.165.0  4a737f844bdef8ac5ab54dadf2f34704b4d06beef9236d71080bb34db697220b \
-    ra-ap-rustc_pattern_analysis      0.165.0  6de3d4c7d6078cce3c40c55717b8b15002a80b9fa8849faea496a365324861b4 \
-    ra-ap-rustc_type_ir               0.165.0  8c5d9a4d3e7bee7313599bc6d794037247ac0165f03857379cf4fc3097199e05 \
-    ra-ap-rustc_type_ir_macros        0.165.0  024598d1f54272acd83d28c121f8a2e82e216dd7be1e40158b66b2d12fa214c0 \
+    ra-ap-rustc_abi                   0.166.0  e2cf1b1ffe31b6226c00b40cddfda65002b7729f9f4ed2d547b5856cdab0011c \
+    ra-ap-rustc_ast_ir                0.166.0  2ef42605e36e1305e815ccfc8830eb870f74d78534bca19a61629149536d8e98 \
+    ra-ap-rustc_hashes                0.166.0  b9f5542968215c17275920791b2fa13a43014287506ed0450777c79845102e86 \
+    ra-ap-rustc_index                 0.166.0  1d9e47b9ca7d92cfb0d6653503adbabd41938b84474317397a664326b208d6c6 \
+    ra-ap-rustc_index_macros          0.166.0  4d744a7a2852a22f06210bcff9e4667ed0cacbfbe94894cc294044d25e876341 \
+    ra-ap-rustc_lexer                 0.166.0  527c12b3731b7d0692498012810b85b2b8dfdb8b514321ed6afc434bd1c70191 \
+    ra-ap-rustc_next_trait_solver     0.166.0  a7a9663a8d7c369e934aac2b74a638537ad7eb4be75b4530d765384dc071c936 \
+    ra-ap-rustc_parse_format          0.166.0  2c038b7a8b0f784d4e441ad8ab991fbbdaa5e0be482e59c639a846a1c8126951 \
+    ra-ap-rustc_pattern_analysis      0.166.0  42ca286f90e99bb97cd9274c088f3c874a05d1ee90cabf40a3928afedabe99fd \
+    ra-ap-rustc_type_ir               0.166.0  26d6efb6008f665a9485e0afecf9f4950a6c4bedd8ddd330a9df8986a6c0160b \
+    ra-ap-rustc_type_ir_macros        0.166.0  5f4fd2355e2bbf1f343c730f623596efc6e465b5e3685b606a437567ebb75bf8 \
     rand                                0.9.4  44c5af06bb1b7d3216d91932aed5265164bf384dc89cd6ba05cf59a35f5f76ea \
     rand_chacha                         0.9.0  d3022b5f1df60f26e1ffddd6c66e8aa15de382ae63b3a0c1bfc0e4d3e3f325cb \
     rand_core                           0.9.5  76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c \
@@ -232,7 +232,7 @@ cargo.crates \
     regex                              1.12.3  e10754a14b9137dd7b1e3e5b0493cc9171fdd105e0ab477f51b72e7f3ac0e276 \
     regex-automata                     0.4.14  6e1dd4122fc1595e8162618945476892eefca7b88c52820e74af6262213cae8f \
     regex-syntax                       0.8.10  dc897dd8d9e8bd1ed8cdad82b5966c3e0ecae09fb1907d58efaa013543185d0a \
-    rowan                             0.15.19  a2441aaccb50f4267d4f0f58b21e0138e96a449f361ed57a2673a83c9bca0772 \
+    rowan                              0.17.0  14b574c58582fa59fa43a2feb6608b8744184659f08a2e0117e4b8224d95ed61 \
     rustc-demangle                     0.1.27  b50b8869d9fc858ce7266cce0194bd74df58b9d0e3f6df3a9fc8eb470d95c09d \
     rustc-hash                          1.1.0  08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2 \
     rustc-hash                          2.1.2  94300abf3f1ae2e2b8ffb7b58043de3d399c73fa6f4b73826402a5c457614dbe \
@@ -242,9 +242,9 @@ cargo.crates \
     rustix                              1.1.4  b6fe4565b9518b83ef4f91bb47ce29620ca828bd32cb7e408f0062e9930ba190 \
     rustversion                        1.0.22  b39cdef0fa800fc44525c84ccb54a029961a8215f9619753635a9c0d2538d46d \
     rusty-fork                          0.3.1  cc6bf79ff24e648f6da1f8d1f011e9cac26491b619e6b9280f2b47f1774e6ee2 \
-    salsa                              0.27.2  ffbaab832e2ea754afda4a738f987dd1e8bd30c9e5d8c981ee6a3934386095e2 \
-    salsa-macro-rules                  0.27.2  de6872462ac73d39969a836273c24163e6a26a4e08f5114fcd80e25af30ea9c6 \
-    salsa-macros                       0.27.2  76bc78ffaf65b1a9175818592c5130aa10b1bb245a905722fd4db87cea8a8457 \
+    salsa                              0.28.5  27d2e6e19e39591cd99c01ac4141544b4d012cfd0831348629b8187fa9fe6d34 \
+    salsa-macro-rules                  0.28.5  baf90a551c38f25ed8489111d3d5827aa18e1b85963f5e6a298505b1d1e2cb7e \
+    salsa-macros                       0.28.5  69dd77f86ec10e72e314f4ddf7c44c8d349e73cdff1aad524ba9668603fb0549 \
     same-file                           1.0.6  93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502 \
     scip                                0.7.1  f4d0e81b39f590b2edbe2369760641511898ed34062aed2e18e6d05eead3d6b7 \
     scopeguard                          1.2.0  94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49 \
@@ -264,8 +264,8 @@ cargo.crates \
     stable_deref_trait                  1.2.1  6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596 \
     static_assertions                   1.1.0  a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f \
     syn                               2.0.117  e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99 \
+    syn                                 3.0.3  53e9bae58849f64dfa4f5d5ae372c8341f7305f82a3868709269343628b659a3 \
     synstructure                       0.13.2  728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2 \
-    temp-dir                            0.2.0  016ef9739649996fcc983b9c588fe3d557cf216d4d98503ce1b057ab5a66d689 \
     tempfile                           3.27.0  32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd \
     tenthash                            1.1.0  e5c4bcc0a4fa333239f43662d15fbf995f384b2aeaf89c4ab4c83353d6cbb952 \
     text-size                           1.1.1  f18aa187839b2bdb1ad2fa35ead8c4c2976b64e4363c386d45ac0f7ee85c9233 \

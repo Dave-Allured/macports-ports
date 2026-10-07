@@ -9,12 +9,12 @@ PortGroup           muniversal 1.0
 name                gdal
 # keep version in sync with py-gdal; rev-bump dependents after an
 # install_name-changing update (typically when a or b changes in version a.b.c).
-version             3.13.1
-revision            1
+version             3.13.3
+revision            0
 
-checksums           rmd160  a21330e04ab00d8dc89f8d1f3d5c9858cb948db0 \
-                    sha256  7398fb132753140740fac4f099f0dbe49d1ad074c4162290c308e067c46b7f92 \
-                    size    9957916
+checksums           rmd160  25808bf565392489fc084554127f967659559318 \
+                    sha256  a3348c2102dd91962290007d7c293b467bb1b0cd89f086f24bb97b9b653a9804 \
+                    size    9982976
 
 categories          gis
 license             MIT BSD
@@ -638,9 +638,13 @@ if {$subport eq $name} {
         }
     }
 
+# 2026 July 25: For livecheck, stick with the master download directory.
+# Do not use https://download.osgeo.org/gdal/CURRENT.
+# The master directory is more reliable than the CURRENT subdirectory.
+
     livecheck.type  regex
-    livecheck.url   https://download.osgeo.org/gdal/CURRENT
-    livecheck.regex ${name}-(\\d+(?:\\.\\d+)*)\\.tar
+    livecheck.url   https://download.osgeo.org/gdal/
+    livecheck.regex {title="([0-9.]+)"}
 }
 
 proc set_gdal_variants {} {

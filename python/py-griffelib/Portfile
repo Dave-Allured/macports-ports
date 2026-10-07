@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-griffelib
-version             2.1.0
+version             2.3.0
 revision            0
 
 categories-append   devel
@@ -21,9 +21,9 @@ long_description    {*}${description}
 
 homepage            https://pypi.org/project/griffelib/
 
-checksums           rmd160  04a3e59f2b7dee5d82c34eb389a9d819afb54a4e \
-                    sha256  762a186d2c6fd6794d4ea20d428d597ffb857cb56b66421651cbba15bdd5e813 \
-                    size    216234
+checksums           rmd160  b2ae46b824dbe1b20dcf422f89097af5e61fe8cb \
+                    sha256  7b0952caf5bca6afa4bb5ee8c6a2d183fe3f21b62efc5f6c7243cb2b26d2d115 \
+                    size    234534
 
 python.versions     313 314
 python.pep517_backend hatch

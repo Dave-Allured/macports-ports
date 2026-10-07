@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang  1.0
 
-go.setup            github.com/kubescape/kubescape 4.0.8 v
+go.setup            github.com/kubescape/kubescape 4.0.15 v
 revision            0
 
 description         Tool for testing if Kubernetes is deployed securely as \
@@ -17,16 +17,17 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  f7a6559d8c4c2ad32f061d5514d094775dff35cd \
-                    sha256  28866380b6c8a17c7548d5467aaf4197937602c673d8fed51b973e4aadee8298 \
-                    size    9855075
+checksums           rmd160  0f77f88aca6f09547512928133507c1ee6ec0447 \
+                    sha256  9f57bb72d15b3f3635253fa441696c498b991731f19e8a57e63102c4214b5de8 \
+                    size    13166888
 
 # Allow Go to fetch dependencies at build time
 go.offline_build no
+go.toolchain_min    1.26.0
 build.pre_args-append -ldflags \" \
     -X main.version=v${version} \
-    -X main.commit=d7539c2264560a8685f59e89a731d6de833258a6 \
-    -X main.date=20260508 \
+    -X main.commit=469969f6bebf46bef5e808b91a4bb46fb2bbf4ed \
+    -X main.date=20260812 \
     \"
 build.cmd           "${go.bin} mod tidy && ${go.bin} build"
 

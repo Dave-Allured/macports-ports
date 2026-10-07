@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-set ver             2026-07a
+set ver             2026-09
 github.setup        odin-lang odin ${ver} dev-
 github.tarball_from archive
 version             0.[string map {- .} ${ver}]
@@ -26,9 +26,9 @@ set llvm_version    22
 depends_lib         port:llvm-${llvm_version} \
                     port:libiconv
 
-checksums           rmd160  0cb7834e9485c0c0b3617d3af225581d347a86ce \
-                    sha256  8f4f02fd9a3426b441cd0dfbe0aca1b95fd93c95d86940fcb4417ef6044c83cd \
-                    size    149542086
+checksums           rmd160  a3d0bb1be80e27073994b3d33ae1e8633334b20b \
+                    sha256  f52230de6ad28bed99b4440018cb659c13e3fd78c4521ca3ce661698c1f6135d \
+                    size    152424640
 
 patchfiles          patch-build.diff patch-raylib.diff
 

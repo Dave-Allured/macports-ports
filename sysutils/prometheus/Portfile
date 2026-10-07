@@ -3,8 +3,9 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/prometheus/prometheus 3.13.0 v
+go.setup            github.com/prometheus/prometheus 3.15.0 v
 go.offline_build    no
+go.toolchain_min    1.26
 revision            0
 
 homepage            https://prometheus.io
@@ -47,9 +48,9 @@ set prom_share_dir  ${prefix}/share/${name}
 set prom_log_dir    ${prefix}/var/log/${name}
 set prom_log_file   ${prom_log_dir}/${name}.log
 
-checksums           rmd160  e35f765d9a50ea4ce972ea3ef273071f8d06b94f \
-                    sha256  fd0bfdc1390e71c3eeb05532293f9e2a1279e75d3546aa86dc4881627c9e143d \
-                    size    5939062
+checksums           rmd160  05801b53e48ce25f28b202d3f66e58cea965bb7b \
+                    sha256  d6383dea2f9b26c1673a52859c453653f2c6c046f7fb6d01db59603a65a732eb \
+                    size    6159656
 
 add_users           ${prom_user} \
                     group=${prom_user} \

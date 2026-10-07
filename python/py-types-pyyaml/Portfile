@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-types-pyyaml
 python.rootname     types_pyyaml
-version             6.0.12.20260518
+version             6.0.12.20260906
 revision            0
 
 license             Apache-2
@@ -15,9 +15,12 @@ long_description    This is a type stub package for the PyYAML package. It can b
                     by type checkers to check code that uses PyYAML.
 homepage            https://github.com/python/typeshed
 
-checksums           rmd160  d5ca039c9966a46cb8751a27b2af071876150831 \
-                    sha256  d917f83fb38462550338c1297faedd860b3ec83912b96b1e3d73255f7473e466 \
-                    size    17850
+supported_archs     noarch
+platforms           {darwin any}
+
+checksums           rmd160  a7c047949125c699c2e2eac9f4778d6becc85fe2 \
+                    sha256  f59c1cc05010b833d2d72287bbaa72610106b28d42d89a907313117faba85212 \
+                    size    18649
 
 python.versions     310 311 312 313 314
 

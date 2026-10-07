@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                ocrmypdf
-version             17.8.1
+version             17.13.0
 revision            0
 categories          textproc
 
@@ -12,9 +12,9 @@ homepage            https://github.com/ocrmypdf/OCRmyPDF
 
 maintainers         {@akierig fastmail.de:akierig} openmaintainer
 
-checksums           rmd160  66c57b6784f49e04810734348d1c79b9770e41f5 \
-                    sha256  6f72e4da5fd7805e5d677c0fc55ad380c70e1c7ad33dd9ce2402575194803e08 \
-                    size    7451173
+checksums           rmd160  785b7a5251b5e3607eca4dddb793dc9e80fdc520 \
+                    sha256  151c35d810eb628fbc5cb9bbe80b834ecf094737efa0e7a2e9e1fac3c730ed49 \
+                    size    7685391
 
 description         ${name} adds an OCR text layer to scanned PDF files, \
                     allowing them to be searched

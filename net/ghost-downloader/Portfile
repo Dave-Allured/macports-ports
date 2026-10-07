@@ -6,23 +6,23 @@ PortGroup           active_variants 1.1
 PortGroup           app 1.1
 PortGroup           qt6 1.0
 
-github.setup        XiaoYouChR Ghost-Downloader-3 4.1.1 v
+github.setup        XiaoYouChR Ghost-Downloader-3 4.3.7 v
 github.tarball_from archive
-revision            0
+revision            3
 name                [string tolower [join [lrange [split ${github.project} -] 0 1] -]]
 categories          net python
 homepage            https://gd.xychr.com
 license             GPL-3
 maintainers         {i0ntempest @i0ntempest} openmaintainer
 
-description         AI-boost cross-platform multi-protocol fluent-design concurrent downloader\
-                    built with Python & Qt
-long_description    ${name} is an {*}${description}, supports HTTP(S), QUIC, BitTorrent, \
-                    eD2k, M3U8 downloads and more.
+description         The only downloader you need
+long_description    ${name} aims to be [string tolower ${description}]. It employs multithreaded\
+                    and intelligent load balancing, supports HTTP(S), QUIC, BitTorrent, eD2k, M3U8,\
+                    common video sites, media sniffing, browser integration, and more.
 
-checksums           rmd160  2cdd647d06f099312698e8e8326387d04a518f98 \
-                    sha256  ee1c5ad0d5c381e072bec59f1f5c981d233670a2620ea34f211bd611a6c7ea46 \
-                    size    11321838
+checksums           rmd160  669e8a7be34994223aff4ab586f3d9c3fd217325 \
+                    sha256  5800efcfa760fbae8652978342bad730bc3e1b281db681576737ad619f26a086 \
+                    size    12175342
 
 set python_version  314
 set python_branch   [string index ${python_version} 0].[string range ${python_version} 1 end]
@@ -56,10 +56,20 @@ qt6.depends_lib     qttranslations
 require_active_variants \
                     port:libtorrent-rasterbar python${python_version}
 
+# https://github.com/XiaoYouChR/Ghost-Downloader-3/pull/765 - disable auto update
+patchfiles-append   patch-765.diff
+# https://github.com/XiaoYouChR/Ghost-Downloader-3/pull/840 - i18n
+patchfiles-append   patch-840.diff
+# https://github.com/XiaoYouChR/Ghost-Downloader-3/pull/843 - threads slider fix and single threaded mode
+patchfiles-append   patch-843.diff
+# https://github.com/XiaoYouChR/Ghost-Downloader-3/pull/848 - file and folder naming fixes
+patchfiles-append   patch-848.diff
+patch.args          -p1
+
 post-patch {
     # We don't compile in standalone mode so sys.executable is the interpreter
     reinplace "s|sys.executable|sys.argv\[0\]|g" ${worksrcpath}/app/config/paths.py
-    # change default yt-dlp directory
+    # change default goed2kd directory
     reinplace "s|{APP_DATA_DIR}/goed2kd|${prefix}/libexec/goed2kd|g" ${worksrcpath}/features/ed2k_pack/config.py
 }
 
@@ -67,6 +77,10 @@ post-patch {
 # deploy.py compiles standalone bundle and packs everything with nuitka into one app bundle - 
 # avoid that, make our own bundle. We compile the main script and the `app` package only.
 use_configure       no
+post-configure {
+    # refresh translation
+    system -W ${worksrcpath} "${prefix}/bin/python${python_branch} scripts/sync_i18n_res.py"
+}
 
 build.cmd           ${prefix}/bin/python${python_branch} -m nuitka
 build.target        ${github.project}.py
@@ -74,7 +88,8 @@ build.args          --verbose \
                     --plugin-enable=pyside6 \
                     --include-package=app \
                     --static-libpython=no \
-                    --disable-ccache
+                    --disable-ccache \
+                    --macos-app-macos-min-version=${macosx_deployment_target}
 
 app.executable      ${worksrcpath}/${github.project}.bin
 app.icon            ${worksrcpath}/app/assets/logo.icns
@@ -98,7 +113,7 @@ set document_types [list \
 ]
 # see deploy.py for supported URL schemes
 set url_types [list \
-    [list "${app.identifier}" [list "ghostdownloader"]] \
+    [list "${app.identifier}" [list "ghostdownloader" "magnet" "ed2k" "ftp" "ftps"]] \
 ]
 
 destroot {
@@ -131,9 +146,9 @@ destroot {
 post-destroot {
     app::post_destroot
 
-    # file associations
     set plistbuddy /usr/libexec/PlistBuddy
 
+    # file associations
     exec ${plistbuddy} -c "Add :CFBundleDocumentTypes array" ${dest_app_info_plist}
     set i 0
     foreach document_type ${document_types} {
@@ -174,24 +189,39 @@ post-destroot {
 
         incr i
     }
+
+    # deployment target
+    exec ${plistbuddy} -c "Add :LSMinimumSystemVersion string ${macosx_deployment_target}" ${dest_app_info_plist}
+
+    # Downloads folder access request prompt
+    set dl_access_request "${app.name} needs to access your Downloads folder to manage downloads."
+    exec ${plistbuddy} -c "Add :NSDownloadsFolderUsageDescription string ${dl_access_request}" ${dest_app_info_plist}
+
+    # copyright string
+    set copyright "Copyright(C) [clock format [clock seconds] -format %Y] ${github.author}, MacPorts port by [lindex [split [lindex ${maintainers} 0] " "] 0]"
+    exec ${plistbuddy} -c "Add :NSHumanReadableCopyright string ${copyright}" ${dest_app_info_plist}
+
+    # no auto update marker
+    set fp [open ${dest_app_bin_dir}/gd_no_auto_update w]
+    puts -nonewline ${fp} "MacPorts"
+    close ${fp}
+
     app::sign
 }
 
 variant media description {enable and install dependencies for media downloading and muxing support} {
-    set ::ffmpeg_ver \
-                    8
     depends_run-append \
-                    port:ffmpeg${::ffmpeg_ver} \
+                    port:ffmpeg \
                     port:n-m3u8dl-re \
                     port:yt-dlp \
                     port:quickjs-ng
 
     post-patch {
         # change default ffmpeg directory
-        reinplace "s|{APP_DATA_DIR}/FFmpeg|${prefix}/libexec/ffmpeg${::ffmpeg_ver}|g" ${worksrcpath}/features/ffmpeg_pack/config.py
+        reinplace "s|{APP_DATA_DIR}/FFmpeg|${prefix}/bin|g" ${worksrcpath}/features/ffmpeg_pack/config.py
         # change default n-m3u8dl-re directory
         reinplace "s|{APP_DATA_DIR}/M3U8DL|${prefix}/bin|g" ${worksrcpath}/features/m3u8_pack/config.py
-        # change default youtube download runtime (yt-dlp source & qjs binary) directory
+        # change default youtube support runtime (yt-dlp source & qjs binary) directory
         reinplace "s|f\"{APP_DATA_DIR}/YtDlp\"|str(Path(sys.argv\[0\]).resolve().parent / \"deps/YtDlp\")|g" ${worksrcpath}/features/yt_dlp_pack/config.py
     }
 }

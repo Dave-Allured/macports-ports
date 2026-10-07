@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cmake 1.1
 PortGroup           github 1.0
 
-github.setup        litespeedtech ls-qpack 2.6.5 v
+github.setup        litespeedtech ls-qpack 2.7.0 v
 github.tarball_from archive
 revision            0
 
@@ -14,9 +14,9 @@ maintainers         {mps @Schamschula} openmaintainer
 description         QPACK compression library for use with HTTP/3
 long_description    {*}${description} 
 
-checksums           rmd160  f842e8adf35270e89927b49252e29db86d2ff5d0 \
-                    sha256  58241ce3d2971cc16f9bc6284c0a06e22e1793a50da7d38db9edc63b9af51191 \
-                    size    708276
+checksums           rmd160  fce97c5a52af718de8eaf2d560115ac55837591c \
+                    sha256  1c55c3ec956cdfcfa0b90b5e24dbeb41d35c83f8be823b3c0afb0c33967b6d4c \
+                    size    709030
 
 # error: #pragma GCC diagnostic not allowed inside functions
 compiler.blacklist-append \

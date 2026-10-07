@@ -20,8 +20,8 @@ universal_variant no
 # https://learn.microsoft.com/java/openjdk/download#openjdk-11
 supported_archs  x86_64 arm64
 
-version      ${feature}.0.31
-set build    11
+version      ${feature}.0.32.1
+set build    1
 revision     0
 
 # End of life date: https://learn.microsoft.com/en-us/java/openjdk/support#release-and-servicing-roadmap
@@ -33,14 +33,14 @@ master_sites https://aka.ms/download-jdk/
 
 if {${configure.build_arch} eq "x86_64"} {
     set arch_classifier x64
-    checksums    rmd160  96d0b169dfe96dcd8114277f90fb4f7c65702154 \
-                 sha256  f16583e0fe5ce4274dc4bec49593470d899353b16f5571a2cd980d6438f9f3ef \
-                 size    191132465
+    checksums    rmd160  c56b9fafdfc9614366bef0e199ee37277616d90e \
+                 sha256  96088abf8d4a483cfc1f7e1f68d5f9e01e396b5903571f087efb35867497d390 \
+                 size    191105166
 } elseif {${configure.build_arch} eq "arm64"} {
     set arch_classifier aarch64
-    checksums    rmd160  f876a245c17aaf3a2f59821bc07671a309e3d9cd \
-                 sha256  03e7a317bf74e370252a86049d379183628dfb7320e9e74ae0bdcfd8a4506bd9 \
-                 size    185244891
+    checksums    rmd160  40195993d00986362f8e966a88e7a7b2e55921d9 \
+                 sha256  05161b4b839beafcb361a49c8bfda07f06923562d91c2271dbf511ae48d07314 \
+                 size    185211488
 } else {
     set arch_classifier unsupported_arch
 }

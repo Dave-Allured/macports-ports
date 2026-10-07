@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-svglib
-version             2.0.2
+version             2.3.0
 revision            0
 
 license             LGPL-3
@@ -16,9 +16,9 @@ homepage            https://github.com/deeplook/svglib
 supported_archs     noarch
 platforms           {darwin any}
 
-checksums           rmd160  cdc5515d4e5e86aeb63ffecd2d156809790b6c37 \
-                    sha256  455e473dbe7066eea55c39de8194a6a3b646b6c37a255700257fd32115ddb218 \
-                    size    1341040
+checksums           rmd160  e5b77de7442eab90d367d1c79e17f15d170419b3 \
+                    sha256  576f417c681938e76e3d3bc2d92898c1b3f4b7248c9880b25e439c6e6d897aae \
+                    size    1376107
 
 python.versions     310 311 312 313 314
 

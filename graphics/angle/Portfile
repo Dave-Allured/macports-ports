@@ -3,14 +3,14 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-set rev             13e691adf3d4d3ebee2f7239731a07d3b9704956
+set rev             170484eea03a4255a388072add4232e1fadfbee4
 
 github.setup        google angle $rev
 github.tarball_from archive
 
 # Major and minor version from src/common/angle_version.h
 # Patch version using `git rev-list HEAD --count`
-version             2.1.27953
+version             2.1.28853
 revision            0
 categories          graphics devel
 license             BSD
@@ -25,14 +25,14 @@ homepage            https://angleproject.org
 # grep -E 'jsoncpp_revision.:|(build.git|testing|astc-encoder|rust|SPIRV-(Headers|Tools)|Vulkan-Headers|zlib)@' DEPS
 set jsoncpp         42e892d96e47b1f6e29844cc705e148ec4856448
 set cr_jsoncpp      f62d44704b4da6014aa231cfc116e7fd29617d2a
-set cr_build        5e78d27a99576916b3cc2e99c46a623719c58d43
-set cr_testing      9d6144773492600f776980ed1e09913108051973
+set cr_build        e6aa79b579ec7536ac9cbb92b47c1d3c2ecec984
+set cr_testing      617d94f985f3b2e535b62d5e87c1a0d649394265
 set astc_encoder    2319d9c4d4af53a7fc7c52985e264ce6e8a02a9b
-set cr_rust         d9a445412af603f9d943b315bd854c393bbb62db
-set spirv_headers   1e770e7de8373a8dd49f23416cf7ca4001d01040
-set spirv_tools     39813baec458ada43263749757b15fbfbd6be107
-set vk_headers      015e25c3c91b70eb1a754d36fb14c4ba6ad9b0b9
-set cr_zlib         3246f1b60849cc505e231c5d19d0cbf358093555
+set cr_rust         5d1eef11ee101253a9ba316fff0517f758ec12fd
+set spirv_headers   04fd3caa1e8267e4d95c806cad901181728e1006
+set spirv_tools     d6f63db7031c181c146963206da772445704d5a0
+set vk_headers      ee2ec5fd83dafce291024683b50dc89219333076
+set cr_zlib         285e94b8fa95ad3b7d16b80798ec8dce6febb8c8
 
 master_sites-append https://github.com/gsource-mirror/chromium-src-build/archive/${cr_build}:chromium-build
 distfiles-append    chromium-src-build-${cr_build}${extract.suffix}:chromium-build
@@ -65,41 +65,41 @@ master_sites-append https://github.com/open-source-parsers/jsoncpp/archive/${jso
 distfiles-append    jsoncpp-${jsoncpp}${extract.suffix}:jsoncpp
 
 checksums           ${distname}${extract.suffix} \
-                    rmd160  07fcce9cb5aa6b1f06a33537ab246ec48f77fe5b \
-                    sha256  a4992b08615bdb0fae2a8538676fc083276e7e0ff4f04c00180c85c7c9ae42a9 \
-                    size    16891285 \
+                    rmd160  5eed5464aa7c1502d9f71db3d9d43a151f4d4ba4 \
+                    sha256  bf1e386b0f567844e21127cb9b183d72a835023e40d3920ce8507b4420fa64bf \
+                    size    16721916 \
                     chromium-src-build-${cr_build}${extract.suffix} \
-                    rmd160  ad20ea878725a7b7ff192143781fb90ec9c6bf10 \
-                    sha256  b90d154f1f92739ec1762afc1f2eb1fb58eee8228bf473416d85c21a40ecf273 \
-                    size    1780890 \
+                    rmd160  d4f0407e6efdec77747d3034a0d7cebdcefda7e1 \
+                    sha256  b2b7ce21cc65df7a1141c044dec1a2890b58d45f3beb671378f69b9410b8b4d8 \
+                    size    1902176 \
                     chromium-src-testing-${cr_testing}${extract.suffix} \
-                    rmd160  275f1a88734933917012d0dae2446a913c13f254 \
-                    sha256  ea78608ccf66ce4da4f97c4822f62f998f9239c3553d72ed7f35a37b24701761 \
-                    size    2049946 \
+                    rmd160  c5e9fe93b5c6b25c764335b9f44784929bf69816 \
+                    sha256  fdd31b5ea5a5dabe4f231b40f6348d8fffa4c05f5a8de6b8c23bef0025f2b88c \
+                    size    2057644 \
                     chromium-src-third_party-jsoncpp-${cr_jsoncpp}${extract.suffix} \
                     rmd160  8611455ceb50dd821a942c3b10f2110c418fe182 \
                     sha256  7360eff9ce58208c68da260db23bdc29bbc00c769905af10aa45af0dd308aba4 \
                     size    4411 \
                     chromium-src-third_party-rust-${cr_rust}${extract.suffix} \
-                    rmd160  22680547af989af30c333e9d6be64780284e9667 \
-                    sha256  9c78af32ae1088ae9b2e5493e5d9043c5c955f28c83789dab834cd4be97239c2 \
-                    size    33139534 \
+                    rmd160  07b122fd1630442143eba649f19b7a8431d839eb \
+                    sha256  765a526ed5fc396d9bc394620ab491401363235bda21c039c1cc84f08fbe2bfe \
+                    size    35154082 \
                     chromium-src-third_party-zlib-${cr_zlib}${extract.suffix} \
-                    rmd160  3293fe7af4938f26ac5c3c5157c00f7fb129c6e2 \
-                    sha256  77772896f800482a19f2b81605eae1017b7e53d0836f1e9f866803b800d8c0e2 \
-                    size    1382040 \
+                    rmd160  3b966f46c5f6014353a3e68447bb094e43883025 \
+                    sha256  ff1b55551aad16c58cfca896a4d87d616cf70125829a8048278fd31c9278993d \
+                    size    1385580 \
                     SPIRV-Headers-${spirv_headers}${extract.suffix} \
-                    rmd160  02f3399e9539af45ace649c7a7dc3ab83d0eec14 \
-                    sha256  9d6c51923bce1f0fde35b7827b5335689197d604d62e06251860f80322f7ac76 \
-                    size    568459 \
+                    rmd160  d4c6862b4c31ff0bc43ea16f0382b542183fa28a \
+                    sha256  392f4801409aad9c4f1b77745f179952fd6264e4c8bd0fc1bc45dfa6807bf6d0 \
+                    size    594644 \
                     SPIRV-Tools-${spirv_tools}${extract.suffix} \
-                    rmd160  3eac2b6f3bd1e8554db56412a864959efb1aa4b7 \
-                    sha256  e86fe4ef23e000bbcc6a949061c1f3746c00b45a24637fe79260ca15e2d5a672 \
-                    size    3504199 \
+                    rmd160  694fff8969ca2698e80d647092f9075d82008215 \
+                    sha256  2f036f62a160b9697474e908e01a65dcf4b788fac29df29dae1b84460a4324e6 \
+                    size    3564064 \
                     Vulkan-Headers-${vk_headers}${extract.suffix} \
-                    rmd160  119cb01693b329cc5941ef51f99c8e5a8c84b28f \
-                    sha256  666700236101d288dea8bb080c6f8039467cb1d29ea1e1aae6f93a819f4f9029 \
-                    size    3341743 \
+                    rmd160  c6666a1ffd903fba22a9f17a9075cd5b246f7f59 \
+                    sha256  df7a152381a7fdaf98e36de7716b8d6d6ead776764bc76d1a1aef9049d1bca89 \
+                    size    3416190 \
                     astc-encoder-${astc_encoder}${extract.suffix} \
                     rmd160  1c792cca8415346924640772699e6ffc2d3871f4 \
                     sha256  8b5068ef28a8db1cb354d89d9cefd19d43eddfc72c3468fce7ebb92b2431d4c4 \
@@ -124,9 +124,6 @@ use_xcode           yes
 patchfiles          patch-commit-id.diff \
                     patch-apple-toolchain.diff \
                     patch-src-common-platform.diff
-
-# https://github.com/gsource-mirror/chromium-src-build/commit/887f0fe79088967b0c5b13009972f86207885636
-patchfiles-append   patch-lld.diff
 
 post-extract {
     delete ${worksrcpath}/build
@@ -191,7 +188,6 @@ configure.args      --args='\
                     treat_warnings_as_errors=false \
                     fatal_linker_warnings=false \
                     use_custom_libcxx=false \
-                    use_lld=false \
                     enable_rust=false \
                     angle_build_tests=false \
                     angle_enable_metal=false \

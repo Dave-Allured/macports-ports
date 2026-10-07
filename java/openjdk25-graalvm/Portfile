@@ -20,11 +20,12 @@ universal_variant no
 # https://github.com/graalvm/graalvm-ce-builds/releases
 supported_archs  arm64
 
-version          ${feature}.1.3
-set build        9
+set innovation   4
+version          ${feature}.${innovation}.4.1.1
+set build        1
 revision         0
 
-set jdk_version  ${feature}.0.3
+set jdk_version  ${feature}.0.4.1.1
 
 description GraalVM Community Edition based on OpenJDK ${feature} (Long Term Support)
 long_description {*}${description} \
@@ -32,11 +33,11 @@ long_description {*}${description} \
 
 master_sites https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${version}/
 
-checksums    rmd160  ab24742c988bf12f126c32aedda38b8d769fd382 \
-             sha256  b41cdde27691a0e04a1f2b0660624bc37e59c738e536888860c4c9f65a4a9a3b \
-             size    336020050
+checksums    rmd160  bc836a89dc8b01ed0a2ed3c69bb116eb6265efc0 \
+             sha256  4ec9932aa4aab1afca0ea31982d32d6f956615c61fe21a227b49756b25adda4f \
+             size    336594261
 
-distname     graalvm-community-jdk-${feature}i1-${jdk_version}_macos-aarch64_bin
+distname     graalvm-community-jdk-${feature}i${innovation}-${jdk_version}_macos-aarch64_bin
 
 worksrcdir   graalvm-community-${version}+${build}.1
 

@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-prolif
-version             2.2.0
+version             2.2.2
 revision            0
 
 categories-append   science
@@ -19,9 +19,9 @@ long_description    {*}${description}
 
 homepage            https://github.com/chemosim-lab/ProLIF
 
-checksums           rmd160  0340830e3311de228c5a8f00dd1bd6c63c3e3542 \
-                    sha256  cc9e708582734dae5b05a92c7e5e3b87c1b8f852fa43656fdd6c4a2f082e7f58 \
-                    size    10178767
+checksums           rmd160  56b0a6762a399d0ebb4a78901245504e65eaaa91 \
+                    sha256  34b4fd377606e5e7a5cc4b953d1497a388a36076a3214ab309b5863ee7423859 \
+                    size    10180348
 
 python.versions     313 314
 

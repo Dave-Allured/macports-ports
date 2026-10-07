@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/umputun/ralphex 1.6.0 v
+go.setup            github.com/umputun/ralphex 1.7.0 v
 revision            0
 categories          llm
 maintainers         {@sikmir disroot.org:sikmir} openmaintainer
@@ -19,9 +19,9 @@ build.pre_args-append \
                     TAG=v${version}
 build.args          build
 
-checksums           rmd160  8c2ac73c00311fb7b496e1dc4851a49b06547bf8 \
-                    sha256  55daac7de46183e16ee57a22e9527d342ac2c5a2ed6284a749d5a11f25aec6b8 \
-                    size    8239037
+checksums           rmd160  b955812b10f418a4901dd3890db2ac18580e5ce8 \
+                    sha256  edfcb9f34b14eb020561056d0e11950bb7ee4c5bea9ebe865523debb2bf706b9 \
+                    size    8461989
 
 destroot {
     xinstall -m 0755 ${worksrcpath}/.bin/ralphex.v${version} ${destroot}${prefix}/bin/ralphex

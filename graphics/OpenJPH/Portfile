@@ -4,7 +4,14 @@ PortSystem      1.0
 PortGroup       cmake 1.1
 PortGroup       github 1.0
 
-github.setup    aous72 OpenJPH 0.30.1
+# Warning: OpenJPH embeds the package version number in the dylib name.
+# Therefore dependent rev bumps are required on every version update.
+# Upstream is aware of issue, and will eventually improve:
+# https://github.com/aous72/OpenJPH/issues/155
+
+version         0.32.0
+revision        0
+github.setup    aous72 OpenJPH ${version}
 github.tarball_from archive
 
 categories      graphics
@@ -19,9 +26,9 @@ long_description \
     example, for wavelet transform, only reversible 5/3 and \
     irreversible 9/7 are supported).
 
-checksums       rmd160  c92a88a2724d012b1e22011a505d32d1b2c080a0 \
-                sha256  fb3ccf71af838ed2a42c6ea669308a2adaba115ae9d5862dfb1e2865b43eb5b8 \
-                size    531155
+checksums       rmd160  3bd493826de01ae2435c7d0c0ac6f98a4d16ccbf \
+                sha256  5cb1ebe18e5ee1322d23ff2130b37562d447d1ad5586c3d16cf84be3ae30f719 \
+                size    566625
 
 depends_lib     port:tiff
 

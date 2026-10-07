@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                npm11
-version             11.18.0
+version             11.21.0
 revision            0
 categories          devel
 platforms           any
@@ -25,9 +25,9 @@ distname            npm-${version}
 
 extract.suffix      .tgz
 
-checksums           rmd160  7eae4fe343e7ec9014f24324a997e10455d1c3b9 \
-                    sha256  73f6155215ebabf4ed96dca1f567c2372cc713c33af2e5b9b62fde4e92373e2e \
-                    size    2997746
+checksums           rmd160  10cc7abdb0cdd0f200092797a2d36c7f0ddaffb5 \
+                    sha256  783e7c92bf73b442fb800c2d6ef3921e86da8894a700fed45140e37916877482 \
+                    size    3322143
 
 worksrcdir          package
 
@@ -97,4 +97,4 @@ ${prefix}/lib/node_modules/ until you manually delete them.
 
 livecheck.type      regex
 livecheck.url       https://registry.npmjs.org/npm
-livecheck.regex     {"latest":"(.*?)"}
+livecheck.regex     {"next-11":"(.*?)"}

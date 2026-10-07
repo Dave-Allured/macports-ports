@@ -3,9 +3,10 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/k6io/k6 2.1.0 v
+go.setup            github.com/k6io/k6 2.3.0 v
 go.package          go.k6.io/k6
 go.offline_build    no
+go.toolchain_min    1.26
 revision            0
 
 homepage            https://k6.io
@@ -25,9 +26,9 @@ maintainers         {l2dy @l2dy} \
                     {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  6c36d2c2605bc1ecf91c6889fe97678a86c776c9 \
-                    sha256  04d9a1586b23db9d1746aa61f29ae4aee4d2a5da7d5782e11f7530405b5f57ab \
-                    size    10885026
+checksums           rmd160  269f8398cc6e5bf81e384228bdadb1baa30ceb6f \
+                    sha256  35d0e4ce17ac3b7557f220a63bd9486f24dd63e032fbe1aed8a79326191a2097 \
+                    size    11348064
 
 destroot {
     xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/

@@ -11,7 +11,8 @@ PortGroup           muniversal 1.0
 name                gstreamer1-gst-plugins-bad
 set my_name         gst-plugins-bad
 # please only commit stable updates (even numbered releases)
-version             1.28.5
+version             1.28.7
+revision            1
 description         A set of plug-ins for GStreamer that need more quality.
 long_description    GStreamer Bad Plug-ins is a set of plug-ins that aren't up to par compared \
                     to the rest. They might be close to being good quality, but they're missing \
@@ -25,9 +26,9 @@ master_sites        https://gstreamer.freedesktop.org/src/${my_name}/
 distname            ${my_name}-${version}
 use_xz              yes
 
-checksums           rmd160  222a18dbdf2a0a17043aef5defb3d92abd65a978 \
-                    sha256  d8af55faef2958c1a8663751475ee46f5164877cf4d8c5913ea906ef180aeb71 \
-                    size    8335024
+checksums           rmd160  47e53f2f980e905de7b4647a58eb71e2bc00fea0 \
+                    sha256  dc525383c18b2c265bbe6a43d498656cd918aaa130aa4e3abeabcdaa741c3ffe \
+                    size    8347976
 
 set py_ver          3.14
 set py_ver_nodot    [string map {. {}} ${py_ver}]
@@ -103,6 +104,7 @@ compiler.cxx_standard       2011
 
 configure.args-append \
                     -Dapplemedia=disabled \
+                    -Ddc1394=disabled \
                     -Dexamples=disabled \
                     -Dfaac=disabled \
                     -Dfdkaac=disabled \
@@ -110,8 +112,8 @@ configure.args-append \
                     -Dsctp=disabled \
                     -Dsrtp=disabled \
                     -Dsvtav1=disabled \
-                    -Dx11=disabled \
-                    -Dvulkan=disabled
+                    -Dvulkan=disabled \
+                    -Dx11=disabled
 
 configure.cflags-append     -std=c11
 configure.cxxflags-append   -std=gnu++11

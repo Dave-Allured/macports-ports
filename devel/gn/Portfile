@@ -3,12 +3,12 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-set rev             3357c4f51b1a9e676378c695dd9c7e9911c35ee6
+set rev             cfcd774b98f3433e18b722f9a7ff06119825b8eb
 github.setup        gsource-mirror gn $rev
 github.tarball_from archive
 
 # git rev-list --count initial-commit..
-version             2407
+version             2562
 revision            0
 categories          devel
 license             BSD
@@ -21,9 +21,9 @@ long_description    GN is a meta-build system that generates build files for \
 
 homepage            https://gn.googlesource.com/gn
 
-checksums           rmd160  b8054abaa867aefbec85885d19b8832232bd1eab \
-                    sha256  7fca437a5dbe181fef9b407c3087bb1c48f1c91c7ffca6b6a21fc150d8a93676 \
-                    size    1168416
+checksums           rmd160  f8f2221e859c4bb17c16f8715d35bfbe77c054d7 \
+                    sha256  e8312dd86184c41d3a4cac5d9bdc8cc3ff7f0bc8068754cb18e2fe4a61548e4a \
+                    size    1347803
 
 set py_ver          3.14
 set py_ver_nodot    [string map {. {}} ${py_ver}]
@@ -58,7 +58,7 @@ configure.args      --allow-warnings
 
 build.cmd           ${prefix}/bin/ninja
 build.dir           ${worksrcpath}/out
-build.target
+build.target        gn
 
 destroot {
     copy ${worksrcpath}/out/gn ${destroot}${prefix}/bin/

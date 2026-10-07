@@ -3,7 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/xyproto/orbiton 2.70.5 v
+go.setup            github.com/xyproto/orbiton 2.74.5 v
+go.toolchain_min    1.25.1
 revision            0
 
 homepage            https://roboticoverlords.org/orbiton
@@ -23,12 +24,11 @@ license             BSD
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  683b0f6dc2dd51544cf665981808ed2bcb7ab6a1 \
-                    sha256  ec8e9de9f392c424bdba8fdce926e85340edc73734aec4c2c8d987d804f56fb6 \
-                    size    5434828
+checksums           rmd160  ed5c63a0cf49315511f5500b1eccb25f14c81fa6 \
+                    sha256  dbd06b13734d53ddfa12bb3d92cc2ac967a4ddd59940eba5391ab8633e781046 \
+                    size    8781929
 
 build.cmd           make
-build.pre_args      GOFLAGS=
 build.args          o o.1
 
 destroot {

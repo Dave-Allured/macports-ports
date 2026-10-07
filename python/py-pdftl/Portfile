@@ -5,7 +5,7 @@ PortGroup           python 1.0
 PortGroup           active_variants 1.1
 
 name                py-pdftl
-version             0.25.1
+version             0.29.0
 revision            0
 
 categories-append   textproc
@@ -20,9 +20,9 @@ long_description    pdftl (PDF tackle) is a standalone CLI utility and Python li
 
 homepage            https://github.com/pdftl/pdftl
 
-checksums           rmd160  09d61cc6f8c978061bd208eb1238cae2618d7876 \
-                    sha256  c5f52b0cd87d6b4a6b4b5f30d5bfcf8fc4e0516d3d8bf8bb466782f2dfc2dd19 \
-                    size    3751223
+checksums           rmd160  16c65c1e9cd56c37a42d777491f54af7a4fb8812 \
+                    sha256  a39b381d7f7236f5d0eb2c5024af26b1aa61a6dd29d2a4b5fdf70b7889b54cce \
+                    size    4182318
 
 python.versions     310 311 312 313 314
 

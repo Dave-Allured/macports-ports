@@ -2,7 +2,7 @@
 
 PortSystem          1.0
 
-version             2.96.0
+version             2.102.0
 revision            0
 
 # Github CLI is failing to build on 10.12 and below.
@@ -18,6 +18,7 @@ if ${source_build} {
 
     go.setup        github.com/cli/cli ${version} v
     go.package      github.com/cli/cli/v2
+    go.toolchain_min 1.27
 } else {
     PortGroup       github 1.0
     PortGroup       legacysupport 1.1
@@ -54,9 +55,9 @@ if ${source_build} {
 
     use_parallel_build  no
 
-    checksums           rmd160  54e7b08f0b38a3a0279232e644666a0c16881a47 \
-                        sha256  8d80d0aeccea7bec8024f8c30365bbfa76852901f2b2cb0afb7ab2cbf6d317c2 \
-                        size    14796760
+    checksums           rmd160  a3472362a52536b1cda70a5e1e29baf0bddc8de3 \
+                        sha256  08bf0ef8b4409893889175e0f5279d30d6edd96465816042c0d7c72eac598158 \
+                        size    15296359
 
     dist_subdir         ${name}
 
@@ -74,9 +75,9 @@ if ${source_build} {
 
     distname        gh_${version}_macOS_amd64
 
-    checksums       rmd160  baf2cd6c736c5f9cba9a9a9c1a43f54560957c1c \
-                    sha256  4bd449df9ad639391bc62b8032546f0fe9edcd8526e06682a4f88abd8c5d163c \
-                    size    15298430
+    checksums       rmd160  87b4d7df53c3e61cf19eef3c85bb59d31af1ddaa \
+                    sha256  b245f24eb2bf5f75b426b4c26da3651a107f8d5b6f4fddfbfccc5679041378b3 \
+                    size    15995994
 
     use_configure   no
     use_zip         yes

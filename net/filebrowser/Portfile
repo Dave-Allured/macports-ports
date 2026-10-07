@@ -3,8 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/filebrowser/filebrowser 2.63.18 v
-set git-commit      fe7efb2
+go.setup            github.com/filebrowser/filebrowser 2.63.23 v
+set git-commit      e8a388f
 # This line is for displaying commit in CLI only
 revision            0
 categories          net sysutils
@@ -19,11 +19,12 @@ long_description    ${name} provides a file managing interface within a specifie
 
 homepage            https://filebrowser.org
 
-checksums           rmd160  1925843925c0200f876a990ae5bc181f1385fdba \
-                    sha256  b665942fa4adb882498e89f09ef90f4690de4f22de043453c28e201c812060c5 \
-                    size    5435929
+checksums           rmd160  c9066bb6cf228f68ebcbe610e967ccf14122d50d \
+                    sha256  18020983f6a4e43d679738738c3f95c52a333a282144046ec152491f2341a152 \
+                    size    5462514
 
 go.offline_build    no
+go.toolchain_min    1.25.0
 
 # Notes for updating this port:
 # Remember to update git commit hash
@@ -43,8 +44,8 @@ platform darwin {
 
 pre-build {
     # See ${worksrcpath}/Makefile for frontend build commands
-    system -W ${worksrcpath}/frontend "${prefix}/bin/pnpm --verbose install --frozen-lockfile && \
-                                       ${prefix}/bin/pnpm --verbose run build"
+    system -W ${worksrcpath}/frontend "${prefix}/bin/pnpm --loglevel debug install --frozen-lockfile && \
+                                       ${prefix}/bin/pnpm --loglevel debug run build"
 }
 
 build.args-append   -ldflags=\"-X 'github.com/filebrowser/filebrowser/version.Version=${version}' -X 'github.com/filebrowser/filebrowser/version.CommitSHA=${git-commit}'\"

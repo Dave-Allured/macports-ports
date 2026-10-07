@@ -5,7 +5,7 @@ PortGroup           python 1.0
 PortGroup           compilers 1.0
 
 name                py-numpy
-version             2.5.1
+version             2.5.3
 revision            0
 
 categories-append   math
@@ -16,9 +16,9 @@ long_description    {*}${description}
 
 homepage            https://numpy.org
 
-checksums           rmd160  ccc2cca1705affcece9a62a100d2494a925dd3b1 \
-                    sha256  a48a113e6afea91f5608793bafa7ef2ad481fefbda87ec5069f483de61cb9fa3 \
-                    size    20755553
+checksums           rmd160  92b5bf6e435122a639f0fafa8f78343bc13f2f51 \
+                    sha256  df2d5874ff183595a4ba404edd04f6bd9b5505c1d7708573f6a6c17489a67563 \
+                    size    20791231
 
 compiler.c_standard 2011
 compiler.cxx_standard 2017

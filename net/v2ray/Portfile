@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/v2fly/v2ray-core 5.49.0 v
+go.setup            github.com/v2fly/v2ray-core 5.53.0 v
 revision            0
 name                v2ray
 categories          net security
@@ -18,11 +18,12 @@ long_description    V2Ray supports many protocols, including Socks, HTTP, Shadow
 
 homepage            https://www.v2fly.org
 
-checksums           rmd160  7c9b1c36428d320f92eabb1728780954974e7c15 \
-                    sha256  1a63c9179497db2d6bb7027eed5653d2b1dd3e9942b656146e87a7fd28f1d22b \
-                    size    1283923
+checksums           rmd160  aaf728a9bcc466b16e6d4914f1d6ac55761b7f55 \
+                    sha256  f2a78ff50ce36c4a577a39016485cdfb835a75137d514a0a5e8e9e983f0d38bb \
+                    size    1324909
 
 go.offline_build    no
+go.toolchain_min    1.25.5
 
 depends_build-append \
                     port:wget

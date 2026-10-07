@@ -3,9 +3,10 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/trufflesecurity/trufflehog 3.95.8 v
+go.setup            github.com/trufflesecurity/trufflehog 3.99.0 v
 go.package          github.com/trufflesecurity/trufflehog/v3
 go.offline_build    no
+go.toolchain_min    1.25.0
 revision            0
 
 description         Find credentials all over the place
@@ -24,9 +25,9 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
 build.args-append \
     -ldflags \" -X ${go.package}/pkg/version.BuildVersion=${version} \"
 
-checksums           rmd160  66f542d52e7e88ad3657560042b6142a7851df78 \
-                    sha256  274ad44b514061239ff4e22dc74f33ceb25b3db842e8bd7d59a7a1a3e22d3b71 \
-                    size    6118277
+checksums           rmd160  e810355e7ba5b8a5094d0c04b4e51672f457a429 \
+                    sha256  e93ec9c97417bae984e5c751480904ddd928ed78fe5f1b18e74a11fc265ae474 \
+                    size    6361395
 
 destroot {
     xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/

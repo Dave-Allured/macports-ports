@@ -3,8 +3,9 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/sigstore/gitsign 0.16.0 v
+go.setup            github.com/sigstore/gitsign 0.17.1 v
 go.offline_build    no
+go.toolchain_min    1.26.0
 revision            0
 
 description         Keyless Git signing using Sigstore
@@ -17,9 +18,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  485aa671fd3bdf7732db72bdadfa85d6f72828f1 \
-                    sha256  98aae793562337414bc67d529eb2971efa6168020fa4640634b8942faf9a6ea9 \
-                    size    301848
+checksums           rmd160  cc231554b7e76b2eda5af23629a78f8b9dc4cdc8 \
+                    sha256  0325dc76ec9e2d8d81d96aaeb6dfde0317f6cdfc60710fbab9eb636648388085 \
+                    size    355992
 
 build.cmd           make
 build.pre_args-append \
