@@ -36,8 +36,6 @@ depends_lib-append      port:zlib \
                         port:onetbb \
                         path:lib/pkgconfig/glfw3.pc:glfw
 
-patchfiles              patch-threading.diff
-
 # it uses constexpr if statement
 compiler.cxx_standard   2017
 # Blacklist macports-clang-16+ to prevent
@@ -245,14 +243,6 @@ foreach s $python_suffixes {
         boost.require_numpy     yes
         require_active_variants [boost::depends_portname]       ${p}
         require_active_variants [boost::depends_portname]-numpy ${p}
-
-        # Find correct Python version
-        patchfiles-append       patch-python_version.diff
-
-        post-patch {
-            reinplace s|__MACPORTS_PYTHON_VERSION__|${v}|g \
-                ${worksrcpath}/${name}/${name}/python/CMakeLists.txt
-        }
 
         configure.args-append   -DOPENVDB_BUILD_PYTHON_MODULE=ON \
                                 -DUSE_NUMPY=ON
