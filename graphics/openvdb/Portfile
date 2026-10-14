@@ -249,7 +249,12 @@ foreach s $python_suffixes {
     "
 }
 
-default_variants        +docs +nanovdb +examples +openexr +jemalloc \
+# 2026 Oct 14: OpenVDB @13.1.0 requires an older version of Doxygen.
+# Doxygen <= 1.14.0 is required, but MacPorts doxygen is already up to 1.18.
+# Therefore, remove +docs from default, until OpenVDB catches up,
+# or until MacPorts adds a legacy version.
+
+default_variants        +nanovdb +examples +openexr +jemalloc \
                         +utils +png +jpg
 
 # While alembic builds, it does not work correctly on BE platforms:
