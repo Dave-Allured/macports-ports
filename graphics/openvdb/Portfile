@@ -6,13 +6,12 @@ PortGroup               cmake 1.1
 PortGroup               active_variants 1.1
 PortGroup               boost 1.0
 
-github.setup            AcademySoftwareFoundation openvdb 13.0.0 v
+github.setup            AcademySoftwareFoundation openvdb 13.1.0 v
 github.tarball_from     archive
-revision                2
+revision                0
 categories              graphics
 license                 {MPL-2 LGPL-2.1+}
-maintainers             {mcalhoun @MarcusCalhoun-Lopez} \
-                        @jasonliu-- openmaintainer
+maintainers             @jasonliu-- openmaintainer
 
 homepage                https://www.${name}.org/
 description             sparse volumetric data structure and tools
@@ -26,9 +25,9 @@ long_description        OpenVDB is an open source C++ library \
                         encountered in computer-generated graphics and \
                         animation.
 
-checksums               rmd160  2bbb492dad918fdffa48b66a5764f01a2f385002 \
-                        sha256  4d6a91df5f347017496fe8d22c3dbb7c4b5d7289499d4eb4d53dd2c75bb454e1 \
-                        size    4891966
+checksums               rmd160  b9a83be504da9e8509eb9e4efb0dc0ea5faf2dbf \
+                        sha256  21659ef2330a06805519dd8d4369375f181a0dfee205b0180da69b4edd3329ae \
+                        size    5607291
 
 depends_build-append    port:pkgconfig
 
