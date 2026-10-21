@@ -25,7 +25,6 @@ categories                  devel
 
 homepage                    https://think-async.com/Asio/
 
-worksrcdir                  ${worksrcdir}/${name}
 use_autoconf                yes
 autoconf.cmd                ./autogen.sh
 
