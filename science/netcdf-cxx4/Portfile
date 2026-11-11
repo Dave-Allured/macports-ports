@@ -41,10 +41,6 @@ configure.cxxflags-append   -fno-common
 configure.cflags-append     -fno-common
 configure.ldflags-append    -lnetcdf
 
-post-configure {
-    file rename ${worksrcpath}/VERSION ${worksrcpath}/VERSION.txt
-}
-
 test.run                    yes
 test.target                 check
 
